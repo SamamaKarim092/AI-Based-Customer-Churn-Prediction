@@ -8,6 +8,7 @@ from tkinter import ttk, messagebox
 from .base import BasePage
 import sys
 import os
+import random
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from theme import COLORS, FONTS, ICONS
@@ -90,36 +91,74 @@ class PredictPage(BasePage):
         
         self.inputs = {}
         
-        # Row 1
+        # Subscription pricing
+        self.subscription_prices = {
+            'Basic': 12.99,
+            'Standard': 19.99,
+            'Premium': 29.99
+        }
+        
+        # Row 1 - Basic Info
         row1 = tk.Frame(form_frame, bg=COLORS['bg_card'])
         row1.pack(fill=tk.X, pady=5)
         
         self.create_input(row1, "Age", 'age', 'spinbox', (18, 100), 35)
         self.create_input(row1, "Gender", 'gender', 'combo', ['Male', 'Female'], 'Male')
-        self.create_input(row1, "Subscription", 'subscription_type', 'combo', 
-                         ['Basic', 'Standard', 'Premium'], 'Standard')
+        self.create_subscription_input(row1)
         
-        # Row 2
+        # Row 2 - Engagement
         row2 = tk.Frame(form_frame, bg=COLORS['bg_card'])
         row2.pack(fill=tk.X, pady=5)
         
-        self.create_input(row2, "Monthly ($)", 'monthly_charges', 'spinbox', (9.99, 50.00), 19.99)
         self.create_input(row2, "Tenure (mo)", 'tenure_in_months', 'spinbox', (1, 120), 12)
         self.create_input(row2, "Logins/mo", 'login_frequency', 'spinbox', (0, 100), 15)
+        self.create_input(row2, "Watch (hrs)", 'watch_time', 'spinbox', (0.0, 200.0), 20.0)
         
-        # Row 3
+        # Row 3 - Issues
         row3 = tk.Frame(form_frame, bg=COLORS['bg_card'])
         row3.pack(fill=tk.X, pady=5)
         
         self.create_input(row3, "Last Login", 'last_login_days', 'spinbox', (0, 365), 5)
-        self.create_input(row3, "Watch (hrs)", 'watch_time', 'spinbox', (0.0, 200.0), 20.0)
         self.create_input(row3, "Pay Fails", 'payment_failures', 'spinbox', (0, 10), 0)
+        self.create_input(row3, "Support Calls", 'customer_support_calls', 'spinbox', (0, 20), 1)
+    
+    def create_subscription_input(self, parent):
+        """Create subscription type input with auto-pricing display."""
+        frame = tk.Frame(parent, bg=COLORS['bg_card'])
+        frame.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
         
-        # Row 4
-        row4 = tk.Frame(form_frame, bg=COLORS['bg_card'])
-        row4.pack(fill=tk.X, pady=5)
+        tk.Label(
+            frame, text="Subscription",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_secondary']
+        ).pack(anchor=tk.W)
         
-        self.create_input(row4, "Support Calls", 'customer_support_calls', 'spinbox', (0, 20), 1)
+        # Container for combo and price
+        input_row = tk.Frame(frame, bg=COLORS['bg_card'])
+        input_row.pack(fill=tk.X, pady=(3, 0))
+        
+        # Subscription dropdown
+        widget = ttk.Combobox(input_row, values=['Basic', 'Standard', 'Premium'], width=10, state='readonly')
+        widget.set('Standard')
+        widget.pack(side=tk.LEFT)
+        widget.bind('<<ComboboxSelected>>', self.on_subscription_change)
+        self.inputs['subscription_type'] = widget
+        
+        # Price display
+        self.price_label = tk.Label(
+            input_row, text="$19.99/mo",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['success']
+        )
+        self.price_label.pack(side=tk.LEFT, padx=(10, 0))
+    
+    def on_subscription_change(self, event=None):
+        """Update price display when subscription changes."""
+        sub_type = self.inputs['subscription_type'].get()
+        price = self.subscription_prices.get(sub_type, 19.99)
+        self.price_label.config(text=f"${price:.2f}/mo")
     
     def create_input(self, parent, label, key, input_type, options, default):
         """Create a single input field."""
@@ -300,11 +339,14 @@ class PredictPage(BasePage):
     def get_customer_data(self):
         """Get customer data from inputs."""
         try:
+            sub_type = self.inputs['subscription_type'].get()
+            monthly_charges = self.subscription_prices.get(sub_type, 19.99)
+            
             return {
                 'age': int(self.inputs['age'].get()),
                 'gender': self.inputs['gender'].get(),
-                'subscription_type': self.inputs['subscription_type'].get(),
-                'monthly_charges': float(self.inputs['monthly_charges'].get()),
+                'subscription_type': sub_type,
+                'monthly_charges': monthly_charges,
                 'tenure_in_months': int(self.inputs['tenure_in_months'].get()),
                 'login_frequency': int(self.inputs['login_frequency'].get()),
                 'last_login_days': int(self.inputs['last_login_days'].get()),
@@ -385,39 +427,66 @@ class PredictPage(BasePage):
         self.recommendations_text.config(state=tk.DISABLED)
     
     def load_high_risk(self):
-        """Load high-risk sample."""
-        sample = {'age': 25, 'gender': 'Male', 'subscription_type': 'Basic',
-                  'monthly_charges': 12.99, 'tenure_in_months': 2, 'login_frequency': 3,
-                  'last_login_days': 45, 'watch_time': 2.5, 'payment_failures': 2,
-                  'customer_support_calls': 4}
+        """Load random high-risk sample."""
+        sub_type = random.choice(['Basic', 'Basic', 'Standard'])  # Weighted toward Basic
+        sample = {
+            'age': random.randint(18, 30),
+            'gender': random.choice(['Male', 'Female']),
+            'subscription_type': sub_type,
+            'tenure_in_months': random.randint(1, 6),
+            'login_frequency': random.randint(1, 5),
+            'last_login_days': random.randint(30, 90),
+            'watch_time': round(random.uniform(0.5, 5.0), 1),
+            'payment_failures': random.randint(1, 4),
+            'customer_support_calls': random.randint(3, 8)
+        }
         for key, value in sample.items():
             self.inputs[key].set(value)
+        self.on_subscription_change()  # Update price display
     
     def load_low_risk(self):
-        """Load low-risk sample."""
-        sample = {'age': 45, 'gender': 'Female', 'subscription_type': 'Premium',
-                  'monthly_charges': 29.99, 'tenure_in_months': 48, 'login_frequency': 25,
-                  'last_login_days': 1, 'watch_time': 45.0, 'payment_failures': 0,
-                  'customer_support_calls': 1}
+        """Load random low-risk sample."""
+        sub_type = random.choice(['Premium', 'Premium', 'Standard'])  # Weighted toward Premium
+        sample = {
+            'age': random.randint(35, 65),
+            'gender': random.choice(['Male', 'Female']),
+            'subscription_type': sub_type,
+            'tenure_in_months': random.randint(24, 72),
+            'login_frequency': random.randint(20, 40),
+            'last_login_days': random.randint(0, 3),
+            'watch_time': round(random.uniform(30.0, 80.0), 1),
+            'payment_failures': 0,
+            'customer_support_calls': random.randint(0, 2)
+        }
         for key, value in sample.items():
             self.inputs[key].set(value)
+        self.on_subscription_change()  # Update price display
     
     def clear_all(self):
         """Clear all inputs and results."""
-        defaults = {'age': 35, 'gender': 'Male', 'subscription_type': 'Standard',
-                   'monthly_charges': 19.99, 'tenure_in_months': 12, 'login_frequency': 15,
-                   'last_login_days': 5, 'watch_time': 20.0, 'payment_failures': 0,
-                   'customer_support_calls': 1}
+        defaults = {
+            'age': 35, 
+            'gender': 'Male', 
+            'subscription_type': 'Standard',
+            'tenure_in_months': 12, 
+            'login_frequency': 15,
+            'last_login_days': 5, 
+            'watch_time': 20.0, 
+            'payment_failures': 0,
+            'customer_support_calls': 1
+        }
         for key, value in defaults.items():
             self.inputs[key].set(value)
         
+        self.on_subscription_change()  # Update price display
         self.gauge.reset()
         self.prediction_label.config(text="Prediction: --", fg=COLORS['text_primary'])
         self.risk_label.config(text="Risk Level: --", fg=COLORS['text_secondary'])
         self.factors_label.config(text="Top factors will appear here...")
-        self.bar_chart.delete("all")
+        self.bar_chart.draw_empty()
         
         self.recommendations_text.config(state=tk.NORMAL)
         self.recommendations_text.delete(1.0, tk.END)
         self.recommendations_text.insert(tk.END, "Click 'Predict Churn' to see recommendations...")
         self.recommendations_text.config(state=tk.DISABLED)
+
