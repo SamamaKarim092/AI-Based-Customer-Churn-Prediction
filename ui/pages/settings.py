@@ -136,7 +136,8 @@ class SettingsPage(BasePage):
                 bg=COLORS['bg_card'],
                 fg=COLORS['text_primary'],
                 selectcolor=COLORS['bg_medium'],
-                activebackground=COLORS['bg_card']
+                activebackground=COLORS['bg_card'],
+                command=self.apply_theme
             )
             rb.pack(side=tk.LEFT, padx=5)
         
@@ -186,6 +187,8 @@ class SettingsPage(BasePage):
 AI Customer Churn Prediction System
 Version 1.0.0
 
+Made by Samama Karim
+
 A machine learning system that:
 • Predicts customer churn probability
 • Explains predictions using SHAP
@@ -197,7 +200,6 @@ Technologies:
 • SHAP (Explainability)
 • Tkinter (Desktop UI)
 
-Developed for educational purposes.
 December 2025
         """
         
@@ -229,4 +231,79 @@ December 2025
             "• Import .pkl model files\n"
             "• Validate model compatibility\n"
             "• Switch between models"
+        )
+    
+    def apply_theme(self):
+        """Apply the selected theme to the entire application."""
+        theme = self.theme_var.get()
+        
+        # Define light theme colors
+        light_colors = {
+            'bg_dark': '#f5f5f5',
+            'bg_medium': '#ffffff',
+            'bg_light': '#e8e8e8',
+            'bg_card': '#ffffff',
+            'sidebar_bg': '#f0f0f0',
+            'sidebar_hover': '#e0e0e0',
+            'sidebar_active': '#1f6feb',
+            'accent': '#1f6feb',
+            'accent_hover': '#388bfd',
+            'accent_dark': '#0d419d',
+            'success': '#2da44e',
+            'success_light': '#46954a',
+            'warning': '#bf8700',
+            'warning_light': '#d4a012',
+            'danger': '#cf222e',
+            'danger_light': '#e16f76',
+            'text_primary': '#1f2328',
+            'text_secondary': '#57606a',
+            'text_muted': '#6e7781',
+            'border': '#d0d7de',
+            'border_light': '#b0b8c0',
+            'chart_positive': '#cf222e',
+            'chart_negative': '#2da44e',
+            'chart_neutral': '#57606a'
+        }
+        
+        # Define dark theme colors (original)
+        dark_colors = {
+            'bg_dark': '#0d1117',
+            'bg_medium': '#161b22',
+            'bg_light': '#21262d',
+            'bg_card': '#1c2128',
+            'sidebar_bg': '#0d1117',
+            'sidebar_hover': '#21262d',
+            'sidebar_active': '#1f6feb',
+            'accent': '#58a6ff',
+            'accent_hover': '#79b8ff',
+            'accent_dark': '#1f6feb',
+            'success': '#3fb950',
+            'success_light': '#56d364',
+            'warning': '#d29922',
+            'warning_light': '#e3b341',
+            'danger': '#f85149',
+            'danger_light': '#ff7b72',
+            'text_primary': '#f0f6fc',
+            'text_secondary': '#8b949e',
+            'text_muted': '#6e7681',
+            'border': '#30363d',
+            'border_light': '#484f58',
+            'chart_positive': '#f85149',
+            'chart_negative': '#3fb950',
+            'chart_neutral': '#8b949e'
+        }
+        
+        # Select the appropriate color scheme
+        new_colors = light_colors if theme == "Light" else dark_colors
+        
+        # Update the global COLORS dictionary
+        for key in new_colors:
+            COLORS[key] = new_colors[key]
+        
+        # Refresh the entire UI by calling on_show for the current page
+        # This will trigger a rebuild with new colors
+        messagebox.showinfo(
+            "Theme Changed",
+            f"Theme changed to {theme} mode!\n\n"
+            "Please restart the application to fully apply the new theme."
         )
