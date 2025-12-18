@@ -1,9 +1,10 @@
 """
 Charts/Analytics Page
-Visualizations and analytics display.
+Model training info, performance metrics, and data visualizations.
 """
 
 import tkinter as tk
+from tkinter import ttk
 from .base import BasePage
 import sys
 import os
@@ -13,154 +14,329 @@ from theme import COLORS, FONTS, ICONS
 
 
 class ChartsPage(BasePage):
-    """Analytics and charts page."""
+    """Analytics and charts page with model information."""
     
     def __init__(self, parent, controller, **kwargs):
         super().__init__(parent, controller, **kwargs)
         self.setup_page()
     
     def setup_page(self):
-        """Setup the charts page."""
+        """Setup the analytics page."""
         # Header
         self.create_header(
-            "Analytics",
-            "Visualizations and insights from your data"
+            "Model Analytics",
+            "Training details, performance metrics, and data insights"
         )
         
         # Main content
         main_frame = tk.Frame(self.content, bg=COLORS['bg_medium'])
         main_frame.pack(fill=tk.BOTH, expand=True, padx=30, pady=(0, 20))
         
-        # Top row - Summary charts
-        top_row = tk.Frame(main_frame, bg=COLORS['bg_medium'])
-        top_row.pack(fill=tk.X, pady=(0, 15))
+        # Model Info Section
+        self.create_model_info_section(main_frame)
         
-        # Churn distribution chart
-        self.create_pie_chart(top_row, "Churn Distribution", {
-            "Stayed": 67.5,
-            "Churned": 32.5
-        })
+        # Two columns layout
+        columns_frame = tk.Frame(main_frame, bg=COLORS['bg_medium'])
+        columns_frame.pack(fill=tk.BOTH, expand=True, pady=(15, 0))
         
-        # Subscription distribution chart
-        self.create_pie_chart(top_row, "Subscription Types", {
-            "Basic": 40.8,
-            "Standard": 35.1,
-            "Premium": 24.1
-        })
+        # Left column - Model Performance & Comparison
+        left_col = tk.Frame(columns_frame, bg=COLORS['bg_medium'])
+        left_col.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 10))
         
-        # Risk distribution chart
-        self.create_pie_chart(top_row, "Risk Levels", {
-            "Low Risk": 45,
-            "Moderate": 30,
-            "High Risk": 25
-        })
+        self.create_model_performance(left_col)
+        self.create_model_comparison(left_col)
         
-        # Bottom row - Detailed analytics
-        bottom_row = tk.Frame(main_frame, bg=COLORS['bg_medium'])
-        bottom_row.pack(fill=tk.BOTH, expand=True)
+        # Right column - Feature Importance & Data Stats
+        right_col = tk.Frame(columns_frame, bg=COLORS['bg_medium'])
+        right_col.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(10, 0))
         
-        # Left - Feature importance
-        left_card = tk.Frame(bottom_row, bg=COLORS['bg_card'])
-        left_card.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 10))
-        
-        self.create_feature_importance(left_card)
-        
-        # Right - Model metrics
-        right_card = tk.Frame(bottom_row, bg=COLORS['bg_card'])
-        right_card.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(10, 0))
-        
-        self.create_model_metrics(right_card)
+        self.create_feature_importance(right_col)
+        self.create_data_statistics(right_col)
     
-    def create_pie_chart(self, parent, title, data):
-        """Create a simple pie chart visualization."""
+    def create_model_info_section(self, parent):
+        """Create the model training information section."""
         card = tk.Frame(parent, bg=COLORS['bg_card'])
-        card.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 10))
+        card.pack(fill=tk.X, pady=(0, 15))
         
         # Title
         tk.Label(
-            card, text=title,
+            card, text="🤖  Model Training Information",
             font=FONTS['subheading'],
             bg=COLORS['bg_card'],
             fg=COLORS['accent']
         ).pack(anchor=tk.W, padx=20, pady=(15, 10))
         
-        # Canvas for pie chart
-        canvas = tk.Canvas(
-            card, width=200, height=180,
-            bg=COLORS['bg_card'], highlightthickness=0
-        )
-        canvas.pack(pady=(0, 15))
+        # Info cards container
+        info_frame = tk.Frame(card, bg=COLORS['bg_card'])
+        info_frame.pack(fill=tk.X, padx=20, pady=(0, 15))
         
-        # Draw simple pie representation
-        colors = [COLORS['success'], COLORS['danger'], COLORS['warning'], COLORS['accent']]
-        total = sum(data.values())
-        start_angle = 90
+        # Model info items
+        info_items = [
+            ("🎯", "Model Type", "Logistic Regression", COLORS['accent']),
+            ("📊", "Training Data", "1,000 customers", COLORS['success']),
+            ("🔢", "Features", "10 features", COLORS['warning']),
+            ("📅", "Train Date", "December 2025", COLORS['text_secondary']),
+            ("⚡", "Train/Test Split", "80% / 20%", COLORS['accent']),
+            ("🎲", "Random State", "42", COLORS['text_muted']),
+        ]
         
-        center_x, center_y = 100, 80
-        radius = 60
-        
-        for i, (label, value) in enumerate(data.items()):
-            extent = (value / total) * 360
-            color = colors[i % len(colors)]
+        # Create 3 items per row
+        for i in range(0, len(info_items), 3):
+            row = tk.Frame(info_frame, bg=COLORS['bg_card'])
+            row.pack(fill=tk.X, pady=5)
             
-            canvas.create_arc(
-                center_x - radius, center_y - radius,
-                center_x + radius, center_y + radius,
-                start=start_angle, extent=-extent,
-                fill=color, outline=COLORS['bg_card'], width=2
-            )
-            start_angle -= extent
+            for icon, label, value, color in info_items[i:i+3]:
+                item_frame = tk.Frame(row, bg=COLORS['bg_light'], padx=15, pady=10)
+                item_frame.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
+                
+                # Icon and label
+                header_frame = tk.Frame(item_frame, bg=COLORS['bg_light'])
+                header_frame.pack(fill=tk.X)
+                
+                tk.Label(
+                    header_frame, text=f"{icon} {label}",
+                    font=FONTS['small'],
+                    bg=COLORS['bg_light'],
+                    fg=COLORS['text_muted']
+                ).pack(anchor=tk.W)
+                
+                tk.Label(
+                    item_frame, text=value,
+                    font=FONTS['body_bold'],
+                    bg=COLORS['bg_light'],
+                    fg=color
+                ).pack(anchor=tk.W, pady=(2, 0))
         
-        # Legend
-        legend_y = 160
-        x_offset = 30
-        for i, (label, value) in enumerate(data.items()):
-            color = colors[i % len(colors)]
-            canvas.create_rectangle(
-                x_offset, legend_y - 5,
-                x_offset + 10, legend_y + 5,
-                fill=color, outline=''
-            )
-            canvas.create_text(
-                x_offset + 15, legend_y,
-                text=f"{label}: {value:.1f}%",
-                anchor=tk.W,
-                fill=COLORS['text_secondary'],
-                font=('Segoe UI', 8)
-            )
-            x_offset += 70
+        # Algorithms tested
+        algo_frame = tk.Frame(card, bg=COLORS['bg_card'])
+        algo_frame.pack(fill=tk.X, padx=20, pady=(0, 15))
+        
+        tk.Label(
+            algo_frame, text="Algorithms Tested:",
+            font=FONTS['body_bold'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_primary']
+        ).pack(side=tk.LEFT)
+        
+        algorithms = ["Logistic Regression ✓", "Naive Bayes", "Random Forest"]
+        for algo in algorithms:
+            is_selected = "✓" in algo
+            tk.Label(
+                algo_frame, text=algo.replace(" ✓", ""),
+                font=FONTS['small'],
+                bg=COLORS['accent'] if is_selected else COLORS['bg_light'],
+                fg=COLORS['text_primary'] if is_selected else COLORS['text_muted'],
+                padx=10, pady=3
+            ).pack(side=tk.LEFT, padx=5)
+    
+    def create_model_performance(self, parent):
+        """Create model performance metrics section."""
+        card = tk.Frame(parent, bg=COLORS['bg_card'])
+        card.pack(fill=tk.X, pady=(0, 15))
+        
+        # Title
+        tk.Label(
+            card, text="📈  Performance Metrics",
+            font=FONTS['subheading'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['accent']
+        ).pack(anchor=tk.W, padx=20, pady=(15, 10))
+        
+        content = tk.Frame(card, bg=COLORS['bg_card'])
+        content.pack(fill=tk.X, padx=20, pady=(0, 15))
+        
+        # Main metrics with visual bars
+        metrics = [
+            ("Accuracy", 72.5, COLORS['success'], "Overall correct predictions"),
+            ("Precision", 63.9, COLORS['warning'], "Correct churn predictions"),
+            ("Recall", 35.4, COLORS['warning'], "Churners correctly identified"),
+            ("F1-Score", 45.5, COLORS['accent'], "Balance of precision & recall"),
+        ]
+        
+        for metric, value, color, desc in metrics:
+            frame = tk.Frame(content, bg=COLORS['bg_card'])
+            frame.pack(fill=tk.X, pady=5)
+            
+            # Metric label
+            label_frame = tk.Frame(frame, bg=COLORS['bg_card'])
+            label_frame.pack(fill=tk.X)
+            
+            tk.Label(
+                label_frame, text=metric, width=12, anchor=tk.W,
+                font=FONTS['body_bold'],
+                bg=COLORS['bg_card'],
+                fg=COLORS['text_primary']
+            ).pack(side=tk.LEFT)
+            
+            tk.Label(
+                label_frame, text=f"{value:.1f}%",
+                font=FONTS['heading'],
+                bg=COLORS['bg_card'],
+                fg=color
+            ).pack(side=tk.LEFT, padx=10)
+            
+            tk.Label(
+                label_frame, text=desc,
+                font=FONTS['small'],
+                bg=COLORS['bg_card'],
+                fg=COLORS['text_muted']
+            ).pack(side=tk.RIGHT)
+            
+            # Progress bar
+            bar_frame = tk.Frame(frame, bg=COLORS['bg_light'], height=8)
+            bar_frame.pack(fill=tk.X, pady=(3, 0))
+            bar_frame.pack_propagate(False)
+            
+            bar = tk.Frame(bar_frame, bg=color, height=8)
+            bar.place(relwidth=value/100, relheight=1)
+        
+        # Confusion Matrix
+        tk.Label(
+            content, text="\n📊 Confusion Matrix",
+            font=FONTS['body_bold'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_primary']
+        ).pack(anchor=tk.W, pady=(10, 5))
+        
+        matrix_frame = tk.Frame(content, bg=COLORS['bg_light'])
+        matrix_frame.pack(fill=tk.X, pady=5)
+        
+        # Create matrix grid
+        matrix_data = [
+            ["", "Predicted\nStay", "Predicted\nChurn"],
+            ["Actual Stay", "122 ✓", "13"],
+            ["Actual Churn", "42", "23 ✓"],
+        ]
+        
+        for i, row_data in enumerate(matrix_data):
+            row = tk.Frame(matrix_frame, bg=COLORS['bg_light'])
+            row.pack(fill=tk.X)
+            for j, cell in enumerate(row_data):
+                is_header = i == 0 or j == 0
+                is_correct = "✓" in cell
+                
+                if is_correct:
+                    bg_color = COLORS['success']
+                    fg_color = COLORS['text_primary']
+                elif is_header:
+                    bg_color = COLORS['bg_light']
+                    fg_color = COLORS['text_secondary']
+                else:
+                    bg_color = COLORS['danger']
+                    fg_color = COLORS['text_primary']
+                
+                cell_label = tk.Label(
+                    row, text=cell.replace(" ✓", ""),
+                    font=FONTS['small'] if is_header else FONTS['body_bold'],
+                    bg=bg_color, fg=fg_color,
+                    width=12, height=2,
+                    relief=tk.FLAT
+                )
+                cell_label.pack(side=tk.LEFT, padx=1, pady=1)
+    
+    def create_model_comparison(self, parent):
+        """Create model comparison table."""
+        card = tk.Frame(parent, bg=COLORS['bg_card'])
+        card.pack(fill=tk.BOTH, expand=True)
+        
+        # Title
+        tk.Label(
+            card, text="⚖️  Model Comparison",
+            font=FONTS['subheading'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['accent']
+        ).pack(anchor=tk.W, padx=20, pady=(15, 10))
+        
+        content = tk.Frame(card, bg=COLORS['bg_card'])
+        content.pack(fill=tk.X, padx=20, pady=(0, 15))
+        
+        # Comparison data
+        models = [
+            ("Logistic Regression", 72.5, 63.9, 35.4, 45.5, True),
+            ("Random Forest", 71.0, 58.1, 36.9, 45.1, False),
+            ("Naive Bayes", 62.0, 40.4, 47.7, 43.8, False),
+        ]
+        
+        # Header
+        header = tk.Frame(content, bg=COLORS['bg_light'])
+        header.pack(fill=tk.X, pady=(0, 5))
+        
+        headers = ["Model", "Accuracy", "Precision", "Recall", "F1-Score"]
+        widths = [20, 10, 10, 10, 10]
+        
+        for h, w in zip(headers, widths):
+            tk.Label(
+                header, text=h, width=w,
+                font=FONTS['small'],
+                bg=COLORS['bg_light'],
+                fg=COLORS['text_muted']
+            ).pack(side=tk.LEFT, padx=2, pady=5)
+        
+        # Data rows
+        for model, acc, prec, rec, f1, is_best in models:
+            row = tk.Frame(content, bg=COLORS['bg_card'])
+            row.pack(fill=tk.X, pady=2)
+            
+            # Model name
+            name_text = f"⭐ {model}" if is_best else f"   {model}"
+            tk.Label(
+                row, text=name_text, width=20, anchor=tk.W,
+                font=FONTS['body_bold'] if is_best else FONTS['body'],
+                bg=COLORS['bg_card'],
+                fg=COLORS['accent'] if is_best else COLORS['text_secondary']
+            ).pack(side=tk.LEFT, padx=2)
+            
+            # Metrics
+            for val in [acc, prec, rec, f1]:
+                color = COLORS['success'] if val >= 60 else COLORS['warning'] if val >= 40 else COLORS['danger']
+                tk.Label(
+                    row, text=f"{val:.1f}%", width=10,
+                    font=FONTS['body'],
+                    bg=COLORS['bg_card'],
+                    fg=color
+                ).pack(side=tk.LEFT, padx=2)
     
     def create_feature_importance(self, parent):
         """Create feature importance display."""
+        card = tk.Frame(parent, bg=COLORS['bg_card'])
+        card.pack(fill=tk.X, pady=(0, 15))
+        
         # Title
         tk.Label(
-            parent, text="📊  Feature Importance",
+            card, text="🎯  Feature Importance",
             font=FONTS['subheading'],
             bg=COLORS['bg_card'],
             fg=COLORS['accent']
         ).pack(anchor=tk.W, padx=20, pady=(15, 10))
         
-        content = tk.Frame(parent, bg=COLORS['bg_card'])
-        content.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 15))
+        content = tk.Frame(card, bg=COLORS['bg_card'])
+        content.pack(fill=tk.X, padx=20, pady=(0, 15))
+        
+        tk.Label(
+            content, text="Impact on churn prediction (based on model coefficients):",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_muted']
+        ).pack(anchor=tk.W, pady=(0, 10))
         
         # Feature importance bars
         features = [
-            ("Last Login Days", 0.25, COLORS['danger']),
-            ("Payment Failures", 0.20, COLORS['danger']),
-            ("Login Frequency", 0.15, COLORS['warning']),
-            ("Watch Time", 0.12, COLORS['warning']),
-            ("Tenure", 0.10, COLORS['success']),
-            ("Support Calls", 0.08, COLORS['text_muted']),
-            ("Monthly Charges", 0.05, COLORS['text_muted']),
-            ("Age", 0.03, COLORS['text_muted']),
-            ("Subscription Type", 0.02, COLORS['text_muted']),
+            ("Last Login Days", 0.25, COLORS['danger'], "↑ Higher = More churn risk"),
+            ("Payment Failures", 0.20, COLORS['danger'], "↑ More failures = Higher risk"),
+            ("Login Frequency", 0.15, COLORS['warning'], "↓ Lower = Higher risk"),
+            ("Watch Time", 0.12, COLORS['warning'], "↓ Less engagement = Risk"),
+            ("Tenure (months)", 0.10, COLORS['success'], "↓ New customers churn more"),
+            ("Support Calls", 0.08, COLORS['text_secondary'], "Variable impact"),
+            ("Monthly Charges", 0.05, COLORS['text_muted'], "Minor impact"),
+            ("Age", 0.03, COLORS['text_muted'], "Minor impact"),
+            ("Subscription Type", 0.02, COLORS['text_muted'], "Minimal impact"),
         ]
         
-        for feature, importance, color in features:
-            self.create_importance_bar(content, feature, importance, color)
+        for feature, importance, color, insight in features:
+            self.create_importance_bar(content, feature, importance, color, insight)
     
-    def create_importance_bar(self, parent, label, value, color):
-        """Create a single importance bar."""
+    def create_importance_bar(self, parent, label, value, color, insight):
+        """Create a single importance bar with insight."""
         frame = tk.Frame(parent, bg=COLORS['bg_card'])
         frame.pack(fill=tk.X, pady=3)
         
@@ -178,9 +354,8 @@ class ChartsPage(BasePage):
         bar_container.pack_propagate(False)
         
         # Bar
-        bar_width = int(value * 200)
-        bar = tk.Frame(bar_container, bg=color, width=bar_width, height=16)
-        bar.pack(side=tk.LEFT, fill=tk.Y)
+        bar = tk.Frame(bar_container, bg=color, height=16)
+        bar.place(relwidth=value, relheight=1)
         
         # Value
         tk.Label(
@@ -190,68 +365,80 @@ class ChartsPage(BasePage):
             fg=color
         ).pack(side=tk.LEFT)
     
-    def create_model_metrics(self, parent):
-        """Create model metrics display."""
+    def create_data_statistics(self, parent):
+        """Create data statistics section."""
+        card = tk.Frame(parent, bg=COLORS['bg_card'])
+        card.pack(fill=tk.BOTH, expand=True)
+        
         # Title
         tk.Label(
-            parent, text="📈  Model Performance",
+            card, text="📋  Dataset Statistics",
             font=FONTS['subheading'],
             bg=COLORS['bg_card'],
             fg=COLORS['accent']
         ).pack(anchor=tk.W, padx=20, pady=(15, 10))
         
-        content = tk.Frame(parent, bg=COLORS['bg_card'])
-        content.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 15))
+        content = tk.Frame(card, bg=COLORS['bg_card'])
+        content.pack(fill=tk.X, padx=20, pady=(0, 15))
         
-        # Metrics
-        metrics = [
-            ("Accuracy", "72.5%", COLORS['success']),
-            ("Precision", "63.9%", COLORS['warning']),
-            ("Recall", "35.4%", COLORS['warning']),
-            ("F1-Score", "45.5%", COLORS['warning']),
+        # Stats items
+        stats = [
+            ("Total Records", "1,001", COLORS['accent']),
+            ("Training Set", "800", COLORS['success']),
+            ("Test Set", "200", COLORS['warning']),
+            ("Churn Rate", "32.5%", COLORS['danger']),
+            ("Stay Rate", "67.5%", COLORS['success']),
+            ("Avg Age", "44 years", COLORS['text_secondary']),
+            ("Avg Tenure", "25 months", COLORS['text_secondary']),
+            ("Avg Monthly", "$19.50", COLORS['text_secondary']),
         ]
         
-        for metric, value, color in metrics:
-            self.create_metric_row(content, metric, value, color)
+        for label, value, color in stats:
+            row = tk.Frame(content, bg=COLORS['bg_card'])
+            row.pack(fill=tk.X, pady=3)
+            
+            tk.Label(
+                row, text=label, width=15, anchor=tk.W,
+                font=FONTS['body'],
+                bg=COLORS['bg_card'],
+                fg=COLORS['text_secondary']
+            ).pack(side=tk.LEFT)
+            
+            tk.Label(
+                row, text=value,
+                font=FONTS['body_bold'],
+                bg=COLORS['bg_card'],
+                fg=color
+            ).pack(side=tk.LEFT)
         
-        # Confusion matrix
+        # Class distribution
         tk.Label(
-            content, text="\nConfusion Matrix:",
+            content, text="\n📊 Target Distribution:",
             font=FONTS['body_bold'],
             bg=COLORS['bg_card'],
             fg=COLORS['text_primary']
-        ).pack(anchor=tk.W, pady=(15, 5))
+        ).pack(anchor=tk.W, pady=(10, 5))
         
-        matrix_text = """
-                    Predicted
-                   Stay  Churn
-   Actual Stay     122    13
-   Actual Churn     42    23
-        """
+        dist_frame = tk.Frame(content, bg=COLORS['bg_light'], height=30)
+        dist_frame.pack(fill=tk.X, pady=5)
+        dist_frame.pack_propagate(False)
         
+        # Stay portion (67.5%)
+        stay_bar = tk.Frame(dist_frame, bg=COLORS['success'])
+        stay_bar.place(relwidth=0.675, relheight=1, relx=0)
         tk.Label(
-            content, text=matrix_text,
-            font=FONTS['mono_small'],
-            bg=COLORS['bg_card'],
-            fg=COLORS['text_secondary'],
-            justify=tk.LEFT
-        ).pack(anchor=tk.W)
-    
-    def create_metric_row(self, parent, label, value, color):
-        """Create a metric display row."""
-        frame = tk.Frame(parent, bg=COLORS['bg_card'])
-        frame.pack(fill=tk.X, pady=5)
+            stay_bar, text="Stay: 67.5%",
+            font=FONTS['small'],
+            bg=COLORS['success'],
+            fg=COLORS['text_primary']
+        ).pack(expand=True)
         
+        # Churn portion (32.5%)
+        churn_bar = tk.Frame(dist_frame, bg=COLORS['danger'])
+        churn_bar.place(relwidth=0.325, relheight=1, relx=0.675)
         tk.Label(
-            frame, text=label, width=12, anchor=tk.W,
-            font=FONTS['body'],
-            bg=COLORS['bg_card'],
-            fg=COLORS['text_secondary']
-        ).pack(side=tk.LEFT)
-        
-        tk.Label(
-            frame, text=value,
-            font=FONTS['heading'],
-            bg=COLORS['bg_card'],
-            fg=color
-        ).pack(side=tk.LEFT, padx=10)
+            churn_bar, text="Churn: 32.5%",
+            font=FONTS['small'],
+            bg=COLORS['danger'],
+            fg=COLORS['text_primary']
+        ).pack(expand=True)
