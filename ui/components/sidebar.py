@@ -61,6 +61,7 @@ class Sidebar(tk.Frame):
             ('home', ICONS['home'], 'Dashboard'),
             ('predict', ICONS['predict'], 'Predict'),
             ('upload', ICONS['upload'], 'Upload Data'),
+            ('upload_result', '📋', 'Upload Results'),
             ('charts', ICONS['chart'], 'Analytics'),
             ('report', ICONS['report'], 'Reports'),
         ]
