@@ -17,6 +17,7 @@ from components.sidebar import Sidebar
 from pages.home import HomePage
 from pages.predict import PredictPage
 from pages.upload import UploadPage
+from pages.upload_result import UploadResultPage
 from pages.charts import ChartsPage
 from pages.reports import ReportsPage
 from pages.settings import SettingsPage
@@ -71,6 +72,7 @@ class ChurnPredictionApp:
             'home': HomePage,
             'predict': PredictPage,
             'upload': UploadPage,
+            'upload_result': UploadResultPage,
             'charts': ChartsPage,
             'report': ReportsPage,
             'settings': SettingsPage,
