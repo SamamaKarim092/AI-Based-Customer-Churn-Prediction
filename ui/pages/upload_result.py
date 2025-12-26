@@ -1,6 +1,6 @@
 """
 Upload Result Page
-Displays batch prediction results from uploaded data.
+Displays batch prediction results from uploaded data with filtering.
 """
 
 import tkinter as tk
@@ -15,11 +15,15 @@ from components.widgets import ModernButton
 
 
 class UploadResultPage(BasePage):
-    """Page for displaying batch prediction results."""
+    """Page for displaying batch prediction results with filtering."""
     
     def __init__(self, parent, controller, **kwargs):
         super().__init__(parent, controller, **kwargs)
         self.result_data = None
+        self.filtered_data = None
+        self.current_filter = "All"
+        self.stat_cards = {}
+        self.tree = None
         self.setup_page()
     
     def setup_page(self):
@@ -38,17 +42,28 @@ class UploadResultPage(BasePage):
         self.summary_card = tk.Frame(self.main_frame, bg=COLORS['bg_card'])
         self.summary_card.pack(fill=tk.X, pady=(0, 15))
         
-        # Title
+        # Title row with filter info
+        title_row = tk.Frame(self.summary_card, bg=COLORS['bg_card'])
+        title_row.pack(fill=tk.X, padx=20, pady=(15, 5))
+        
         tk.Label(
-            self.summary_card, text="📊  Prediction Summary",
+            title_row, text="📊  Prediction Summary",
             font=FONTS['subheading'],
             bg=COLORS['bg_card'],
             fg=COLORS['accent']
-        ).pack(anchor=tk.W, padx=20, pady=(15, 10))
+        ).pack(side=tk.LEFT)
+        
+        self.filter_label = tk.Label(
+            title_row, text="Click on a card to filter results",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_muted']
+        )
+        self.filter_label.pack(side=tk.RIGHT)
         
         # Stats container
         self.stats_frame = tk.Frame(self.summary_card, bg=COLORS['bg_card'])
-        self.stats_frame.pack(fill=tk.X, padx=20, pady=(0, 15))
+        self.stats_frame.pack(fill=tk.X, padx=20, pady=(5, 15))
         
         # Initial message when no data
         self.no_data_label = tk.Label(
@@ -107,40 +122,49 @@ class UploadResultPage(BasePage):
     def set_results(self, df, high_risk, moderate_risk, low_risk, churn_count):
         """Set the prediction results to display."""
         self.result_data = df
+        self.filtered_data = df
+        self.current_filter = "All"
         
         # Clear previous stats
         for widget in self.stats_frame.winfo_children():
             widget.destroy()
         
-        # Create stat cards
+        self.stat_cards = {}
+        
+        # Create clickable stat cards
         stats = [
-            ("🔴 High Risk", high_risk, COLORS['danger']),
-            ("🟡 Moderate Risk", moderate_risk, COLORS['warning']),
-            ("🟢 Low Risk", low_risk, COLORS['success']),
-            ("📊 Predicted Churn", churn_count, COLORS['accent']),
-            ("👥 Total Processed", len(df), COLORS['text_primary']),
+            ("All", "👥 All Customers", len(df), COLORS['text_primary']),
+            ("HIGH", "🔴 High Risk", high_risk, COLORS['danger']),
+            ("MODERATE", "🟡 Moderate Risk", moderate_risk, COLORS['warning']),
+            ("LOW", "🟢 Low Risk", low_risk, COLORS['success']),
         ]
         
-        for label, value, color in stats:
-            card = tk.Frame(self.stats_frame, bg=COLORS['bg_light'], padx=15, pady=10)
-            card.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
-            
-            tk.Label(
-                card, text=label,
-                font=FONTS['small'],
-                bg=COLORS['bg_light'],
-                fg=COLORS['text_muted']
-            ).pack()
-            
-            tk.Label(
-                card, text=str(value),
-                font=('Segoe UI', 24, 'bold'),
-                bg=COLORS['bg_light'],
-                fg=color
-            ).pack()
+        for filter_key, label, value, color in stats:
+            card = self.create_clickable_card(
+                self.stats_frame, filter_key, label, value, color
+            )
+            self.stat_cards[filter_key] = card
         
-        # Churn percentage
+        # Churn stats (non-clickable)
         churn_pct = (churn_count / len(df)) * 100 if len(df) > 0 else 0
+        
+        churn_frame = tk.Frame(self.stats_frame, bg=COLORS['bg_light'], padx=15, pady=10)
+        churn_frame.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
+        
+        tk.Label(
+            churn_frame, text="📊 Predicted Churn",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_muted']
+        ).pack()
+        
+        tk.Label(
+            churn_frame, text=str(churn_count),
+            font=('Segoe UI', 24, 'bold'),
+            bg=COLORS['bg_light'],
+            fg=COLORS['accent']
+        ).pack()
+        
         pct_frame = tk.Frame(self.stats_frame, bg=COLORS['bg_light'], padx=15, pady=10)
         pct_frame.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
         
@@ -158,69 +182,180 @@ class UploadResultPage(BasePage):
             fg=COLORS['danger'] if churn_pct > 30 else COLORS['warning'] if churn_pct > 15 else COLORS['success']
         ).pack()
         
-        # Update table
+        # Highlight "All" card as selected by default
+        self.highlight_selected_card("All")
+        
+        # Update table with ALL data
         self.create_results_table(df)
         
         # Enable export button
         self.export_btn.config(state=tk.NORMAL)
     
+    def create_clickable_card(self, parent, filter_key, label, value, color):
+        """Create a clickable stat card for filtering."""
+        card = tk.Frame(parent, bg=COLORS['bg_light'], padx=15, pady=10, cursor='hand2')
+        card.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
+        
+        label_widget = tk.Label(
+            card, text=label,
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_muted'],
+            cursor='hand2'
+        )
+        label_widget.pack()
+        
+        value_widget = tk.Label(
+            card, text=str(value),
+            font=('Segoe UI', 24, 'bold'),
+            bg=COLORS['bg_light'],
+            fg=color,
+            cursor='hand2'
+        )
+        value_widget.pack()
+        
+        # Bind click events
+        def on_click(e, fk=filter_key):
+            self.apply_filter(fk)
+        
+        def on_enter(e, c=card, lw=label_widget, vw=value_widget):
+            c.config(bg=COLORS['sidebar_hover'])
+            lw.config(bg=COLORS['sidebar_hover'])
+            vw.config(bg=COLORS['sidebar_hover'])
+        
+        def on_leave(e, c=card, lw=label_widget, vw=value_widget, fk=filter_key):
+            bg = COLORS['accent'] if fk == self.current_filter else COLORS['bg_light']
+            c.config(bg=bg)
+            lw.config(bg=bg)
+            vw.config(bg=bg)
+        
+        for widget in [card, label_widget, value_widget]:
+            widget.bind('<Button-1>', on_click)
+            widget.bind('<Enter>', on_enter)
+            widget.bind('<Leave>', on_leave)
+        
+        return {
+            'frame': card,
+            'label': label_widget,
+            'value': value_widget,
+            'color': color
+        }
+    
+    def highlight_selected_card(self, filter_key):
+        """Highlight the selected filter card."""
+        for key, card_info in self.stat_cards.items():
+            if key == filter_key:
+                # Selected
+                card_info['frame'].config(bg=COLORS['accent'])
+                card_info['label'].config(bg=COLORS['accent'], fg=COLORS['text_primary'])
+                card_info['value'].config(bg=COLORS['accent'])
+            else:
+                # Not selected
+                card_info['frame'].config(bg=COLORS['bg_light'])
+                card_info['label'].config(bg=COLORS['bg_light'], fg=COLORS['text_muted'])
+                card_info['value'].config(bg=COLORS['bg_light'])
+    
+    def apply_filter(self, filter_key):
+        """Apply filter to show only customers of selected risk level."""
+        self.current_filter = filter_key
+        
+        if self.result_data is None:
+            return
+        
+        # Filter data
+        if filter_key == "All":
+            self.filtered_data = self.result_data
+            self.filter_label.config(text="Showing: All Customers")
+        else:
+            self.filtered_data = self.result_data[self.result_data['risk_level'] == filter_key]
+            risk_name = {"HIGH": "High Risk", "MODERATE": "Moderate Risk", "LOW": "Low Risk"}.get(filter_key, filter_key)
+            self.filter_label.config(text=f"Showing: {risk_name} Customers Only")
+        
+        # Update card highlighting
+        self.highlight_selected_card(filter_key)
+        
+        # Update table
+        self.create_results_table(self.filtered_data)
+    
     def create_results_table(self, df):
-        """Create the results table with data."""
+        """Create the results table with ALL data."""
         # Clear previous table
         for widget in self.table_container.winfo_children():
             widget.destroy()
         
         # Update rows label
-        self.rows_label.config(text=f"Showing {min(100, len(df))} of {len(df)} rows")
+        total = len(self.result_data) if self.result_data is not None else 0
+        self.rows_label.config(text=f"Showing {len(df)} of {total} rows")
         
         # Create treeview
         columns = list(df.columns)
-        tree = ttk.Treeview(self.table_container, columns=columns, show='headings', height=15)
+        self.tree = ttk.Treeview(self.table_container, columns=columns, show='headings', height=18)
         
         # Configure columns
         for col in columns:
-            tree.heading(col, text=col)
+            self.tree.heading(col, text=col)
             # Adjust width based on column name
             if col in ['customer_id', 'age', 'churn']:
                 width = 80
             elif col in ['prediction', 'risk_level']:
                 width = 100
             elif col == 'churn_probability_%':
-                width = 120
+                width = 130
             else:
-                width = 100
-            tree.column(col, width=width, anchor=tk.CENTER)
+                width = 95
+            self.tree.column(col, width=width, anchor=tk.CENTER)
         
         # Add scrollbars
-        vsb = ttk.Scrollbar(self.table_container, orient=tk.VERTICAL, command=tree.yview)
-        hsb = ttk.Scrollbar(self.table_container, orient=tk.HORIZONTAL, command=tree.xview)
-        tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        vsb = ttk.Scrollbar(self.table_container, orient=tk.VERTICAL, command=self.tree.yview)
+        hsb = ttk.Scrollbar(self.table_container, orient=tk.HORIZONTAL, command=self.tree.xview)
+        self.tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
         
         # Pack scrollbars and tree
         vsb.pack(side=tk.RIGHT, fill=tk.Y)
         hsb.pack(side=tk.BOTTOM, fill=tk.X)
-        tree.pack(fill=tk.BOTH, expand=True)
+        self.tree.pack(fill=tk.BOTH, expand=True)
         
-        # Insert data (limit to 100 rows for performance)
-        for idx, row in df.head(100).iterrows():
-            tree.insert('', tk.END, values=list(row))
+        # Insert ALL data (no limit)
+        for idx, row in df.iterrows():
+            self.tree.insert('', tk.END, values=list(row))
     
     def export_results(self):
         """Export prediction results to CSV."""
-        if self.result_data is None:
+        if self.filtered_data is None:
             messagebox.showwarning("Warning", "No results to export.")
             return
+        
+        # Ask if user wants filtered or all data
+        export_data = self.filtered_data
+        filename_suffix = ""
+        
+        if self.current_filter != "All" and len(self.result_data) != len(self.filtered_data):
+            result = messagebox.askyesnocancel(
+                "Export Options",
+                f"You have a filter applied ({self.current_filter}).\n\n"
+                f"• Click 'Yes' to export filtered data ({len(self.filtered_data)} rows)\n"
+                f"• Click 'No' to export all data ({len(self.result_data)} rows)\n"
+                f"• Click 'Cancel' to cancel export"
+            )
+            if result is None:
+                return
+            elif result:
+                export_data = self.filtered_data
+                filename_suffix = f"_{self.current_filter.lower()}_only"
+            else:
+                export_data = self.result_data
         
         file_path = filedialog.asksaveasfilename(
             defaultextension=".csv",
             filetypes=[("CSV files", "*.csv"), ("All files", "*.*")],
-            title="Save Prediction Results"
+            title="Save Prediction Results",
+            initialfile=f"prediction_results{filename_suffix}"
         )
         
         if file_path:
             try:
-                self.result_data.to_csv(file_path, index=False)
-                messagebox.showinfo("Success", f"Results exported successfully!\n\nFile saved to:\n{file_path}")
+                export_data.to_csv(file_path, index=False)
+                messagebox.showinfo("Success", f"Results exported successfully!\n\n{len(export_data)} rows saved to:\n{file_path}")
             except Exception as e:
                 messagebox.showerror("Export Error", f"Failed to export:\n{str(e)}")
     
@@ -230,6 +365,4 @@ class UploadResultPage(BasePage):
     
     def on_show(self):
         """Called when page is shown."""
-        # If no data, show message
-        if self.result_data is None:
-            pass  # Keep showing the no data message
+        pass
