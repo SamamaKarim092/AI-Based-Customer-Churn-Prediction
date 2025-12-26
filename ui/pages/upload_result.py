@@ -30,7 +30,7 @@ class UploadResultPage(BasePage):
         """Setup the upload result page."""
         # Header
         self.create_header(
-            "Prediction Results",
+            "Data Results",
             "Batch prediction results from uploaded data"
         )
         
