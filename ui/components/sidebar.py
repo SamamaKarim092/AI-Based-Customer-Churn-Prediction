@@ -61,9 +61,9 @@ class Sidebar(tk.Frame):
             ('home', ICONS['home'], 'Dashboard'),
             ('predict', ICONS['predict'], 'Predict'),
             ('upload', ICONS['upload'], 'Upload Data'),
-            ('upload_result', '📋', 'Upload Results'),
-            ('charts', ICONS['chart'], 'Analytics'),
+            ('upload_result', '📋', 'Data Results'),
             ('report', ICONS['report'], 'Reports'),
+            ('charts', ICONS['chart'], 'Analytics'),
         ]
         
         for page_id, icon, label in menu_config:
