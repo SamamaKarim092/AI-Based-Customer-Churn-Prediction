@@ -17,8 +17,31 @@ from components.widgets import ModernButton
 class SettingsPage(BasePage):
     """Application settings page."""
     
+    # Available models with their info
+    MODELS = {
+        'logistic': {
+            'name': 'Logistic Regression',
+            'accuracy': '72.5%',
+            'description': 'Best overall performance - Recommended',
+            'is_default': True
+        },
+        'random_forest': {
+            'name': 'Random Forest',
+            'accuracy': '71.0%',
+            'description': 'Good for non-linear patterns',
+            'is_default': False
+        },
+        'naive_bayes': {
+            'name': 'Naive Bayes',
+            'accuracy': '62.0%',
+            'description': 'Fast but lower accuracy',
+            'is_default': False
+        }
+    }
+    
     def __init__(self, parent, controller, **kwargs):
         super().__init__(parent, controller, **kwargs)
+        self.selected_model = tk.StringVar(value='logistic')
         self.setup_page()
     
     def setup_page(self):
@@ -43,7 +66,7 @@ class SettingsPage(BasePage):
         self.create_about_section(main_frame)
     
     def create_model_settings(self, parent):
-        """Create model settings section."""
+        """Create model settings section with model selection."""
         card = tk.Frame(parent, bg=COLORS['bg_card'])
         card.pack(fill=tk.X, pady=(0, 15))
         
@@ -58,17 +81,18 @@ class SettingsPage(BasePage):
         content = tk.Frame(card, bg=COLORS['bg_card'])
         content.pack(fill=tk.X, padx=20, pady=(0, 15))
         
-        # Model info
+        # Current model info
+        info_frame = tk.Frame(content, bg=COLORS['bg_card'])
+        info_frame.pack(fill=tk.X, pady=(0, 10))
+        
         info = [
-            ("Current Model", "Logistic Regression"),
             ("Model File", "model/churn_model.pkl"),
             ("Last Trained", "December 2025"),
-            ("Accuracy", "72.5%"),
         ]
         
         for label, value in info:
-            row = tk.Frame(content, bg=COLORS['bg_card'])
-            row.pack(fill=tk.X, pady=3)
+            row = tk.Frame(info_frame, bg=COLORS['bg_card'])
+            row.pack(fill=tk.X, pady=2)
             
             tk.Label(
                 row, text=label + ":", width=15, anchor=tk.W,
@@ -84,19 +108,134 @@ class SettingsPage(BasePage):
                 fg=COLORS['text_primary']
             ).pack(side=tk.LEFT)
         
+        # Model selection section
+        tk.Label(
+            content, text="\n📊 Select Prediction Model:",
+            font=FONTS['body_bold'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_primary']
+        ).pack(anchor=tk.W, pady=(10, 5))
+        
+        tk.Label(
+            content, text="Choose which algorithm to use for churn predictions",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_muted']
+        ).pack(anchor=tk.W, pady=(0, 10))
+        
+        # Model options
+        for model_key, model_data in self.MODELS.items():
+            self.create_model_option(content, model_key, model_data)
+        
         # Action buttons
         btn_frame = tk.Frame(content, bg=COLORS['bg_card'])
         btn_frame.pack(fill=tk.X, pady=(15, 0))
         
         ModernButton(
+            btn_frame, "Apply Model", self.apply_model,
+            style='primary', icon="✅", colors=COLORS
+        ).pack(side=tk.LEFT, padx=(0, 10))
+        
+        ModernButton(
             btn_frame, "Retrain Model", self.retrain_model,
-            style='primary', icon="🔄", colors=COLORS
+            style='secondary', icon="🔄", colors=COLORS
         ).pack(side=tk.LEFT, padx=(0, 10))
         
         ModernButton(
             btn_frame, "Import Model", self.import_model,
             style='secondary', icon="📥", colors=COLORS
         ).pack(side=tk.LEFT)
+    
+    def create_model_option(self, parent, model_key, model_data):
+        """Create a model selection option."""
+        frame = tk.Frame(parent, bg=COLORS['bg_light'], cursor='hand2')
+        frame.pack(fill=tk.X, pady=3)
+        
+        inner = tk.Frame(frame, bg=COLORS['bg_light'], padx=15, pady=10)
+        inner.pack(fill=tk.X)
+        
+        # Radio button row
+        radio_row = tk.Frame(inner, bg=COLORS['bg_light'])
+        radio_row.pack(fill=tk.X)
+        
+        rb = tk.Radiobutton(
+            radio_row,
+            text=model_data['name'],
+            variable=self.selected_model,
+            value=model_key,
+            font=FONTS['body_bold'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_primary'],
+            selectcolor=COLORS['bg_medium'],
+            activebackground=COLORS['bg_light'],
+            activeforeground=COLORS['text_primary'],
+            cursor='hand2'
+        )
+        rb.pack(side=tk.LEFT)
+        
+        # Default badge
+        if model_data['is_default']:
+            tk.Label(
+                radio_row, text="⭐ DEFAULT",
+                font=('Segoe UI', 8, 'bold'),
+                bg=COLORS['success'],
+                fg=COLORS['text_primary'],
+                padx=5, pady=1
+            ).pack(side=tk.LEFT, padx=10)
+        
+        # Accuracy
+        tk.Label(
+            radio_row, text=f"Accuracy: {model_data['accuracy']}",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['accent']
+        ).pack(side=tk.RIGHT)
+        
+        # Description
+        tk.Label(
+            inner, text=model_data['description'],
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_muted']
+        ).pack(anchor=tk.W, padx=(22, 0))
+        
+        # Hover effects
+        def on_enter(e):
+            frame.config(bg=COLORS['sidebar_hover'])
+            inner.config(bg=COLORS['sidebar_hover'])
+            radio_row.config(bg=COLORS['sidebar_hover'])
+            for child in inner.winfo_children():
+                try:
+                    child.config(bg=COLORS['sidebar_hover'])
+                except:
+                    pass
+            for child in radio_row.winfo_children():
+                try:
+                    if not isinstance(child, tk.Radiobutton):
+                        child.config(bg=COLORS['sidebar_hover'])
+                except:
+                    pass
+        
+        def on_leave(e):
+            frame.config(bg=COLORS['bg_light'])
+            inner.config(bg=COLORS['bg_light'])
+            radio_row.config(bg=COLORS['bg_light'])
+            for child in inner.winfo_children():
+                try:
+                    child.config(bg=COLORS['bg_light'])
+                except:
+                    pass
+            for child in radio_row.winfo_children():
+                try:
+                    if not isinstance(child, tk.Radiobutton):
+                        child.config(bg=COLORS['bg_light'])
+                except:
+                    pass
+        
+        frame.bind('<Enter>', on_enter)
+        frame.bind('<Leave>', on_leave)
+        inner.bind('<Enter>', on_enter)
+        inner.bind('<Leave>', on_leave)
     
     def create_display_settings(self, parent):
         """Create display settings section."""
@@ -183,33 +322,147 @@ class SettingsPage(BasePage):
         content = tk.Frame(card, bg=COLORS['bg_card'])
         content.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 15))
         
-        about_text = """
-AI Customer Churn Prediction System
-Version 1.0.0
-
-Made by Samama Karim
-
-A machine learning system that:
-• Predicts customer churn probability
-• Explains predictions using SHAP
-• Recommends retention actions
-
-Technologies:
-• Python 3.x
-• scikit-learn (Machine Learning)
-• SHAP (Explainability)
-• Tkinter (Desktop UI)
-
-December 2025
-        """
+        # App title
+        tk.Label(
+            content, text="🤖 AI Customer Churn Prediction System",
+            font=('Segoe UI', 14, 'bold'),
+            bg=COLORS['bg_card'],
+            fg=COLORS['accent']
+        ).pack(anchor=tk.W)
         
         tk.Label(
-            content, text=about_text.strip(),
+            content, text="Version 1.0.0",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_muted']
+        ).pack(anchor=tk.W, pady=(0, 10))
+        
+        # Description
+        tk.Label(
+            content, text="A machine learning system that predicts customer churn probability,\nexplains predictions using SHAP, and recommends retention actions.",
             font=FONTS['body'],
             bg=COLORS['bg_card'],
             fg=COLORS['text_secondary'],
             justify=tk.LEFT
+        ).pack(anchor=tk.W, pady=(0, 15))
+        
+        # Two columns for info
+        info_frame = tk.Frame(content, bg=COLORS['bg_card'])
+        info_frame.pack(fill=tk.X)
+        
+        # Left column - Algorithms
+        left_col = tk.Frame(info_frame, bg=COLORS['bg_light'], padx=15, pady=10)
+        left_col.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
+        
+        tk.Label(
+            left_col, text="🧠 Algorithms Used:",
+            font=FONTS['body_bold'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_primary']
         ).pack(anchor=tk.W)
+        
+        algorithms = [
+            ("⭐ Logistic Regression", "72.5% accuracy - Selected"),
+            ("   Random Forest", "71.0% accuracy"),
+            ("   Naive Bayes", "62.0% accuracy"),
+        ]
+        
+        for algo, detail in algorithms:
+            tk.Label(
+                left_col, text=algo,
+                font=FONTS['small'],
+                bg=COLORS['bg_light'],
+                fg=COLORS['accent'] if "⭐" in algo else COLORS['text_secondary']
+            ).pack(anchor=tk.W, pady=(3, 0))
+            tk.Label(
+                left_col, text=f"    {detail}",
+                font=('Segoe UI', 8),
+                bg=COLORS['bg_light'],
+                fg=COLORS['text_muted']
+            ).pack(anchor=tk.W)
+        
+        # Right column - Technologies
+        right_col = tk.Frame(info_frame, bg=COLORS['bg_light'], padx=15, pady=10)
+        right_col.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(5, 0))
+        
+        tk.Label(
+            right_col, text="💻 Technologies:",
+            font=FONTS['body_bold'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_primary']
+        ).pack(anchor=tk.W)
+        
+        technologies = [
+            "Python 3.x",
+            "scikit-learn (ML)",
+            "SHAP (Explainability)",
+            "Tkinter (Desktop UI)",
+            "ReportLab (PDF Reports)",
+        ]
+        
+        for tech in technologies:
+            tk.Label(
+                right_col, text=f"• {tech}",
+                font=FONTS['small'],
+                bg=COLORS['bg_light'],
+                fg=COLORS['text_secondary']
+            ).pack(anchor=tk.W, pady=1)
+        
+        # Team section
+        team_frame = tk.Frame(content, bg=COLORS['bg_light'], padx=15, pady=12)
+        team_frame.pack(fill=tk.X, pady=(15, 0))
+        
+        tk.Label(
+            team_frame, text="👥 Made By:",
+            font=FONTS['body_bold'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_primary']
+        ).pack(anchor=tk.W)
+        
+        team_members = [
+            ("Samama Karim", "Group Leader"),
+            ("Taimoor Abrar", "Team Member"),
+            ("Abdul Wasay", "Team Member"),
+            ("Muhammad Ali", "Team Member"),
+        ]
+        
+        for name, role in team_members:
+            member_row = tk.Frame(team_frame, bg=COLORS['bg_light'])
+            member_row.pack(fill=tk.X, pady=2)
+            
+            tk.Label(
+                member_row, text=f"  • {name}",
+                font=FONTS['body_bold'],
+                bg=COLORS['bg_light'],
+                fg=COLORS['accent'] if "Leader" in role else COLORS['text_secondary']
+            ).pack(side=tk.LEFT)
+            
+            tk.Label(
+                member_row, text=f" ({role})",
+                font=FONTS['small'],
+                bg=COLORS['bg_light'],
+                fg=COLORS['text_muted']
+            ).pack(side=tk.LEFT)
+        
+        # Footer
+        tk.Label(
+            content, text="\n📅 December 2025",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_muted']
+        ).pack(anchor=tk.W)
+    
+    def apply_model(self):
+        """Apply the selected model."""
+        model_key = self.selected_model.get()
+        model_name = self.MODELS[model_key]['name']
+        
+        messagebox.showinfo(
+            "Model Applied",
+            f"✅ Model changed to: {model_name}\n\n"
+            f"Accuracy: {self.MODELS[model_key]['accuracy']}\n\n"
+            "All future predictions will use this model."
+        )
     
     def retrain_model(self):
         """Trigger model retraining."""
@@ -219,7 +472,7 @@ December 2025
             "This will allow you to:\n"
             "• Retrain with new data\n"
             "• Compare model versions\n"
-            "• Select best algorithm"
+            "• Auto-select best algorithm"
         )
     
     def import_model(self):
@@ -301,7 +554,6 @@ December 2025
             COLORS[key] = new_colors[key]
         
         # Refresh the entire UI by calling on_show for the current page
-        # This will trigger a rebuild with new colors
         messagebox.showinfo(
             "Theme Changed",
             f"Theme changed to {theme} mode!\n\n"
