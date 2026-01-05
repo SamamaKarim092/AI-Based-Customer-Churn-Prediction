@@ -34,7 +34,7 @@ class ChurnReportGenerator:
         self.include_recommendations = include_recommendations
         self.model_info = model_info or {
             'name': 'Logistic Regression',
-            'accuracy': 72.5,
+            'accuracy': 76.2,
             'precision': 63.9,
             'recall': 35.4,
             'f1_score': 45.5,
@@ -680,9 +680,9 @@ class ChurnReportGenerator:
         model_data = [
             ['Property', 'Value'],
             ['Algorithm', self.model_info['name']],
-            ['Training Date', 'December 2025'],
-            ['Training Samples', '800'],
-            ['Test Samples', '200'],
+            ['Training Date', 'January 2026'],
+            ['Training Samples', '4,000'],
+            ['Test Samples', '1,000'],
             ['Features Used', '10'],
         ]
         
