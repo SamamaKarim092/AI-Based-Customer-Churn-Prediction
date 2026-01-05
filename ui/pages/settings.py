@@ -21,7 +21,7 @@ class SettingsPage(BasePage):
     MODELS = {
         'logistic': {
             'name': 'Logistic Regression',
-            'accuracy': '72.5%',
+            'accuracy': '76.2%',
             'description': 'Best overall performance - Recommended',
             'is_default': True
         },
@@ -87,7 +87,7 @@ class SettingsPage(BasePage):
         
         info = [
             ("Model File", "model/churn_model.pkl"),
-            ("Last Trained", "December 2025"),
+            ("Last Trained", "January 2026"),
         ]
         
         for label, value in info:
@@ -362,7 +362,7 @@ class SettingsPage(BasePage):
         ).pack(anchor=tk.W)
         
         algorithms = [
-            ("⭐ Logistic Regression", "72.5% accuracy - Selected"),
+            ("⭐ Logistic Regression", "76.2% accuracy - Selected"),
             ("   Random Forest", "71.0% accuracy"),
             ("   Naive Bayes", "62.0% accuracy"),
         ]
@@ -446,7 +446,7 @@ class SettingsPage(BasePage):
         
         # Footer
         tk.Label(
-            content, text="\n📅 December 2025",
+            content, text="\n📅 January 2026",
             font=FONTS['small'],
             bg=COLORS['bg_card'],
             fg=COLORS['text_muted']
