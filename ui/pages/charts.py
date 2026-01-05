@@ -20,7 +20,7 @@ class ChartsPage(BasePage):
     ALGORITHMS = {
         'logistic': {
             'name': 'Logistic Regression',
-            'accuracy': 72.5,
+            'accuracy': 76.2,
             'precision': 63.9,
             'recall': 35.4,
             'f1_score': 45.5,
@@ -29,7 +29,7 @@ class ChartsPage(BasePage):
             'description': 'A linear model that predicts probability of churn using a logistic function. Best for interpretability and when features have linear relationships with the target.',
             'strengths': ['Easy to interpret', 'Fast training', 'Good for linear relationships', 'Provides probability scores'],
             'weaknesses': ['Assumes linearity', 'May underfit complex patterns'],
-            'why_chosen': 'Selected as the best model due to highest accuracy (72.5%) and good balance between precision and interpretability for business decisions.',
+            'why_chosen': 'Selected as the best model due to highest accuracy (76.2%) and good balance between precision and interpretability for business decisions.',
         },
         'naive_bayes': {
             'name': 'Naive Bayes',
@@ -55,7 +55,7 @@ class ChartsPage(BasePage):
             'description': 'An ensemble method that builds multiple decision trees and merges their predictions for more accurate and stable results.',
             'strengths': ['Handles non-linear patterns', 'Feature importance built-in', 'Robust to overfitting', 'No feature scaling needed'],
             'weaknesses': ['Slower training', 'Less interpretable', 'Slightly lower accuracy than Logistic Regression'],
-            'why_not': 'Not selected because Logistic Regression achieved slightly better accuracy (72.5% vs 71.0%) with better interpretability for business use cases.',
+            'why_not': 'Not selected because Logistic Regression achieved better accuracy (76.2% vs 71.0%) with better interpretability for business use cases.',
         }
     }
     
