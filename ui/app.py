@@ -1,6 +1,7 @@
 """
 Customer Churn Prediction Application - Main Entry Point
 Modern dashboard UI with sidebar navigation and multiple pages.
+
 """
 
 import tkinter as tk
