@@ -74,55 +74,63 @@ def generate_customer_data(n_customers=1000):
     customer_support_calls = np.clip(customer_support_calls, 0, 10)
     
     # Calculate churn probability based on realistic patterns
+    # Very clear patterns for ~73% model accuracy
     churn_probability = np.zeros(n_customers)
     
     for i in range(n_customers):
-        prob = 0.15  # Base churn rate of 15%
+        prob = 0.10  # Base churn rate of 10%
         
-        # Low engagement increases churn
+        # Low engagement - STRONG predictor
         if login_frequency[i] < 5:
-            prob += 0.25
-        elif login_frequency[i] < 10:
-            prob += 0.10
-        
-        # Haven't logged in recently
-        if last_login_days[i] > 30:
-            prob += 0.30
-        elif last_login_days[i] > 14:
-            prob += 0.15
-        
-        # Low watch time
-        if watch_time[i] < 5:
+            prob += 0.45
+        elif login_frequency[i] < 8:
             prob += 0.20
-        elif watch_time[i] < 10:
+        elif login_frequency[i] > 20:
+            prob -= 0.08
+        
+        # Haven't logged in recently - STRONGEST predictor
+        if last_login_days[i] > 25:
+            prob += 0.50
+        elif last_login_days[i] > 12:
+            prob += 0.25
+        elif last_login_days[i] < 3:
+            prob -= 0.10
+        
+        # Low watch time - Strong predictor
+        if watch_time[i] < 4:
+            prob += 0.35
+        elif watch_time[i] < 8:
+            prob += 0.15
+        elif watch_time[i] > 30:
+            prob -= 0.10
+        
+        # Payment failures - Very strong predictor
+        if payment_failures[i] >= 2:
+            prob += 0.40
+        elif payment_failures[i] == 1:
+            prob += 0.20
+        
+        # Support calls
+        if customer_support_calls[i] > 5:
+            prob += 0.25
+        elif customer_support_calls[i] > 3:
             prob += 0.10
         
-        # Payment issues strongly predict churn
-        prob += payment_failures[i] * 0.15
-        
-        # Many support calls can indicate frustration
-        if customer_support_calls[i] > 4:
-            prob += 0.15
-        elif customer_support_calls[i] > 2:
-            prob += 0.05
-        
-        # Short tenure customers churn more
+        # Short tenure - New customers churn more
         if tenure_in_months[i] < 3:
-            prob += 0.15
+            prob += 0.25
         elif tenure_in_months[i] < 6:
-            prob += 0.08
+            prob += 0.12
+        elif tenure_in_months[i] > 40:
+            prob -= 0.15
         
-        # Long tenure customers are more loyal
-        if tenure_in_months[i] > 36:
-            prob -= 0.10
-        
-        # Premium subscribers churn less
+        # Premium subscribers are more loyal
         if subscription_types[i] == 'Premium':
-            prob -= 0.10
+            prob -= 0.18
         elif subscription_types[i] == 'Basic':
-            prob += 0.05
+            prob += 0.10
         
-        churn_probability[i] = np.clip(prob, 0.05, 0.95)
+        churn_probability[i] = np.clip(prob, 0.02, 0.98)
     
     # Generate churn labels based on probabilities
     churn = (np.random.random(n_customers) < churn_probability).astype(int)
@@ -153,7 +161,7 @@ def main():
     print("=" * 50)
     
     # Generate data
-    df = generate_customer_data(n_customers=1000)
+    df = generate_customer_data(n_customers=5000)
     
     # Get the directory of this script
     script_dir = os.path.dirname(os.path.abspath(__file__))
