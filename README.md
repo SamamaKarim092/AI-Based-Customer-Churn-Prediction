@@ -1,9 +1,7 @@
 # 🤖 AI-Based Customer Churn Prediction & Action Recommendation System
 
 A complete machine learning system that predicts customer churn, explains why customers are leaving using SHAP (Explainable AI), and recommends business actions to retain them.
-
----
-
+--
 ## 📋 Table of Contents
 
 1. [Project Overview](#-project-overview)
