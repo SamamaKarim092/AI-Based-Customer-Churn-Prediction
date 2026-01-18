@@ -44,7 +44,6 @@ This AI system provides three core capabilities:
 
 ---
 
-
 ## ⚙️ How It Works
 
 ### Step-by-Step Process
