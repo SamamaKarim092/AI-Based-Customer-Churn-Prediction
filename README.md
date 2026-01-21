@@ -14,8 +14,7 @@ A complete machine learning system that predicts customer churn, explains why cu
 8. [Installation Guide](#-installation-guide)
 9. [How to Run](#-how-to-run)
 10. [Sample Output](#-sample-output)
-11. [Future Enhancements](#-future-enhancements)
-12. [Technologies Used](#-technologies-used)
+11. [Technologies Used](#-technologies-used)
 
 ---
 
@@ -381,85 +380,6 @@ python src/explain.py
 ======================================================================
 ```
 
----
-
-## 🔮 Future Enhancements
-
-The following features are planned for future development:
-
-### 1. 🎨 Enhanced UI Design
-
-| Feature | Description |
-|---------|-------------|
-| Modern Theme | Dark mode, glassmorphism effects, modern color palette |
-| Responsive Layout | Better resizing and mobile-friendly design |
-| Progress Indicators | Loading animations during predictions |
-| Tabbed Interface | Separate tabs for Predict, Train, Reports, Settings |
-
-### 2. 📈 Interactive Charts & Graphs
-
-| Visualization | Purpose |
-|---------------|---------|
-| SHAP Waterfall Plot | Visual breakdown of feature contributions |
-| SHAP Summary Plot | Global feature importance across all customers |
-| Churn Distribution Pie Chart | Churned vs Stayed percentages |
-| Risk Level Gauge | Visual meter showing churn probability |
-| Feature Correlation Heatmap | Shows relationships between features |
-| ROC Curve | Model performance visualization |
-| Confusion Matrix | Prediction accuracy breakdown |
-
-### 3. 📂 Excel/CSV File Upload
-
-| Feature | Description |
-|---------|-------------|
-| Batch Upload | Upload CSV/Excel file with multiple customers |
-| Bulk Prediction | Predict churn for all customers at once |
-| Data Validation | Check for missing or invalid values |
-| Preview Window | See uploaded data before processing |
-| Export Results | Download predictions as CSV/Excel |
-
-### 4. 📄 PDF Report Generation
-
-| Report Section | Contents |
-|----------------|----------|
-| Executive Summary | Overall churn statistics, risk distribution |
-| Individual Customer Reports | Detailed prediction for each customer |
-| SHAP Visualizations | Embedded charts explaining predictions |
-| Recommendation Summary | All suggested actions compiled |
-| Model Performance | Accuracy metrics and confusion matrix |
-| Timestamp & Metadata | When report was generated, model version |
-
-### 5. 📊 Dashboard Features
-
-| Feature | Description |
-|---------|-------------|
-| Real-time Statistics | Live count of high/moderate/low risk customers |
-| Trend Analysis | Track churn predictions over time |
-| Alert System | Notifications for high-risk customers |
-| Model Retraining | Option to retrain model with new data |
-| A/B Testing | Compare different model versions |
-
-### 6. 🔄 Model Improvements
-
-| Enhancement | Description |
-|-------------|-------------|
-| More Algorithms | XGBoost, LightGBM, Neural Networks |
-| Hyperparameter Tuning | Optimize model parameters automatically |
-| Cross-Validation | More robust model evaluation |
-| Feature Engineering | Create new features from existing data |
-| Class Balancing | Handle imbalanced churn/stay ratios |
-
-### 7. 📧 Automated Actions
-
-| Feature | Description |
-|---------|-------------|
-| Email Templates | Pre-written retention emails |
-| Gemini Integration | AI-generated personalized messages |
-| Notification System | Automated alerts for high-risk customers |
-| CRM Integration | Connect with Salesforce, HubSpot, etc. |
-
----
-
 ## 🛠️ Technologies Used
 
 | Category | Technology |
@@ -483,7 +403,7 @@ This project is developed for educational and academic purposes.
 
 ## 👨‍💻 Author
 
-Customer Churn AI Prediction System
+Samama Karim
 
 ---
 
@@ -495,4 +415,4 @@ Customer Churn AI Prediction System
 
 ---
 
-**Last Updated:** December 2025
+**Last Updated:** January 2026
