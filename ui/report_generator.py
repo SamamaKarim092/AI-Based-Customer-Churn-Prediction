@@ -34,10 +34,10 @@ class ChurnReportGenerator:
         self.include_recommendations = include_recommendations
         self.model_info = model_info or {
             'name': 'Random Forest',
-            'accuracy': 79.3,
-            'precision': 70.0,
-            'recall': 53.9,
-            'f1_score': 60.9,
+            'accuracy': 75.3,
+            'precision': 72.2,
+            'recall': 61.0,
+            'f1_score': 66.1,
         }
         self.styles = getSampleStyleSheet()
         self._setup_custom_styles()

@@ -21,19 +21,19 @@ class SettingsPage(BasePage):
     MODELS = {
         'random_forest': {
             'name': 'Random Forest',
-            'accuracy': '79.3%',
+            'accuracy': '75.3%',
             'description': 'Best overall performance - Recommended',
             'is_default': True
         },
         'logistic': {
             'name': 'Logistic Regression',
-            'accuracy': '76.4%',
+            'accuracy': '70.4%',
             'description': 'Good interpretability, fast training',
             'is_default': False
         },
         'naive_bayes': {
             'name': 'Naive Bayes',
-            'accuracy': '75.9%',
+            'accuracy': '68.2%',
             'description': 'Fast training, good baseline',
             'is_default': False
         }
@@ -362,9 +362,9 @@ class SettingsPage(BasePage):
         ).pack(anchor=tk.W)
         
         algorithms = [
-            ("⭐ Random Forest", "79.3% accuracy - Selected"),
-            ("   Logistic Regression", "76.4% accuracy"),
-            ("   Naive Bayes", "75.9% accuracy"),
+            ("⭐ Random Forest", "75.3% accuracy - Selected"),
+            ("   Logistic Regression", "70.4% accuracy"),
+            ("   Naive Bayes", "68.2% accuracy"),
         ]
         
         for algo, detail in algorithms:
