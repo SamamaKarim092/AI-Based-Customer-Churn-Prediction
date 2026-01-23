@@ -208,9 +208,9 @@ The synthetic data generator creates realistic correlations:
 ```
 Model                       Accuracy  Precision  Recall   F1-Score
 -----------------------------------------------------------------
-Logistic Regression           76.4%     66.8%    41.8%     51.4%
-Naive Bayes                   75.9%     65.0%    42.1%     51.1%
-Random Forest                 79.3%     70.0%    53.9%     60.9%  [SELECTED]
+Logistic Regression           70.4%     67.3%    48.9%     56.6%
+Naive Bayes                   68.2%     64.1%    44.3%     52.4%
+Random Forest                 75.3%     72.2%    61.0%     66.1%  [SELECTED]
 ```
 
 ---
