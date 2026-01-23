@@ -19,29 +19,29 @@ class SettingsPage(BasePage):
     
     # Available models with their info
     MODELS = {
-        'logistic': {
-            'name': 'Logistic Regression',
-            'accuracy': '76.2%',
+        'random_forest': {
+            'name': 'Random Forest',
+            'accuracy': '79.3%',
             'description': 'Best overall performance - Recommended',
             'is_default': True
         },
-        'random_forest': {
-            'name': 'Random Forest',
-            'accuracy': '71.0%',
-            'description': 'Good for non-linear patterns',
+        'logistic': {
+            'name': 'Logistic Regression',
+            'accuracy': '76.4%',
+            'description': 'Good interpretability, fast training',
             'is_default': False
         },
         'naive_bayes': {
             'name': 'Naive Bayes',
-            'accuracy': '62.0%',
-            'description': 'Fast but lower accuracy',
+            'accuracy': '75.9%',
+            'description': 'Fast training, good baseline',
             'is_default': False
         }
     }
     
     def __init__(self, parent, controller, **kwargs):
         super().__init__(parent, controller, **kwargs)
-        self.selected_model = tk.StringVar(value='logistic')
+        self.selected_model = tk.StringVar(value='random_forest')
         self.setup_page()
     
     def setup_page(self):
@@ -362,9 +362,9 @@ class SettingsPage(BasePage):
         ).pack(anchor=tk.W)
         
         algorithms = [
-            ("⭐ Logistic Regression", "76.2% accuracy - Selected"),
-            ("   Random Forest", "71.0% accuracy"),
-            ("   Naive Bayes", "62.0% accuracy"),
+            ("⭐ Random Forest", "79.3% accuracy - Selected"),
+            ("   Logistic Regression", "76.4% accuracy"),
+            ("   Naive Bayes", "75.9% accuracy"),
         ]
         
         for algo, detail in algorithms:
