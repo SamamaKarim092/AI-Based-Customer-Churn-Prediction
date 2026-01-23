@@ -30,10 +30,10 @@ Customer churn refers to when customers stop using a company's product or servic
 
 This AI system provides three core capabilities:
 
-| Feature | Description |
-|---------|-------------|
-| **1. Churn Prediction** | Predicts whether a customer will leave (churn) or stay |
-| **2. Explainability** | Explains WHY the AI made that prediction using SHAP values |
+| Feature                       | Description                                                    |
+| ----------------------------- | -------------------------------------------------------------- |
+| **1. Churn Prediction**       | Predicts whether a customer will leave (churn) or stay         |
+| **2. Explainability**         | Explains WHY the AI made that prediction using SHAP values     |
 | **3. Action Recommendations** | Suggests specific business actions to retain at-risk customers |
 
 ### Why This Project Matters
@@ -48,6 +48,7 @@ This AI system provides three core capabilities:
 ## ⚙️ How It Works
 
 ### System Flow Diagram
+
 The diagram below represents the complete workflow of the system, starting from data collection and preprocessing to the final prediction and action recommendation.
 
 ![System Flow Diagram](image-2.png)
@@ -101,6 +102,7 @@ The diagram below represents the complete workflow of the system, starting from 
 ## 📁 Project Architecture
 
 ### System Block Diagram
+
 This block diagram provides a high-level overview of the system's architecture, showcasing the interaction between the data processing, model training, explanation, and recommendation modules.
 
 ![Block Diagram](image-1.png)
@@ -131,15 +133,15 @@ customer_churn_project/
 
 ### File Descriptions
 
-| File | Purpose |
-|------|---------|
+| File                    | Purpose                                                                                                                                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `data/generate_data.py` | Generates 1000 synthetic customers with realistic churn patterns. Uses probability-based logic where low engagement, payment failures, and high support calls correlate with higher churn. |
-| `data/customers.csv` | The training dataset with 10 features and 1 target variable (churn). Contains ~32% churned customers. |
-| `src/train_model.py` | Loads data, preprocesses features, trains Logistic Regression, Naive Bayes, and Random Forest. Compares accuracy and saves the best model. |
-| `src/predict.py` | Loads the saved model and makes predictions on new customer data. Returns probability and risk level. |
-| `src/explain.py` | Uses SHAP (SHapley Additive exPlanations) to calculate feature importance for each prediction. |
-| `src/recommend.py` | Rule-based engine that suggests actions based on churn probability and specific customer factors. |
-| `ui/app.py` | Desktop GUI built with Tkinter. Allows entering customer data and displays prediction + explanation + recommendations. |
+| `data/customers.csv`    | The training dataset with 10 features and 1 target variable (churn). Contains ~32% churned customers.                                                                                      |
+| `src/train_model.py`    | Loads data, preprocesses features, trains Logistic Regression, Naive Bayes, and Random Forest. Compares accuracy and saves the best model.                                                 |
+| `src/predict.py`        | Loads the saved model and makes predictions on new customer data. Returns probability and risk level.                                                                                      |
+| `src/explain.py`        | Uses SHAP (SHapley Additive exPlanations) to calculate feature importance for each prediction.                                                                                             |
+| `src/recommend.py`      | Rule-based engine that suggests actions based on churn probability and specific customer factors.                                                                                          |
+| `ui/app.py`             | Desktop GUI built with Tkinter. Allows entering customer data and displays prediction + explanation + recommendations.                                                                     |
 
 ---
 
@@ -147,32 +149,32 @@ customer_churn_project/
 
 ### Features (Input Variables)
 
-| Feature | Type | Description | Range |
-|---------|------|-------------|-------|
-| `age` | Numeric | Customer's age | 18-70 years |
-| `gender` | Categorical | Male or Female | Male/Female |
-| `subscription_type` | Categorical | Subscription tier | Basic/Standard/Premium |
-| `monthly_charges` | Numeric | Monthly subscription cost | $9.99-$39.99 |
-| `tenure_in_months` | Numeric | How long they've been a customer | 1-72 months |
-| `login_frequency` | Numeric | Number of logins per month | 0-60 logins |
-| `last_login_days` | Numeric | Days since last login | 0-90 days |
-| `watch_time` | Numeric | Hours of content watched per month | 0-100 hours |
-| `payment_failures` | Numeric | Number of failed payment attempts | 0-5 failures |
-| `customer_support_calls` | Numeric | Support tickets raised | 0-10 calls |
+| Feature                  | Type        | Description                        | Range                  |
+| ------------------------ | ----------- | ---------------------------------- | ---------------------- |
+| `age`                    | Numeric     | Customer's age                     | 18-70 years            |
+| `gender`                 | Categorical | Male or Female                     | Male/Female            |
+| `subscription_type`      | Categorical | Subscription tier                  | Basic/Standard/Premium |
+| `monthly_charges`        | Numeric     | Monthly subscription cost          | $9.99-$39.99           |
+| `tenure_in_months`       | Numeric     | How long they've been a customer   | 1-72 months            |
+| `login_frequency`        | Numeric     | Number of logins per month         | 0-60 logins            |
+| `last_login_days`        | Numeric     | Days since last login              | 0-90 days              |
+| `watch_time`             | Numeric     | Hours of content watched per month | 0-100 hours            |
+| `payment_failures`       | Numeric     | Number of failed payment attempts  | 0-5 failures           |
+| `customer_support_calls` | Numeric     | Support tickets raised             | 0-10 calls             |
 
 ### Target Variable (Output)
 
-| Variable | Values | Meaning |
-|----------|--------|---------|
-| `churn` | 0 | Customer will STAY |
-| `churn` | 1 | Customer will LEAVE (churn) |
+| Variable | Values | Meaning                     |
+| -------- | ------ | --------------------------- |
+| `churn`  | 0      | Customer will STAY          |
+| `churn`  | 1      | Customer will LEAVE (churn) |
 
 ### Realistic Churn Patterns in Data
 
 The synthetic data generator creates realistic correlations:
 
 - **Low login frequency** → Higher churn probability
-- **Many days since last login** → Higher churn probability  
+- **Many days since last login** → Higher churn probability
 - **Low watch time** → Higher churn probability
 - **Payment failures** → Strongly increases churn probability
 - **Many support calls** → Indicates frustration, higher churn
@@ -185,11 +187,11 @@ The synthetic data generator creates realistic correlations:
 
 ### Algorithms Compared
 
-| Algorithm | Description | Strengths |
-|-----------|-------------|-----------|
-| **Logistic Regression** | Linear model for binary classification | Fast, interpretable, good baseline |
-| **Naive Bayes** | Probabilistic classifier | Fast training, works with small data |
-| **Random Forest** | Ensemble of decision trees | High accuracy, handles non-linear patterns |
+| Algorithm               | Description                            | Strengths                                  |
+| ----------------------- | -------------------------------------- | ------------------------------------------ |
+| **Logistic Regression** | Linear model for binary classification | Fast, interpretable, good baseline         |
+| **Naive Bayes**         | Probabilistic classifier               | Fast training, works with small data       |
+| **Random Forest**       | Ensemble of decision trees             | High accuracy, handles non-linear patterns |
 
 ### Model Training Process
 
@@ -206,9 +208,9 @@ The synthetic data generator creates realistic correlations:
 ```
 Model                       Accuracy  Precision  Recall   F1-Score
 -----------------------------------------------------------------
-Logistic Regression           72.5%     63.9%    35.4%     45.5%  [SELECTED]
-Naive Bayes                   72.0%     60.5%    40.0%     48.2%
-Random Forest                 72.5%     65.6%    32.3%     43.3%
+Logistic Regression           76.4%     66.8%    41.8%     51.4%
+Naive Bayes                   75.9%     65.0%    42.1%     51.1%
+Random Forest                 79.3%     70.0%    53.9%     60.9%  [SELECTED]
 ```
 
 ---
@@ -218,6 +220,7 @@ Random Forest                 72.5%     65.6%    32.3%     43.3%
 ### What is SHAP?
 
 SHAP (SHapley Additive exPlanations) is an explainable AI technique that:
+
 - Calculates the contribution of each feature to the prediction
 - Shows which features pushed the prediction toward churn or stay
 - Provides both global (overall) and local (individual) explanations
@@ -225,6 +228,7 @@ SHAP (SHapley Additive exPlanations) is an explainable AI technique that:
 ### How We Use SHAP
 
 For each customer prediction, SHAP tells us:
+
 - **Positive SHAP value**: This feature INCREASES churn probability
 - **Negative SHAP value**: This feature DECREASES churn probability
 
@@ -249,24 +253,24 @@ Top Factors Influencing Churn:
 
 The system uses probability thresholds to categorize risk and suggest actions:
 
-| Churn Probability | Risk Level | Urgency | Actions |
-|-------------------|------------|---------|---------|
-| **≥ 70%** | HIGH | URGENT | Offer 20-30% discount, assign account manager, send personalized retention message |
-| **40-70%** | MODERATE | MODERATE | Send re-engagement notification, offer 10-15% discount, highlight new features |
-| **< 40%** | LOW | LOW | Continue regular engagement, include in loyalty program |
+| Churn Probability | Risk Level | Urgency  | Actions                                                                            |
+| ----------------- | ---------- | -------- | ---------------------------------------------------------------------------------- |
+| **≥ 70%**         | HIGH       | URGENT   | Offer 20-30% discount, assign account manager, send personalized retention message |
+| **40-70%**        | MODERATE   | MODERATE | Send re-engagement notification, offer 10-15% discount, highlight new features     |
+| **< 40%**         | LOW        | LOW      | Continue regular engagement, include in loyalty program                            |
 
 ### Factor-Specific Recommendations
 
 The system also provides targeted actions based on specific issues:
 
-| Factor Issue | Recommended Action |
-|--------------|-------------------|
+| Factor Issue          | Recommended Action                              |
+| --------------------- | ----------------------------------------------- |
 | Many days since login | Send "We miss you" email with exclusive content |
-| Low login frequency | Recommend personalized content |
-| Low watch time | Send curated content recommendations |
-| Payment failures | Reach out to resolve payment issues |
-| Many support calls | Proactive outreach to resolve ongoing issues |
-| Short tenure | Onboarding follow-up |
+| Low login frequency   | Recommend personalized content                  |
+| Low watch time        | Send curated content recommendations            |
+| Payment failures      | Reach out to resolve payment issues             |
+| Many support calls    | Proactive outreach to resolve ongoing issues    |
+| Short tenure          | Onboarding follow-up                            |
 
 ---
 
@@ -292,15 +296,15 @@ pip install pandas numpy scikit-learn shap matplotlib joblib
 
 ### Required Libraries
 
-| Library | Version | Purpose |
-|---------|---------|---------|
-| pandas | ≥1.3.0 | Data manipulation |
-| numpy | ≥1.21.0 | Numerical operations |
-| scikit-learn | ≥1.0.0 | Machine learning |
-| shap | ≥0.40.0 | Explainability |
-| matplotlib | ≥3.4.0 | Visualizations |
-| joblib | ≥1.1.0 | Model saving/loading |
-| tkinter | (built-in) | Desktop UI |
+| Library      | Version    | Purpose              |
+| ------------ | ---------- | -------------------- |
+| pandas       | ≥1.3.0     | Data manipulation    |
+| numpy        | ≥1.21.0    | Numerical operations |
+| scikit-learn | ≥1.0.0     | Machine learning     |
+| shap         | ≥0.40.0    | Explainability       |
+| matplotlib   | ≥3.4.0     | Visualizations       |
+| joblib       | ≥1.1.0     | Model saving/loading |
+| tkinter      | (built-in) | Desktop UI           |
 
 ---
 
@@ -347,6 +351,7 @@ python src/explain.py
 ### High-Risk Customer Example
 
 **Input:**
+
 - Age: 25, Gender: Male, Subscription: Basic
 - Monthly Charges: $12.99, Tenure: 2 months
 - Login Frequency: 3/month, Last Login: 45 days ago
@@ -354,6 +359,7 @@ python src/explain.py
 - Support Calls: 4
 
 **Output:**
+
 ```
 ======================================================================
                     CHURN PREDICTION RESULTS
@@ -394,16 +400,16 @@ python src/explain.py
 
 ## 🛠️ Technologies Used
 
-| Category | Technology |
-|----------|------------|
-| Programming Language | Python 3.x |
-| Data Processing | pandas, numpy |
-| Machine Learning | scikit-learn |
-| Explainability | SHAP |
-| Visualization | matplotlib, seaborn |
-| Model Persistence | joblib |
-| Desktop UI | Tkinter |
-| Future UI | CustomTkinter / PyQt |
+| Category             | Technology           |
+| -------------------- | -------------------- |
+| Programming Language | Python 3.x           |
+| Data Processing      | pandas, numpy        |
+| Machine Learning     | scikit-learn         |
+| Explainability       | SHAP                 |
+| Visualization        | matplotlib, seaborn  |
+| Model Persistence    | joblib               |
+| Desktop UI           | Tkinter              |
+| Future UI            | CustomTkinter / PyQt |
 
 ---
 
