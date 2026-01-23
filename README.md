@@ -2,7 +2,7 @@
 
 A complete machine learning system that predicts customer churn, explains why customers are leaving using SHAP (Explainable AI), and recommends business actions to retain them.
 
-![Project Interface](image.png)
+![Project Interface](image-3.png))
 
 ## 📋 Table of Contents
 
@@ -77,7 +77,7 @@ The diagram below represents the complete workflow of the system, starting from 
 │   3. ML PREDICTION                                                       │
 │   ┌──────────────────┐                                                  │
 │   │ Trained Model    │  Predicts churn probability (0-100%)             │
-│   │ (Logistic Reg)   │  Risk Level: HIGH / MODERATE / LOW               │
+│   │ (Random Forest)  │  Risk Level: HIGH / MODERATE / LOW               │
 │   └────────┬─────────┘                                                  │
 │            │                                                             │
 │            ▼                                                             │
