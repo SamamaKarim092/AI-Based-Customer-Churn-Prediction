@@ -33,11 +33,11 @@ class ChurnReportGenerator:
         self.include_charts = include_charts
         self.include_recommendations = include_recommendations
         self.model_info = model_info or {
-            'name': 'Logistic Regression',
-            'accuracy': 76.2,
-            'precision': 63.9,
-            'recall': 35.4,
-            'f1_score': 45.5,
+            'name': 'Random Forest',
+            'accuracy': 79.3,
+            'precision': 70.0,
+            'recall': 53.9,
+            'f1_score': 60.9,
         }
         self.styles = getSampleStyleSheet()
         self._setup_custom_styles()
