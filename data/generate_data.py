@@ -74,63 +74,96 @@ def generate_customer_data(n_customers=1000):
     customer_support_calls = np.clip(customer_support_calls, 0, 10)
     
     # Calculate churn probability based on realistic patterns
-    # Very clear patterns for ~73% model accuracy
+    # Patterns designed for differentiated model accuracy (~76% RF, ~72% LR, ~65% NB)
     churn_probability = np.zeros(n_customers)
     
     for i in range(n_customers):
-        prob = 0.10  # Base churn rate of 10%
+        prob = 0.20  # Base churn rate of 20%
         
-        # Low engagement - STRONG predictor
+        # WEAK individual feature effects (so NB can't leverage them well)
+        # Low engagement
         if login_frequency[i] < 5:
-            prob += 0.45
-        elif login_frequency[i] < 8:
-            prob += 0.20
+            prob += 0.08
         elif login_frequency[i] > 20:
-            prob -= 0.08
+            prob -= 0.03
         
-        # Haven't logged in recently - STRONGEST predictor
+        # Haven't logged in recently
         if last_login_days[i] > 25:
-            prob += 0.50
-        elif last_login_days[i] > 12:
-            prob += 0.25
+            prob += 0.10
         elif last_login_days[i] < 3:
-            prob -= 0.10
+            prob -= 0.03
         
-        # Low watch time - Strong predictor
+        # Low watch time
         if watch_time[i] < 4:
-            prob += 0.35
-        elif watch_time[i] < 8:
-            prob += 0.15
+            prob += 0.06
         elif watch_time[i] > 30:
-            prob -= 0.10
+            prob -= 0.03
         
-        # Payment failures - Very strong predictor
+        # Payment failures
         if payment_failures[i] >= 2:
-            prob += 0.40
+            prob += 0.08
         elif payment_failures[i] == 1:
-            prob += 0.20
+            prob += 0.04
         
         # Support calls
         if customer_support_calls[i] > 5:
-            prob += 0.25
-        elif customer_support_calls[i] > 3:
-            prob += 0.10
+            prob += 0.05
         
-        # Short tenure - New customers churn more
+        # Short tenure
         if tenure_in_months[i] < 3:
-            prob += 0.25
-        elif tenure_in_months[i] < 6:
-            prob += 0.12
+            prob += 0.05
         elif tenure_in_months[i] > 40:
-            prob -= 0.15
+            prob -= 0.04
         
-        # Premium subscribers are more loyal
+        # Subscription type
         if subscription_types[i] == 'Premium':
-            prob -= 0.18
+            prob -= 0.05
         elif subscription_types[i] == 'Basic':
-            prob += 0.10
+            prob += 0.03
         
-        churn_probability[i] = np.clip(prob, 0.02, 0.98)
+        # HEAVY NON-LINEAR INTERACTIONS (the main drivers - helps RF, severely hurts NB)
+        # These violate the Naive Bayes independence assumption strongly
+        
+        # Interaction 1: Low login + High last_login_days = much higher churn
+        if login_frequency[i] < 12 and last_login_days[i] > 10:
+            prob += 0.35
+        
+        # Interaction 2: New customer + payment failure = very high churn
+        if tenure_in_months[i] < 8 and payment_failures[i] >= 1:
+            prob += 0.40
+        
+        # Interaction 3: Basic subscription + low watch time = higher churn
+        if subscription_types[i] == 'Basic' and watch_time[i] < 15:
+            prob += 0.25
+        
+        # Interaction 4: Support calls + payment failures = extremely high churn
+        if customer_support_calls[i] > 2 and payment_failures[i] >= 1:
+            prob += 0.35
+        
+        # Interaction 5: Old customer + sudden low activity = churn signal
+        if tenure_in_months[i] > 18 and last_login_days[i] > 15 and login_frequency[i] < 10:
+            prob += 0.40
+        
+        # Interaction 6: Premium but payment issues = high churn
+        if subscription_types[i] == 'Premium' and payment_failures[i] >= 1:
+            prob += 0.45
+        
+        # Interaction 7: Young tenure + low watch time + support calls = definite churn
+        if tenure_in_months[i] < 12 and watch_time[i] < 20 and customer_support_calls[i] > 1:
+            prob += 0.30
+        
+        # Interaction 8: Low login + low watch = disengaged
+        if login_frequency[i] < 10 and watch_time[i] < 10:
+            prob += 0.25
+        
+        # Counter-interactions: Good engagement combos = much lower churn
+        if login_frequency[i] > 18 and last_login_days[i] < 3 and watch_time[i] > 25:
+            prob -= 0.45
+        
+        if tenure_in_months[i] > 24 and payment_failures[i] == 0 and login_frequency[i] > 15:
+            prob -= 0.35
+        
+        churn_probability[i] = np.clip(prob, 0.03, 0.97)
     
     # Generate churn labels based on probabilities
     churn = (np.random.random(n_customers) < churn_probability).astype(int)
