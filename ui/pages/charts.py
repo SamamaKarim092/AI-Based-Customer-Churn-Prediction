@@ -20,48 +20,48 @@ class ChartsPage(BasePage):
     ALGORITHMS = {
         'logistic': {
             'name': 'Logistic Regression',
-            'accuracy': 76.2,
-            'precision': 63.9,
-            'recall': 35.4,
-            'f1_score': 45.5,
+            'accuracy': 76.4,
+            'precision': 66.8,
+            'recall': 41.8,
+            'f1_score': 51.4,
             'confusion_matrix': [[122, 13], [42, 23]],
-            'is_best': True,
+            'is_best': False,
             'description': 'A linear model that predicts probability of churn using a logistic function. Best for interpretability and when features have linear relationships with the target.',
             'strengths': ['Easy to interpret', 'Fast training', 'Good for linear relationships', 'Provides probability scores'],
             'weaknesses': ['Assumes linearity', 'May underfit complex patterns'],
-            'why_chosen': 'Selected as the best model due to highest accuracy (76.2%) and good balance between precision and interpretability for business decisions.',
+            'why_not': 'Not selected because Random Forest achieved better accuracy (79.3% vs 76.4%) with better recall for identifying churning customers.',
         },
         'naive_bayes': {
             'name': 'Naive Bayes',
-            'accuracy': 62.0,
-            'precision': 40.4,
-            'recall': 47.7,
-            'f1_score': 43.8,
+            'accuracy': 75.9,
+            'precision': 65.0,
+            'recall': 42.1,
+            'f1_score': 51.1,
             'confusion_matrix': [[100, 35], [34, 31]],
             'is_best': False,
             'description': 'A probabilistic classifier based on Bayes theorem with strong independence assumptions between features.',
-            'strengths': ['Very fast training', 'Works well with small data', 'Good baseline model', 'Highest recall among tested'],
-            'weaknesses': ['Assumes feature independence', 'Lower accuracy', 'Poor precision'],
-            'why_not': 'Not selected due to lowest accuracy (62.0%) and poor precision (40.4%), leading to many false positive churn predictions.',
+            'strengths': ['Very fast training', 'Works well with small data', 'Good baseline model'],
+            'weaknesses': ['Assumes feature independence', 'Lower accuracy than Random Forest'],
+            'why_not': 'Not selected due to lower accuracy (75.9% vs 79.3%) compared to Random Forest.',
         },
         'random_forest': {
             'name': 'Random Forest',
-            'accuracy': 71.0,
-            'precision': 58.1,
-            'recall': 36.9,
-            'f1_score': 45.1,
-            'confusion_matrix': [[118, 17], [41, 24]],
-            'is_best': False,
+            'accuracy': 79.3,
+            'precision': 70.0,
+            'recall': 53.9,
+            'f1_score': 60.9,
+            'confusion_matrix': [[632, 69], [138, 161]],
+            'is_best': True,
             'description': 'An ensemble method that builds multiple decision trees and merges their predictions for more accurate and stable results.',
-            'strengths': ['Handles non-linear patterns', 'Feature importance built-in', 'Robust to overfitting', 'No feature scaling needed'],
-            'weaknesses': ['Slower training', 'Less interpretable', 'Slightly lower accuracy than Logistic Regression'],
-            'why_not': 'Not selected because Logistic Regression achieved better accuracy (76.2% vs 71.0%) with better interpretability for business use cases.',
+            'strengths': ['Handles non-linear patterns', 'Feature importance built-in', 'Robust to overfitting', 'Highest accuracy and recall'],
+            'weaknesses': ['Slower training', 'Less interpretable than Logistic Regression'],
+            'why_chosen': 'Selected as the best model due to highest accuracy (79.3%) and best recall (53.9%) for identifying churning customers.',
         }
     }
     
     def __init__(self, parent, controller, **kwargs):
         super().__init__(parent, controller, **kwargs)
-        self.selected_algorithm = 'logistic'  # Default selection
+        self.selected_algorithm = 'random_forest'  # Default selection (best model)
         self.algo_buttons = {}
         self.setup_page()
     
