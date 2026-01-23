@@ -66,7 +66,7 @@ class HomePage(BasePage):
         stat_cards_data = [
             ("📊 Total Customers", "5,000", "In training dataset", COLORS['accent']),
             ("⚠️ Churn Rate", "30%", "Historical average", COLORS['warning']),
-            ("🎯 Model Accuracy", "76.2%", "Logistic Regression", COLORS['success']),
+            ("🎯 Model Accuracy", "79.3%", "Random Forest", COLORS['success']),
             ("🔴 High Risk", "~1,500", "Need immediate attention", COLORS['danger']),
         ]
         
@@ -311,9 +311,9 @@ class HomePage(BasePage):
         
         # Model info grid
         info = [
-            ("Algorithm", "Logistic Regression", COLORS['accent']),
-            ("Accuracy", "76.2%", COLORS['success']),
-            ("Precision", "63.9%", COLORS['warning']),
+            ("Algorithm", "Random Forest", COLORS['accent']),
+            ("Accuracy", "79.3%", COLORS['success']),
+            ("Precision", "70.0%", COLORS['success']),
             ("Last Trained", "January 2026", COLORS['text_secondary']),
         ]
         
