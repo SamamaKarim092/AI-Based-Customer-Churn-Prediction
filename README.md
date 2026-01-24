@@ -112,7 +112,7 @@ customer_churn_project/
 │
 ├── 📂 data/
 │   ├── generate_data.py      # Creates synthetic customer dataset
-│   └── customers.csv         # Generated dataset (1000 customers)
+│   └── customers.csv         # Generated dataset (5000 customers)
 │
 ├── 📂 model/
 │   ├── churn_model.pkl       # Trained machine learning model
@@ -135,7 +135,7 @@ customer_churn_project/
 
 | File                    | Purpose                                                                                                                                                                                    |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `data/generate_data.py` | Generates 1000 synthetic customers with realistic churn patterns. Uses probability-based logic where low engagement, payment failures, and high support calls correlate with higher churn. |
+| `data/generate_data.py` | Generates 5000 synthetic customers with realistic churn patterns. Uses probability-based logic where low engagement, payment failures, and high support calls correlate with higher churn. |
 | `data/customers.csv`    | The training dataset with 10 features and 1 target variable (churn). Contains ~32% churned customers.                                                                                      |
 | `src/train_model.py`    | Loads data, preprocesses features, trains Logistic Regression, Naive Bayes, and Random Forest. Compares accuracy and saves the best model.                                                 |
 | `src/predict.py`        | Loads the saved model and makes predictions on new customer data. Returns probability and risk level.                                                                                      |
