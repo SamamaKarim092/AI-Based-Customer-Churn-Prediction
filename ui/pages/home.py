@@ -259,9 +259,9 @@ class HomePage(BasePage):
         metrics_frame.pack(fill=tk.X, pady=(15, 0))
         
         metrics = [
-            ("Avg. Churn Probability", "30%"),
-            ("Predicted Churners", "~1,500"),
-            ("Retention Opportunity", "$16,250/mo"),
+            ("Avg. Churn Probability", "40%"),
+            ("Predicted Churners", "~2,000"),
+            ("Retention Opportunity", "$21,500/mo"),
         ]
         
         for label, value in metrics:
