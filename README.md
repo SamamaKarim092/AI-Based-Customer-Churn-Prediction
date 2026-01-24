@@ -136,7 +136,7 @@ customer_churn_project/
 | File                    | Purpose                                                                                                                                                                                    |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `data/generate_data.py` | Generates 5000 synthetic customers with realistic churn patterns. Uses probability-based logic where low engagement, payment failures, and high support calls correlate with higher churn. |
-| `data/customers.csv`    | The training dataset with 10 features and 1 target variable (churn). Contains ~32% churned customers.                                                                                      |
+| `data/customers.csv`    | The training dataset with 10 features and 1 target variable (churn). Contains ~40% churned customers.                                                                                      |
 | `src/train_model.py`    | Loads data, preprocesses features, trains Logistic Regression, Naive Bayes, and Random Forest. Compares accuracy and saves the best model.                                                 |
 | `src/predict.py`        | Loads the saved model and makes predictions on new customer data. Returns probability and risk level.                                                                                      |
 | `src/explain.py`        | Uses SHAP (SHapley Additive exPlanations) to calculate feature importance for each prediction.                                                                                             |
