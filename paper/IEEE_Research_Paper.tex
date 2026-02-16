@@ -1,0 +1,438 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{hyperref}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Beyond Prediction: An Explainable AI (XAI) and Action Recommendation System for Proactive Customer Churn Management}
+
+\author{\IEEEauthorblockN{[Author Name(s)]}
+\IEEEauthorblockA{[Affiliation(s)] \\
+[City, Country] \\
+[Email Address(es)]}
+}
+
+\maketitle
+
+\begin{abstract}
+Customer churn prediction has become a critical capability for subscription-based businesses striving to improve retention. While many machine learning approaches focus solely on predicting whether a customer will leave, few provide the transparency or actionable guidance needed for effective business decision-making. This paper presents an integrated, end-to-end system that combines churn prediction using multiple machine learning classifiers with Explainable AI (XAI) through SHAP (SHapley Additive exPlanations) and a rule-based action recommendation engine. Three classifiers—Logistic Regression, Naive Bayes, and Random Forest—are compared, with Random Forest achieving the highest accuracy of 75.3\%. SHAP is employed to decompose each prediction into interpretable feature contributions, enabling stakeholders to understand \textit{why} a customer is at risk. Based on these insights, a recommendation engine maps risk levels and contributing factors to targeted retention strategies. The system is implemented as a desktop application with a graphical user interface, supporting individual and batch predictions, visual analytics, and automated report generation. Experimental results on a synthetic dataset of 5,000 customers with 10 features demonstrate the effectiveness of the proposed framework. This work highlights the importance of moving beyond black-box prediction toward actionable, human-interpretable intelligence in customer relationship management.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Customer Churn Prediction, Explainable AI (XAI), SHAP, Machine Learning, Actionable Analytics, Retention Strategy
+\end{IEEEkeywords}
+
+%=============================================================================
+\section{Introduction}
+%=============================================================================
+
+Customer churn, defined as the discontinuation of a customer's relationship with a business, represents one of the most significant challenges for subscription-based industries such as telecommunications, streaming services, and software-as-a-service (SaaS) platforms. Customer churn leads to significant revenue loss, with research consistently showing that acquiring a new customer costs five to seven times more than retaining an existing one [1]. Despite advances in machine learning, existing churn prediction systems remain largely opaque, failing to explain \textit{why} a customer is at risk and \textit{what} specific actions should be taken to retain them. This motivates the need for an AI-based predictive framework that integrates prediction, explanation, and actionable recommendations into a unified system.
+
+Machine learning (ML) techniques have been widely adopted for churn prediction, with algorithms such as Logistic Regression, Decision Trees, Random Forests, and Neural Networks demonstrating strong predictive performance [2], [3], [13], [14]. However, the majority of existing approaches focus narrowly on prediction accuracy, treating the ML model as a black box that outputs a binary classification (churn or no-churn) without providing explanations for its decisions [15]. This lack of transparency presents three critical limitations: (1) business stakeholders cannot understand the factors driving individual churn predictions, (2) there is no systematic mechanism to translate predictions into concrete retention actions, and (3) regulatory compliance with algorithmic transparency requirements (e.g., GDPR) cannot be satisfied [18].
+
+Explainable AI (XAI) has emerged as a response to the interpretability challenge in machine learning [4], [5]. The increasing regulatory emphasis on algorithmic transparency, particularly under frameworks such as the EU General Data Protection Regulation (GDPR) [18], further underscores the need for interpretable models. Among XAI methods, SHAP (SHapley Additive exPlanations), grounded in cooperative game theory [7], and LIME (Local Interpretable Model-agnostic Explanations) [17] provide complementary frameworks for decomposing predictions into individual feature contributions. By applying SHAP to churn prediction, it becomes possible to answer not only ``Will this customer churn?'' but also ``Why is this customer likely to churn?''
+
+This paper presents a comprehensive, end-to-end system that addresses the full pipeline from prediction to action. The main contribution of this paper is a novel integrated framework that bridges the gap between black-box churn prediction and business-actionable intelligence by unifying machine learning classification, SHAP-based explainability, and rule-based action recommendations into a single deployable system. Unlike existing approaches that treat prediction, interpretation, and action as separate tasks, the proposed system creates a seamless ``predict--explain--act'' pipeline. The specific contributions of this work are:
+
+\begin{enumerate}
+    \item A comparative evaluation of three machine learning classifiers (Logistic Regression, Naive Bayes, and Random Forest) for customer churn prediction, with Random Forest achieving the best performance at 75.3\% accuracy.
+    \item Integration of SHAP-based explainability to provide transparent, feature-level explanations for each churn prediction.
+    \item A rule-based action recommendation engine that maps churn risk levels and contributing factors to targeted, business-actionable retention strategies.
+    \item A fully functional desktop application with a graphical user interface (GUI) that supports individual prediction, batch processing, visual analytics, and automated PDF report generation.
+\end{enumerate}
+
+The remainder of this paper is organized as follows. Section~II reviews related work in churn prediction and explainable AI. Section~III details the proposed methodology, including data description, model training, SHAP integration, and the recommendation engine. Section~IV presents the system architecture and implementation. Section~V discusses experimental results, and Section~VI concludes with future research directions.
+
+%=============================================================================
+\section{Related Work}
+%=============================================================================
+
+\subsection{Machine Learning for Customer Churn Prediction}
+
+Customer churn prediction has been extensively studied using a variety of machine learning techniques. The following review compares key works by their methods, datasets, results, and limitations.
+
+Lalwani et al. [1] surveyed customer churn prediction in the telecom sector using methods including Decision Trees, SVM, and ensemble models on a public telecom dataset of 7,043 customers. They reported that ensemble methods achieved up to 95\% accuracy; however, their work focused solely on prediction without providing any model interpretability or actionable retention strategies.
+
+Wagh et al. [2] explored Decision Trees, SVM, and ensemble classifiers for telecom churn prediction, achieving 96.19\% accuracy on a telecom dataset. Despite strong predictive performance, their approach lacked explainability mechanisms and did not translate predictions into business actions. Manzoor et al. [3] applied Random Forest and gradient-boosted classifiers for churn analysis, achieving competitive performance on subscription-based service data. However, their work treated the model as a black box, offering no feature-level explanations to stakeholders.
+
+Vafeiadis et al. [13] systematically compared Logistic Regression, SVM, Decision Trees, Naive Bayes, and ensemble methods on a benchmark telecom dataset, concluding that boosted ensembles outperform individual classifiers with 97\% AUC. Their limitation was the absence of per-customer explanation for predictions. Ahmad et al. [14] demonstrated tree-based methods for telecom churn on a big data platform with 3,333 customers, achieving 93.3\% accuracy through feature engineering; however, the study did not address model transparency or recommendation generation.
+
+Amin et al. [15] compared churn models across multiple telecom datasets using rough set approaches, reporting that no single algorithm dominates all scenarios. Their limitation was the lack of a unified framework that combines prediction with prescriptive action. Idris et al. [16] combined Random Forest with PSO-based data balancing on telecom data, achieving improved recall for churned customers. However, they focused exclusively on classification performance without interpretability. Burez and Van den Poel [21] investigated the impact of class imbalance handling techniques on churn prediction using random and cost-sensitive undersampling, demonstrating improved performance on a real-world subscriber dataset; however, their work did not incorporate explainability or prescriptive recommendations.
+
+Breiman [6] introduced the Random Forest algorithm, an ensemble method that constructs multiple decision trees and aggregates their predictions through majority voting. Random Forest has since become one of the most widely used classifiers for tabular data due to its robustness against overfitting, ability to capture nonlinear feature interactions, and built-in feature importance estimation. These properties make it particularly suitable for churn prediction, where complex interactions among customer behavior features often determine churn outcomes.
+
+\subsection{Explainable AI and SHAP}
+
+The growing adoption of complex machine learning models has intensified the need for model interpretability. Arrieta et al. [5] presented a comprehensive survey of Explainable Artificial Intelligence (XAI), classifying explanation methods into model-specific and model-agnostic categories and discussing their applications across domains including healthcare, finance, and customer analytics. More recently, Jeyakumar et al. [22] surveyed the application of explainable AI specifically for customer churn prediction in banking and insurance, confirming that while XAI adoption is growing, most existing implementations remain disconnected from prescriptive decision-making systems.
+
+Lundberg and Lee [4] proposed SHAP (SHapley Additive exPlanations), a unified approach to interpreting model predictions. SHAP assigns each feature an importance value for a particular prediction based on Shapley values from cooperative game theory [7]. The TreeSHAP variant [8] provides an efficient, exact computation of SHAP values for tree-based models such as Random Forest and Gradient Boosting, making it particularly applicable to the models used in this study. However, SHAP has been predominantly applied in isolation for post-hoc analysis, without integration into end-to-end systems that connect explanations to actionable business decisions.
+
+Ribeiro et al. [17] proposed LIME (Local Interpretable Model-agnostic Explanations), which generates local approximations of complex models using interpretable surrogate models. While LIME provides model-agnostic explanations, it suffers from instability across perturbations and lacks the theoretical consistency guarantees of SHAP. SHAP's grounding in Shapley values is the primary reason for its selection in this work.
+
+Molnar [10] provided a comprehensive guide to interpretable machine learning methods, discussing the theoretical foundations and practical applications of SHAP, LIME, and other explanation techniques. This work emphasizes the distinction between global and local interpretability—both of which are leveraged in the proposed system—but does not address the translation of explanations into prescriptive retention actions.
+
+\subsection{Actionable Intelligence and Recommendation Systems}
+
+While churn prediction and explainability have been studied independently, comparatively few works integrate them into a unified, actionable framework. De Caigny et al. [11] proposed a hybrid classification model combining logistic regression and decision trees on a telecom dataset with 51,306 customers, achieving improved churn classification; however, their work focused on hybrid model design without SHAP-based explanation or automated recommendation generation. Similarly, Verbeke et al. [12] developed comprehensible churn models using advanced rule induction on a real-world dataset, emphasizing model transparency; their limitation was the lack of a systematic mechanism to convert model insights into targeted retention actions.
+
+Goodman and Flaxman [18] argued that the EU's GDPR creates a ``right to explanation'' for automated decisions, making model interpretability not merely a preference but a legal requirement in certain jurisdictions. This regulatory landscape further motivates the integration of XAI into churn prediction systems.
+
+As summarized in the literature, the key research gap is threefold: (1) most churn prediction studies focus on classification performance without explainability, (2) XAI methods are applied in isolation without connecting to business actions, and (3) no existing work provides an integrated, deployable system that covers the full predict--explain--act pipeline. The present work addresses this gap by coupling SHAP-based explanation with a rule-based recommendation engine that translates feature-level insights into concrete retention strategies, thus bridging the divide between analytical models and business operations. While foundational statistical learning theory [19] provides the mathematical underpinning for the classifiers employed, the novel contribution lies in the integration of prediction, explanation, and action into a unified, deployable system.
+
+%=============================================================================
+\section{Methodology}
+%=============================================================================
+
+The proposed system follows a five-stage pipeline: (1) data generation and preprocessing, (2) model training and evaluation, (3) SHAP-based explainability, (4) action recommendation, and (5) system integration with GUI. This section details each stage.
+
+\subsection{Dataset Description}
+
+A synthetic dataset of 5,000 customer records is generated with 10 features and a binary target variable (churn). The features are designed to reflect realistic customer behavior patterns commonly observed in subscription-based services. Table~\ref{tab:features} summarizes the feature set.
+
+\begin{table}[htbp]
+\caption{Dataset Feature Description}
+\label{tab:features}
+\centering
+\begin{tabular}{@{}p{2.8cm}p{1.2cm}p{3.5cm}@{}}
+\toprule
+\textbf{Feature} & \textbf{Type} & \textbf{Description} \\
+\midrule
+Age & Numeric & Customer age (18--70) \\
+Gender & Categ. & Male or Female \\
+Subscription Type & Categ. & Basic, Standard, Premium \\
+Monthly Charges & Numeric & Subscription cost (\$) \\
+Tenure (months) & Numeric & Duration as customer \\
+Login Frequency & Numeric & Logins per month \\
+Last Login (days) & Numeric & Days since last login \\
+Watch Time & Numeric & Hours watched/month \\
+Payment Failures & Numeric & Failed payment count \\
+Support Calls & Numeric & Support tickets raised \\
+\midrule
+Churn (Target) & Binary & 0 = Stay, 1 = Churn \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The synthetic data generation employs a probability-based approach with deliberately designed nonlinear feature interactions. The churn probability for each customer is computed through a combination of individual feature effects and eight interaction terms. For example, the interaction between low login frequency and high days since last login substantially increases churn probability, while the combination of long tenure and zero payment failures decreases it. These interactions are intentionally designed to create patterns that tree-based models (Random Forest) can capture through hierarchical splits, while violating the feature independence assumption of Naive Bayes.
+
+The resulting dataset exhibits a churn rate of approximately 40\%, with feature distributions modeled using exponential, Poisson, and uniform distributions to mimic realistic behavioral patterns. The use of synthetic data allows for controlled experimentation and reproducibility while demonstrating the system's capabilities with known ground-truth patterns.
+
+\subsection{Data Preprocessing}
+
+The preprocessing pipeline consists of the following steps:
+
+\begin{enumerate}
+    \item \textbf{Categorical Encoding:} The categorical features \textit{gender} and \textit{subscription\_type} are transformed using label encoding, mapping string categories to numerical values.
+    \item \textbf{Feature Scaling:} All numerical features are standardized using Standard Scaler ($z = \frac{x - \mu}{\sigma}$) to ensure uniform scale across features, which is particularly important for Logistic Regression and distance-based methods.
+    \item \textbf{Train-Test Split:} The dataset is divided into 80\% training (4,000 samples) and 20\% testing (1,000 samples) using stratified sampling to preserve the class distribution (approximately 60\% non-churn and 40\% churn in both sets).
+    \item \textbf{Validation Strategy:} Stratified holdout validation is employed to ensure that performance evaluation reflects realistic deployment conditions. The stratified split guarantees that the class ratio is preserved across training and testing partitions, preventing biased evaluation.
+\end{enumerate}
+
+\subsection{Machine Learning Models}
+
+Three classification algorithms are selected to provide a comparative evaluation spanning different learning paradigms:
+
+The theoretical foundations for these models are well-established in statistical learning literature [19].
+
+\textbf{Logistic Regression (LR)} is a linear model that estimates the probability of churn using the logistic (sigmoid) function:
+\begin{equation}
+P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_n x_n)}}
+\end{equation}
+LR serves as a baseline with inherent interpretability through its learned coefficients.
+
+\textbf{Gaussian Naive Bayes (NB)} applies Bayes' theorem with the assumption of conditional independence among features:
+\begin{equation}
+P(y|x_1, \ldots, x_n) = \frac{P(y) \prod_{i=1}^{n} P(x_i|y)}{P(x_1, \ldots, x_n)}
+\end{equation}
+NB is included to demonstrate the impact of the independence assumption when feature interactions are present.
+
+\textbf{Random Forest (RF)} is an ensemble of $B$ decision trees, where the final prediction is determined by majority voting:
+\begin{equation}
+\hat{y} = \text{mode}\{h_b(x)\}_{b=1}^{B}
+\end{equation}
+where $h_b(x)$ represents the prediction of the $b$-th tree. RF is configured with 100 estimators ($B=100$) and is expected to perform best due to its ability to capture nonlinear interactions.
+
+\subsection{SHAP-Based Explainability}
+
+To provide interpretable explanations for churn predictions, SHAP (SHapley Additive exPlanations) [4] is integrated into the prediction pipeline. For the Random Forest model, TreeExplainer is used to efficiently compute exact SHAP values.
+
+For a given prediction $f(x)$, the SHAP value $\phi_i$ for feature $i$ quantifies its contribution:
+\begin{equation}
+\phi_i = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|!\;(|N|-|S|-1)!}{|N|!} \left[ f(S \cup \{i\}) - f(S) \right]
+\end{equation}
+where $N$ is the set of all features and $S$ is a subset excluding feature $i$. The prediction can be decomposed as:
+\begin{equation}
+f(x) = \phi_0 + \sum_{i=1}^{|N|} \phi_i
+\end{equation}
+where $\phi_0$ is the base value (expected model output).
+
+The SHAP integration in the proposed system provides:
+\begin{itemize}
+    \item \textbf{Local Explanations:} For each individual prediction, features are ranked by their SHAP values, with positive values indicating contribution toward churn and negative values indicating contribution toward retention.
+    \item \textbf{Human-Readable Interpretation:} Each feature's SHAP contribution is translated into natural language explanations (e.g., ``Payment failures strongly increase churn risk'').
+    \item \textbf{Factor Ranking:} The top contributing factors are identified and passed to the recommendation engine.
+\end{itemize}
+
+For Logistic Regression, coefficient-based feature importance is used as an alternative explanation mechanism, where the magnitude and sign of each coefficient indicate the feature's impact direction and strength. SHAP is preferred over alternatives such as LIME [17] due to its theoretical consistency guarantees and exact computation via TreeSHAP [8] for tree-based models.
+
+\subsection{Action Recommendation Engine}
+
+The recommendation engine implements a two-tier approach:
+
+\textbf{Tier 1 -- Risk-Level Recommendations:} Based on the predicted churn probability, customers are categorized into three risk levels with corresponding retention strategies:
+\begin{itemize}
+    \item \textbf{HIGH} ($\geq$ 70\%): Immediate intervention—personalized discounts (20--30\%), dedicated account manager assignment, re-engagement campaigns.
+    \item \textbf{MODERATE} (40--69\%): Proactive engagement—notifications, limited-time offers (10--15\%), feature highlights, feedback surveys.
+    \item \textbf{LOW} ($<$ 40\%): Standard maintenance—loyalty rewards, newsletters, continued engagement.
+\end{itemize}
+
+\textbf{Tier 2 -- Factor-Specific Recommendations:} When specific features are identified as key churn drivers through SHAP analysis, targeted actions are triggered. For example:
+\begin{itemize}
+    \item If \textit{last\_login\_days} $>$ 14: Send ``We miss you'' re-engagement email.
+    \item If \textit{payment\_failures} $>$ 0: Proactively resolve payment issues and offer alternative methods.
+    \item If \textit{tenure\_in\_months} $<$ 6: Initiate onboarding follow-up.
+    \item If \textit{watch\_time} $<$ 10: Send curated content recommendations.
+\end{itemize}
+
+This two-tier design ensures that recommendations are both strategically appropriate (based on overall risk) and tactically targeted (based on specific contributing factors).
+
+%=============================================================================
+\section{System Architecture and Implementation}
+%=============================================================================
+
+The proposed system is implemented as a modular Python application with a desktop GUI built using Tkinter. The architecture follows a clear separation between the backend ML/analytics layer and the frontend presentation layer.
+
+\subsection{Backend Modules}
+
+The backend consists of four core modules:
+
+\begin{itemize}
+    \item \textbf{Training Module} (\texttt{train\_model.py}): Handles data loading, preprocessing, model training, comparison, and serialization using joblib for model persistence.
+    \item \textbf{Prediction Module} (\texttt{predict.py}): Loads the trained model and encoders, processes input features, and returns churn probability with risk level classification.
+    \item \textbf{Explanation Module} (\texttt{explain.py}): Implements SHAP TreeExplainer for Random Forest and coefficient-based explanations for Logistic Regression, producing ranked feature contributions and natural language explanations.
+    \item \textbf{Recommendation Module} (\texttt{recommend.py}): Maps risk levels and SHAP-identified factors to business-actionable retention strategies through predefined rule sets.
+\end{itemize}
+
+\subsection{Frontend Interface}
+
+The GUI application provides seven integrated pages:
+
+\begin{enumerate}
+    \item \textbf{Dashboard:} System overview with key statistics and navigation.
+    \item \textbf{Individual Prediction:} Form-based input for single customer prediction with real-time SHAP explanation and retention recommendations.
+    \item \textbf{Batch Upload:} CSV file upload for processing multiple customers simultaneously.
+    \item \textbf{Data Results:} Tabular display of batch prediction results with filtering and export capabilities.
+    \item \textbf{Analytics:} Visual charts including churn distribution, risk level breakdown, and feature importance plots.
+    \item \textbf{Reports:} Automated PDF report generation covering individual predictions, batch summaries, executive dashboards, and detailed analytics reports using the ReportLab library.
+    \item \textbf{Settings:} Application configuration for model paths, thresholds, and display preferences.
+\end{enumerate}
+
+\subsection{Technology Stack}
+
+The system is built using the following technologies:
+\begin{itemize}
+    \item \textbf{Python 3.8+} as the primary programming language.
+    \item \textbf{scikit-learn} [9] for model training and evaluation.
+    \item \textbf{SHAP} [4] for model explainability.
+    \item \textbf{pandas} and \textbf{NumPy} for data manipulation.
+    \item \textbf{Tkinter} for the graphical user interface.
+    \item \textbf{ReportLab} for automated PDF report generation.
+    \item \textbf{joblib} for model serialization and persistence.
+\end{itemize}
+
+%=============================================================================
+\section{Results and Discussion}
+%=============================================================================
+
+\subsection{Model Comparison}
+
+Table~\ref{tab:results} presents the performance comparison of the three classifiers on the test set (1,000 samples).
+
+\begin{table}[htbp]
+\caption{Model Performance Comparison}
+\label{tab:results}
+\centering
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{AUC} \\
+\midrule
+Logistic Regression & 0.704 & 0.660 & 0.547 & 0.598 & 0.748 \\
+Naive Bayes & 0.682 & 0.639 & 0.490 & 0.555 & 0.721 \\
+\textbf{Random Forest} & \textbf{0.753} & \textbf{0.722} & \textbf{0.610} & \textbf{0.661} & \textbf{0.793} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The proposed Random Forest model outperforms both Logistic Regression and Naive Bayes across all five evaluation metrics, including accuracy, precision, recall, F1-score, and ROC-AUC. Random Forest achieves the highest performance with an accuracy of 75.3\%, precision of 72.2\%, recall of 61.0\%, F1-score of 66.1\%, and ROC-AUC of 0.793. The ROC-AUC of 0.793 indicates strong discriminative ability between churn and non-churn classes, outperforming Logistic Regression (0.748) and Naive Bayes (0.721) by significant margins. This superior performance is attributed to Random Forest's ability to capture the nonlinear feature interactions embedded in the dataset.
+
+Logistic Regression provides a competitive baseline at 70.4\% accuracy, demonstrating that some linear patterns exist in the data. Naive Bayes performs the lowest at 68.2\%, which is expected given the deliberate violation of feature independence through the interaction terms in the data generation process.
+
+The performance gap between Random Forest and Naive Bayes (7.1 percentage points in accuracy and 7.2 points in AUC) validates the presence of significant feature interactions. The relatively modest overall accuracy levels are consistent with the complexity of the churn prediction task and the approximately 40\% churn rate in the dataset, which creates a moderately challenging classification boundary.
+
+\subsection{SHAP Analysis}
+
+SHAP analysis of the Random Forest model reveals the relative importance of features in driving churn predictions. The analysis is performed at both global and local levels.
+
+At the global level, feature importance analysis indicates that \textit{login\_frequency}, \textit{last\_login\_days}, and \textit{watch\_time} emerge as the most influential predictors. These engagement-related features consistently receive the highest mean absolute SHAP values, confirming that customer engagement patterns are the strongest signals for churn prediction.
+
+At the local level, SHAP provides instance-specific explanations. For example, a customer with high churn probability ($>$ 70\%) might show:
+\begin{itemize}
+    \item \textit{login\_frequency} = 3 ($\phi = +0.18$): Very low logins strongly push toward churn.
+    \item \textit{last\_login\_days} = 28 ($\phi = +0.15$): Long absence reinforces churn risk.
+    \item \textit{payment\_failures} = 2 ($\phi = +0.12$): Payment issues signal disengagement.
+    \item \textit{tenure\_in\_months} = 4 ($\phi = +0.08$): Short tenure indicates low commitment.
+\end{itemize}
+
+These decomposed explanations enable business teams to understand the specific reasons behind each prediction and take targeted action.
+
+\subsection{Recommendation Engine Effectiveness}
+
+The recommendation engine successfully translates SHAP-identified factors into actionable strategies. For the example customer described above, the system would generate:
+
+\begin{enumerate}
+    \item \textbf{Risk Level:} HIGH (Urgent intervention required)
+    \item \textbf{General Actions:} Offer 20--30\% discount, assign dedicated account manager
+    \item \textbf{Targeted Actions:}
+    \begin{itemize}
+        \item Send personalized re-engagement content (due to low login frequency)
+        \item Resolve payment issues proactively (due to payment failures)
+        \item Initiate onboarding follow-up (due to short tenure)
+    \end{itemize}
+\end{enumerate}
+
+This demonstrates the system's ability to provide both strategic direction and tactical specificity, bridging the gap between prediction and action.
+
+\subsection{Failure Analysis}
+
+Despite achieving the best overall performance, the Random Forest model exhibits notable weaknesses. The recall of 61.0\% indicates that approximately 39\% of actual churners are misclassified as non-churners (false negatives). In a business context, these missed predictions represent customers who will churn without receiving any intervention—a costly failure mode.
+
+Analysis of misclassified instances reveals two primary failure patterns:
+\begin{enumerate}
+    \item \textbf{Borderline cases:} Customers with churn probability near 50\% (moderate engagement metrics and no extreme behavioral signals) are the most difficult to classify. These customers exhibit ambiguous feature patterns that fall near the decision boundary.
+    \item \textbf{Atypical churners:} A subset of customers who churn despite having relatively high engagement metrics (e.g., reasonable login frequency but sudden payment failures) do not match the dominant churn patterns learned by the model.
+\end{enumerate}
+
+The precision of 72.2\% also indicates that approximately 27.8\% of churn predictions are false positives—customers predicted to churn who actually remain. While false positives result in unnecessary retention spending rather than lost revenue, they highlight room for improvement in the model's discriminative ability.
+
+\subsection{Discussion}
+
+The proposed framework advances the state of the art in customer churn management by addressing three key limitations of existing approaches:
+
+\textbf{Interpretability:} Unlike black-box models that only output churn probabilities, the SHAP integration ensures that every prediction is accompanied by a transparent, feature-level explanation. This builds trust with business stakeholders and supports regulatory compliance requirements for algorithmic transparency, particularly under frameworks such as the GDPR [18].
+
+\textbf{Actionability:} The recommendation engine transforms analytical insights into concrete business actions. By combining risk-level strategies with factor-specific interventions, the system provides a practical blueprint for retention teams.
+
+\textbf{Usability:} The desktop GUI with integrated prediction, analytics, and reporting capabilities makes the system accessible to non-technical users, lowering the barrier between data science outputs and business operations.
+
+A notable observation is the trade-off between model complexity and interpretability. While Random Forest outperforms simpler models, its predictions require SHAP for interpretation, adding computational overhead. For deployment scenarios requiring real-time predictions at scale, this trade-off should be carefully considered.
+
+%=============================================================================
+\section{Conclusion and Future Work}
+%=============================================================================
+
+This paper presented an integrated system for customer churn prediction that extends beyond conventional binary classification to provide explainable insights and actionable recommendations. The proposed framework achieves three key outcomes: (1) Random Forest classification with 75.3\% accuracy and 0.793 ROC-AUC, outperforming both Logistic Regression and Naive Bayes across all evaluation metrics; (2) SHAP-based feature explanations that decompose every prediction into transparent, per-feature contributions; and (3) a two-tier recommendation engine that automatically generates risk-appropriate and factor-specific retention strategies.
+
+Unlike prior works that address prediction [1], [2], explainability [4], and action [11] as separate tasks, the main contribution of this work is the unification of all three into a seamless ``predict--explain--act'' pipeline. The comparative evaluation validates that ensemble methods capture complex feature interactions more effectively than linear or probabilistic classifiers, with Random Forest outperforming Naive Bayes by 7.1 percentage points in accuracy. The SHAP integration bridges the gap between model performance and business trust, while the recommendation engine provides practical, deployable retention strategies.
+
+The desktop application with GUI demonstrates the practical feasibility of deploying such a system in business environments, with support for individual and batch predictions, visual analytics, and automated report generation.
+
+\subsection{Limitations}
+
+This work has several limitations that should be acknowledged. First, the system is evaluated on a synthetic dataset of 5,000 customers. While the synthetic data allows for controlled experimentation with known interaction patterns, it may not fully capture the complexity and noise present in real-world customer data. Second, the Random Forest model achieves a recall of only 61.0\%, meaning a significant proportion of actual churners are missed. Third, the recommendation engine uses predefined rules rather than data-driven or learned strategies, which may not generalize optimally across different business domains. Fourth, the current system does not incorporate temporal features or sequential behavioral patterns, which may provide stronger churn signals in practice. Finally, the system has not been evaluated through A/B testing or business deployment to measure the actual impact of recommendations on customer retention rates.
+
+Future work will focus on the following directions:
+\begin{enumerate}
+    \item \textbf{Real-World Data Validation:} Evaluating the system on industry-scale datasets from telecommunications, streaming, and SaaS domains to validate generalizability.
+    \item \textbf{Advanced Models:} Incorporating gradient boosting methods (XGBoost [20], LightGBM) and deep learning architectures to improve predictive performance.
+    \item \textbf{Dynamic Recommendations:} Implementing reinforcement learning or contextual bandit approaches to learn optimal retention strategies from historical intervention outcomes.
+    \item \textbf{Temporal Analysis:} Integrating time-series features and survival analysis to predict not only whether but \textit{when} a customer will churn.
+    \item \textbf{Web Deployment:} Migrating the desktop application to a web-based platform for broader accessibility and multi-user collaboration.
+\end{enumerate}
+
+%=============================================================================
+% REFERENCES
+%=============================================================================
+
+\begin{thebibliography}{99}
+
+\bibitem{lalwani2022}
+P. Lalwani, M. K. Mishra, J. S. Chadha, and P. Sethi, ``Customer churn prediction system: A machine learning approach,'' \textit{Computing}, vol. 104, no. 2, pp. 271--294, 2022. [Online]. Available: \url{https://link.springer.com/article/10.1007/s00607-021-00908-y}
+
+\bibitem{wagh2024}
+S. K. Wagh, A. A. Andhale, N. S. Wagh, S. J. Bhatore, and R. A. Kshirsagar, ``Customer churn prediction in telecom sector using machine learning techniques,'' \textit{Results in Control and Optimization}, vol. 14, p. 100342, 2024. [Online]. Available: \url{https://www.sciencedirect.com/science/article/pii/S2666720723001443}
+
+\bibitem{manzoor2024}
+A. Manzoor, M. Qureshi, E. Kidney, and D. Liston, ``Customer churn prediction using machine learning techniques,'' \textit{IEEE Access}, vol. 12, pp. 75796--75808, 2024. [Online]. Available: \url{https://ieeexplore.ieee.org/abstract/document/10531735/}
+
+\bibitem{lundberg2017}
+S. M. Lundberg and S.-I. Lee, ``A unified approach to interpreting model predictions,'' in \textit{Advances in Neural Information Processing Systems 30 (NeurIPS)}, 2017, pp. 4765--4774. [Online]. Available: \url{https://proceedings.neurips.cc/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf}
+
+\bibitem{arrieta2020}
+A. B. Arrieta \textit{et al.}, ``Explainable artificial intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI,'' \textit{Information Fusion}, vol. 58, pp. 82--115, 2020. [Online]. Available: \url{https://doi.org/10.1016/j.inffus.2019.12.012}
+
+\bibitem{breiman2001}
+L. Breiman, ``Random forests,'' \textit{Machine Learning}, vol. 45, no. 1, pp. 5--32, 2001. [Online]. Available: \url{https://doi.org/10.1023/A:1010933404324}
+
+\bibitem{shapley1953}
+L. S. Shapley, ``A value for $n$-person games,'' in \textit{Contributions to the Theory of Games II (Annals of Mathematics Studies)}, H. W. Kuhn and A. W. Tucker, Eds. Princeton, NJ, USA: Princeton Univ. Press, 1953, pp. 307--317.
+
+\bibitem{lundberg2020}
+S. M. Lundberg \textit{et al.}, ``From local explanations to global understanding with explainable AI for trees,'' \textit{Nature Machine Intelligence}, vol. 2, no. 1, pp. 56--67, 2020. [Online]. Available: \url{https://doi.org/10.1038/s42256-019-0138-9}
+
+\bibitem{pedregosa2011}
+F. Pedregosa \textit{et al.}, ``Scikit-learn: Machine learning in Python,'' \textit{Journal of Machine Learning Research}, vol. 12, pp. 2825--2830, 2011. [Online]. Available: \url{https://jmlr.org/papers/v12/pedregosa11a.html}
+
+\bibitem{molnar2022}
+C. Molnar, \textit{Interpretable Machine Learning: A Guide for Making Black Box Models Explainable}, 2nd ed., 2022. [Online]. Available: \url{https://christophm.github.io/interpretable-ml-book/}
+
+\bibitem{decaigny2018}
+A. De Caigny, K. Coussement, and K. W. De Bock, ``A new hybrid classification algorithm for customer churn prediction based on logistic regression and decision trees,'' \textit{European Journal of Operational Research}, vol. 269, no. 2, pp. 760--772, 2018. [Online]. Available: \url{https://doi.org/10.1016/j.ejor.2018.02.009}
+
+\bibitem{verbeke2012}
+W. Verbeke, D. Martens, C. Huysmans, A. Brijs, and B. Baesens, ``Building comprehensible customer churn prediction models with advanced rule induction techniques,'' \textit{Expert Systems with Applications}, vol. 38, no. 3, pp. 2354--2364, 2012. [Online]. Available: \url{https://doi.org/10.1016/j.eswa.2010.08.023}
+
+\bibitem{vafeiadis2015}
+T. Vafeiadis, K. I. Diamantaras, G. Sarigiannidis, and K. Ch. Chatzisavvas, ``A comparison of machine learning techniques for customer churn prediction,'' \textit{Simulation Modelling Practice and Theory}, vol. 55, pp. 1--9, 2015. [Online]. Available: \url{https://doi.org/10.1016/j.simpat.2015.03.003}
+
+\bibitem{ahmad2019}
+A. K. Ahmad, A. Jafar, and K. Aljoumaa, ``Customer churn prediction in telecom using machine learning in big data platform,'' \textit{Journal of Big Data}, vol. 6, no. 1, pp. 1--24, 2019. [Online]. Available: \url{https://doi.org/10.1186/s40537-019-0191-6}
+
+\bibitem{amin2019}
+A. Amin \textit{et al.}, ``Customer churn prediction in the telecommunication sector using a rough set approach,'' \textit{Neurocomputing}, vol. 237, pp. 242--254, 2017. [Online]. Available: \url{https://doi.org/10.1016/j.neucom.2016.12.009}
+
+\bibitem{idris2012}
+A. Idris, M. Rizwan, and A. Khan, ``Churn prediction in telecom using random forest and PSO based data balancing in combination with various feature selection strategies,'' \textit{Computers and Electrical Engineering}, vol. 38, no. 6, pp. 1808--1819, 2012. [Online]. Available: \url{https://doi.org/10.1016/j.compeleceng.2012.09.001}
+
+\bibitem{ribeiro2016}
+M. T. Ribeiro, S. Singh, and C. Guestrin, ``'Why should I trust you?': Explaining the predictions of any classifier,'' in \textit{Proc. 22nd ACM SIGKDD Int. Conf. on Knowledge Discovery and Data Mining (KDD)}, 2016, pp. 1135--1144. [Online]. Available: \url{https://doi.org/10.1145/2939672.2939778}
+
+\bibitem{goodman2017}
+B. Goodman and S. Flaxman, ``European Union regulations on algorithmic decision-making and a 'right to explanation','' \textit{AI Magazine}, vol. 38, no. 3, pp. 50--57, 2017. [Online]. Available: \url{https://doi.org/10.1609/aimag.v38i3.2741}
+
+\bibitem{hastie2009}
+T. Hastie, R. Tibshirani, and J. Friedman, \textit{The Elements of Statistical Learning: Data Mining, Inference, and Prediction}, 2nd ed. New York, NY, USA: Springer, 2009. [Online]. Available: \url{https://doi.org/10.1007/978-0-387-84858-7}
+
+\bibitem{chen2016}
+T. Chen and C. Guestrin, ``XGBoost: A scalable tree boosting system,'' in \textit{Proc. 22nd ACM SIGKDD Int. Conf. on Knowledge Discovery and Data Mining (KDD)}, 2016, pp. 785--794. [Online]. Available: \url{https://doi.org/10.1145/2939672.2939785}
+
+\bibitem{burez2009}
+J. Burez and D. Van den Poel, ``Handling class imbalance in customer churn prediction,'' \textit{Expert Systems with Applications}, vol. 36, no. 3, pp. 4626--4636, 2009. [Online]. Available: \url{https://doi.org/10.1016/j.eswa.2008.05.027}
+
+\bibitem{jeyakumar2023}
+J. V. Jeyakumar, S. K. Nair, B. Sepahvand, B. Busso, K. M. Ramachandran, and M. Shahverdy, ``Explainable AI for customer churn prediction in banking and insurance: A survey,'' \textit{IEEE Access}, vol. 11, pp. 100215--100233, 2023. [Online]. Available: \url{https://doi.org/10.1109/ACCESS.2023.3314641}
+
+\end{thebibliography}
+
+\end{document}
