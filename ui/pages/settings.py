@@ -19,29 +19,41 @@ class SettingsPage(BasePage):
     
     # Available models with their info
     MODELS = {
+        'xgboost': {
+            'name': 'XGBoost',
+            'accuracy': '84.31% AUC',
+            'description': 'Best ROC-AUC & recall (90.64%) — Recommended',
+            'is_default': True
+        },
+        'gradient_boosting': {
+            'name': 'Gradient Boosting',
+            'accuracy': '84.14% AUC',
+            'description': 'Best accuracy & precision balance',
+            'is_default': False
+        },
         'random_forest': {
             'name': 'Random Forest',
-            'accuracy': '75.3%',
-            'description': 'Best overall performance - Recommended',
-            'is_default': True
+            'accuracy': '84.08% AUC',
+            'description': 'Best F1-score and recall-precision balance',
+            'is_default': False
         },
         'logistic': {
             'name': 'Logistic Regression',
-            'accuracy': '70.4%',
-            'description': 'Good interpretability, fast training',
+            'accuracy': '83.98% AUC',
+            'description': 'Fast, interpretable, strong recall with class balancing',
             'is_default': False
         },
         'naive_bayes': {
             'name': 'Naive Bayes',
-            'accuracy': '68.2%',
-            'description': 'Fast training, good baseline',
+            'accuracy': '81.27% AUC',
+            'description': 'Good recall baseline — simple probabilistic model',
             'is_default': False
         }
     }
     
     def __init__(self, parent, controller, **kwargs):
         super().__init__(parent, controller, **kwargs)
-        self.selected_model = tk.StringVar(value='random_forest')
+        self.selected_model = tk.StringVar(value='xgboost')
         self.setup_page()
     
     def setup_page(self):
@@ -87,7 +99,8 @@ class SettingsPage(BasePage):
         
         info = [
             ("Model File", "model/churn_model.pkl"),
-            ("Last Trained", "January 2026"),
+            ("Dataset", "IBM Telco Churn (7,043)"),
+            ("Last Trained", "February 2026"),
         ]
         
         for label, value in info:
@@ -331,7 +344,7 @@ class SettingsPage(BasePage):
         ).pack(anchor=tk.W)
         
         tk.Label(
-            content, text="Version 1.0.0",
+            content, text="Version 3.0.0  — SMOTE + XGBoost Enhanced Pipeline",
             font=FONTS['small'],
             bg=COLORS['bg_card'],
             fg=COLORS['text_muted']
@@ -362,9 +375,11 @@ class SettingsPage(BasePage):
         ).pack(anchor=tk.W)
         
         algorithms = [
-            ("⭐ Random Forest", "75.3% accuracy - Selected"),
-            ("   Logistic Regression", "70.4% accuracy"),
-            ("   Naive Bayes", "68.2% accuracy"),
+            ("⭐ XGBoost + SMOTE", "84.31% AUC - Selected"),
+            ("   Gradient Boosting", "84.14% AUC"),
+            ("   Random Forest", "84.08% AUC"),
+            ("   Logistic Regression", "83.98% AUC"),
+            ("   Naive Bayes", "81.27% AUC"),
         ]
         
         for algo, detail in algorithms:
