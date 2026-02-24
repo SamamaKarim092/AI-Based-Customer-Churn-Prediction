@@ -363,9 +363,21 @@ Click 'Generate & Save PDF' to create the report.
             sys.path.insert(0, ui_dir)
             from report_generator import ChurnReportGenerator
             
+            # Correct model info (XGBoost - best model by ROC-AUC)
+            model_info = {
+                'name': 'XGBoost',
+                'accuracy': 68.35,
+                'precision': 45.20,
+                'recall': 90.64,
+                'f1_score': 60.32,
+                'roc_auc': 84.31,
+                'roi': 132000,
+            }
+            
             # Create generator with settings
             generator = ChurnReportGenerator(
-                data, 
+                data,
+                model_info=model_info,
                 include_charts=self.include_charts.get(),
                 include_recommendations=self.include_recommendations.get()
             )
