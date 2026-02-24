@@ -247,11 +247,13 @@ class UploadPage(BasePage):
         
         df = self.uploaded_file['data'].copy()
         
-        # Required columns for prediction
+        # Required columns for prediction (Telco Customer Churn features)
         required_columns = [
-            'age', 'gender', 'subscription_type', 'monthly_charges', 
-            'tenure_in_months', 'login_frequency', 'last_login_days', 
-            'watch_time', 'payment_failures', 'customer_support_calls'
+            'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure',
+            'PhoneService', 'MultipleLines', 'InternetService',
+            'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
+            'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling',
+            'PaymentMethod', 'MonthlyCharges', 'TotalCharges'
         ]
         
         # Check if all required columns exist
@@ -275,17 +277,31 @@ class UploadPage(BasePage):
             # Process each row
             total_rows = len(df)
             for idx, row in df.iterrows():
+                # Handle SeniorCitizen which may be int (0/1) or string (Yes/No)
+                senior = row['SeniorCitizen']
+                if isinstance(senior, str):
+                    senior = 1 if senior == 'Yes' else 0
+                
                 customer_data = {
-                    'age': row['age'],
                     'gender': row['gender'],
-                    'subscription_type': row['subscription_type'],
-                    'monthly_charges': row['monthly_charges'],
-                    'tenure_in_months': row['tenure_in_months'],
-                    'login_frequency': row['login_frequency'],
-                    'last_login_days': row['last_login_days'],
-                    'watch_time': row['watch_time'],
-                    'payment_failures': row['payment_failures'],
-                    'customer_support_calls': row['customer_support_calls']
+                    'SeniorCitizen': int(senior),
+                    'Partner': row['Partner'],
+                    'Dependents': row['Dependents'],
+                    'tenure': int(row['tenure']),
+                    'PhoneService': row['PhoneService'],
+                    'MultipleLines': row['MultipleLines'],
+                    'InternetService': row['InternetService'],
+                    'OnlineSecurity': row['OnlineSecurity'],
+                    'OnlineBackup': row['OnlineBackup'],
+                    'DeviceProtection': row['DeviceProtection'],
+                    'TechSupport': row['TechSupport'],
+                    'StreamingTV': row['StreamingTV'],
+                    'StreamingMovies': row['StreamingMovies'],
+                    'Contract': row['Contract'],
+                    'PaperlessBilling': row['PaperlessBilling'],
+                    'PaymentMethod': row['PaymentMethod'],
+                    'MonthlyCharges': float(row['MonthlyCharges']),
+                    'TotalCharges': float(row['TotalCharges']) if str(row['TotalCharges']).strip() else float(row['MonthlyCharges']) * int(row['tenure'])
                 }
                 
                 result = predict_churn(customer_data, model, encoders, feature_names)

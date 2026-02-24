@@ -17,6 +17,10 @@ from components.widgets import ModernButton
 class UploadResultPage(BasePage):
     """Page for displaying batch prediction results with filtering."""
     
+    # ROI Constants (De Caigny et al., 2018 profit-driven framework)
+    CLV_BENEFIT = 450   # $ saved per correctly retained churner
+    CAMPAIGN_COST = 50  # $ spent per retention campaign (false alarm cost)
+    
     def __init__(self, parent, controller, **kwargs):
         super().__init__(parent, controller, **kwargs)
         self.result_data = None
@@ -75,6 +79,14 @@ class UploadResultPage(BasePage):
             justify=tk.CENTER
         )
         self.no_data_label.pack(pady=20)
+        
+        # ROI Business Impact section
+        self.roi_card = tk.Frame(self.main_frame, bg=COLORS['bg_card'])
+        self.roi_card.pack(fill=tk.X, pady=(0, 15))
+        self.roi_card.pack_forget()  # Hidden until results are loaded
+        
+        self.roi_content = tk.Frame(self.roi_card, bg=COLORS['bg_card'])
+        self.roi_content.pack(fill=tk.X, padx=20, pady=15)
         
         # Results table section
         self.table_card = tk.Frame(self.main_frame, bg=COLORS['bg_card'])
@@ -188,6 +200,9 @@ class UploadResultPage(BasePage):
         # Update table with ALL data
         self.create_results_table(df)
         
+        # Build ROI Business Impact card
+        self._build_roi_card(high_risk, moderate_risk)
+        
         # Enable export button
         self.export_btn.config(state=tk.NORMAL)
     
@@ -240,6 +255,150 @@ class UploadResultPage(BasePage):
             'value': value_widget,
             'color': color
         }
+    
+    def _build_roi_card(self, high_risk, moderate_risk):
+        """Build the ROI Business Impact card."""
+        # Clear previous content
+        for widget in self.roi_content.winfo_children():
+            widget.destroy()
+        
+        # Show the card
+        self.roi_card.pack(fill=tk.X, pady=(0, 15))
+        # Re-order: make sure it appears after summary_card and before table_card
+        self.roi_card.pack_configure(after=self.summary_card)
+        
+        # Title row
+        title_row = tk.Frame(self.roi_content, bg=COLORS['bg_card'])
+        title_row.pack(fill=tk.X, pady=(0, 10))
+        
+        tk.Label(
+            title_row, text="💰  ROI Business Impact",
+            font=FONTS['subheading'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['success']
+        ).pack(side=tk.LEFT)
+        
+        tk.Label(
+            title_row, text="De Caigny et al. (2018) profit-driven framework",
+            font=FONTS['small'],
+            bg=COLORS['bg_card'],
+            fg=COLORS['text_muted']
+        ).pack(side=tk.RIGHT)
+        
+        # ROI calculation
+        high_profit = high_risk * (self.CLV_BENEFIT - self.CAMPAIGN_COST)
+        mod_profit = moderate_risk * (self.CLV_BENEFIT - self.CAMPAIGN_COST)
+        total_profit = high_profit + mod_profit
+        total_campaign_cost = (high_risk + moderate_risk) * self.CAMPAIGN_COST
+        total_clv_saved = (high_risk + moderate_risk) * self.CLV_BENEFIT
+        
+        # Cards row
+        cards_row = tk.Frame(self.roi_content, bg=COLORS['bg_card'])
+        cards_row.pack(fill=tk.X, pady=(0, 10))
+        
+        # Total ROI card (big, prominent)
+        total_card = tk.Frame(cards_row, bg=COLORS['bg_light'], padx=20, pady=12)
+        total_card.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=(0, 8))
+        
+        tk.Label(
+            total_card, text="🏆 Total Potential Profit",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_muted']
+        ).pack()
+        
+        tk.Label(
+            total_card, text=f"${total_profit:,}",
+            font=('Segoe UI', 28, 'bold'),
+            bg=COLORS['bg_light'],
+            fg=COLORS['success']
+        ).pack()
+        
+        tk.Label(
+            total_card, text=f"if all {high_risk + moderate_risk} at-risk customers are retained",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_muted']
+        ).pack()
+        
+        # High Risk ROI card
+        high_card = tk.Frame(cards_row, bg=COLORS['bg_light'], padx=15, pady=12)
+        high_card.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=4)
+        
+        tk.Label(
+            high_card, text="🔴 High Risk Customers",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['danger']
+        ).pack()
+        
+        tk.Label(
+            high_card, text=f"${high_profit:,}",
+            font=('Segoe UI', 22, 'bold'),
+            bg=COLORS['bg_light'],
+            fg=COLORS['danger']
+        ).pack()
+        
+        tk.Label(
+            high_card, text=f"{high_risk} customers × ${self.CLV_BENEFIT - self.CAMPAIGN_COST} net",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_muted']
+        ).pack()
+        
+        # Moderate Risk ROI card
+        mod_card = tk.Frame(cards_row, bg=COLORS['bg_light'], padx=15, pady=12)
+        mod_card.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=4)
+        
+        tk.Label(
+            mod_card, text="🟡 Moderate Risk Customers",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['warning']
+        ).pack()
+        
+        tk.Label(
+            mod_card, text=f"${mod_profit:,}",
+            font=('Segoe UI', 22, 'bold'),
+            bg=COLORS['bg_light'],
+            fg=COLORS['warning']
+        ).pack()
+        
+        tk.Label(
+            mod_card, text=f"{moderate_risk} customers × ${self.CLV_BENEFIT - self.CAMPAIGN_COST} net",
+            font=FONTS['small'],
+            bg=COLORS['bg_light'],
+            fg=COLORS['text_muted']
+        ).pack()
+        
+        # Formula breakdown row
+        formula_frame = tk.Frame(self.roi_content, bg=COLORS['bg_light'], padx=15, pady=10)
+        formula_frame.pack(fill=tk.X)
+        
+        formula_parts = [
+            ("CLV Saved:", f"${total_clv_saved:,}", COLORS['success']),
+            ("Campaign Cost:", f"-${total_campaign_cost:,}", COLORS['danger']),
+            ("Net Profit:", f"${total_profit:,}", COLORS['success']),
+            ("Formula:", f"ROI = ({high_risk + moderate_risk} × ${self.CLV_BENEFIT}) − ({high_risk + moderate_risk} × ${self.CAMPAIGN_COST})", COLORS['text_secondary']),
+        ]
+        
+        for label_text, value_text, color in formula_parts:
+            part = tk.Frame(formula_frame, bg=COLORS['bg_light'])
+            part.pack(side=tk.LEFT, expand=True, padx=5)
+            
+            tk.Label(
+                part, text=label_text,
+                font=FONTS['small'],
+                bg=COLORS['bg_light'],
+                fg=COLORS['text_muted']
+            ).pack(side=tk.LEFT, padx=(0, 5))
+            
+            tk.Label(
+                part, text=value_text,
+                font=('Segoe UI', 10, 'bold'),
+                bg=COLORS['bg_light'],
+                fg=color
+            ).pack(side=tk.LEFT)
     
     def highlight_selected_card(self, filter_key):
         """Highlight the selected filter card."""
@@ -295,12 +454,14 @@ class UploadResultPage(BasePage):
         for col in columns:
             self.tree.heading(col, text=col)
             # Adjust width based on column name
-            if col in ['customer_id', 'age', 'churn']:
-                width = 80
+            if col in ['customerID', 'gender', 'SeniorCitizen']:
+                width = 90
             elif col in ['prediction', 'risk_level']:
                 width = 100
             elif col == 'churn_probability_%':
                 width = 130
+            elif col in ['MonthlyCharges', 'TotalCharges', 'PaymentMethod']:
+                width = 120
             else:
                 width = 95
             self.tree.column(col, width=width, anchor=tk.CENTER)
