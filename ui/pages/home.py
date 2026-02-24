@@ -64,10 +64,10 @@ class HomePage(BasePage):
         stats_frame.pack(fill=tk.X, pady=(0, 0))
         
         stat_cards_data = [
-            ("📊 Total Customers", "5,000", "In training dataset", COLORS['accent']),
-            ("⚠️ Churn Rate", "40%", "Historical average", COLORS['warning']),
-            ("🎯 Model Accuracy", "75.3%", "Random Forest", COLORS['success']),
-            ("🔴 High Risk", "~2,000", "Need immediate attention", COLORS['danger']),
+            ("📊 Total Customers", "7,043", "IBM Telco Churn Dataset", COLORS['accent']),
+            ("⚠️ Churn Rate", "26.5%", "1,869 churners identified", COLORS['warning']),
+            ("🎯 Best ROC-AUC", "84.31%", "XGBoost + SMOTE", COLORS['success']),
+            ("🔴 High Risk", "~1,869", "Need immediate attention", COLORS['danger']),
         ]
         
         for i, (title, value, subtitle, color) in enumerate(stat_cards_data):
@@ -204,12 +204,12 @@ class HomePage(BasePage):
         dist_frame.pack(fill=tk.X)
         dist_frame.pack_propagate(False)
         
-        # Risk segments (approximate from 30% churn rate)
-        # High: ~15%, Moderate: ~17.5%, Low: ~67.5%
+        # Risk segments (based on ~26.5% churn rate from Telco dataset)
+        # High: ~12%, Moderate: ~15%, Low: ~73%
         segments = [
-            (0.15, COLORS['danger'], "High 15%"),
-            (0.175, COLORS['warning'], "Med 17.5%"),
-            (0.675, COLORS['success'], "Low 67.5%"),
+            (0.12, COLORS['danger'], "High 12%"),
+            (0.15, COLORS['warning'], "Med 15%"),
+            (0.73, COLORS['success'], "Low 73%"),
         ]
         
         x_pos = 0
@@ -231,9 +231,9 @@ class HomePage(BasePage):
         legend_frame.pack(fill=tk.X, pady=(15, 0))
         
         legends = [
-            ("🔴 High Risk", "750 customers", COLORS['danger']),
-            ("🟡 Moderate Risk", "875 customers", COLORS['warning']),
-            ("🟢 Low Risk", "3,375 customers", COLORS['success']),
+            ("🔴 High Risk", "~845 customers", COLORS['danger']),
+            ("🟡 Moderate Risk", "~1,056 customers", COLORS['warning']),
+            ("🟢 Low Risk", "~5,142 customers", COLORS['success']),
         ]
         
         for label, count, color in legends:
@@ -259,9 +259,9 @@ class HomePage(BasePage):
         metrics_frame.pack(fill=tk.X, pady=(15, 0))
         
         metrics = [
-            ("Avg. Churn Probability", "40%"),
-            ("Predicted Churners", "~2,000"),
-            ("Retention Opportunity", "$21,500/mo"),
+            ("Avg. Churn Probability", "26.5%"),
+            ("Predicted Churners", "~1,869"),
+            ("Retention Opportunity", "$135,000/mo"),
         ]
         
         for label, value in metrics:
@@ -311,10 +311,10 @@ class HomePage(BasePage):
         
         # Model info grid
         info = [
-            ("Algorithm", "Random Forest", COLORS['accent']),
-            ("Accuracy", "75.3%", COLORS['success']),
-            ("Precision", "72.2%", COLORS['success']),
-            ("Last Trained", "January 2026", COLORS['text_secondary']),
+            ("Algorithm", "XGBoost + SMOTE", COLORS['accent']),
+            ("Recall", "90.64%", COLORS['success']),
+            ("ROC-AUC", "0.8431", COLORS['success']),
+            ("Dataset", "IBM Telco (7,043)", COLORS['text_secondary']),
         ]
         
         for label, value, color in info:
@@ -353,10 +353,10 @@ class HomePage(BasePage):
         content.pack(fill=tk.X, padx=20, pady=(0, 15))
         
         insights = [
-            ("📅 Last Login", "Most important churn predictor", COLORS['danger']),
-            ("💳 Payment Failures", "Strong churn indicator", COLORS['warning']),
-            ("📱 Login Frequency", "Lower = Higher risk", COLORS['warning']),
-            ("⏱️ New Customers", "Higher churn tendency", COLORS['accent']),
+            ("📋 Contract Type", "#1 churn predictor — month-to-month is high risk", COLORS['danger']),
+            ("💳 Payment Method", "Electronic check users churn significantly more", COLORS['warning']),
+            ("🌐 Fiber Optic", "Fiber optic users churn more than DSL", COLORS['warning']),
+            ("🔒 Add-on Services", "No security/support = higher churn risk", COLORS['accent']),
         ]
         
         for icon_text, insight, color in insights:
