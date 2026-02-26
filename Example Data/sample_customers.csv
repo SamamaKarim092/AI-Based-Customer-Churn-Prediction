@@ -1,521 +1,544 @@
-customer_id,age,gender,subscription_type,monthly_charges,tenure_in_months,login_frequency,last_login_days,watch_time,payment_failures,customer_support_calls,churn
-5001,56,Female,Basic,34.47,16,15,36,22.0,1,2,0
-5002,69,Male,Standard,16.73,12,28,57,13.2,0,2,0
-5003,46,Male,Basic,16.71,17,16,36,85.7,0,4,0
-5004,32,Female,Basic,26.11,16,14,41,57.5,0,2,0
-5005,60,Male,Premium,27.79,12,12,59,7.6,0,1,1
-5006,25,Male,Standard,27.4,8,28,36,38.3,1,2,0
-5007,38,Female,Standard,12.74,3,13,34,36.8,2,0,0
-5008,56,Female,Basic,36.32,16,8,22,18.2,0,6,1
-5009,36,Male,Basic,17.97,30,9,5,43.6,1,2,1
-5010,40,Male,Basic,13.89,23,25,3,33.2,0,3,0
-5011,28,Male,Basic,36.66,5,12,17,34.2,0,0,0
-5012,28,Female,Basic,38.67,65,27,59,73.9,0,4,0
-5013,41,Female,Basic,35.86,30,13,8,22.3,0,3,0
-5014,70,Female,Basic,34.29,21,19,48,64.2,0,1,0
-5015,53,Female,Basic,29.66,70,19,28,57.1,0,6,0
-5016,57,Male,Standard,26.53,22,20,12,56.8,0,1,0
-5017,41,Female,Basic,12.61,72,18,58,66.3,0,6,0
-5018,20,Female,Basic,22.25,32,12,46,54.8,1,6,0
-5019,39,Female,Standard,21.18,33,22,51,87.9,0,1,0
-5020,70,Female,Standard,17.79,16,14,16,67.6,3,3,0
-5021,19,Female,Basic,31.7,38,24,44,54.7,0,3,0
-5022,41,Male,Premium,24.88,14,10,31,83.0,1,6,0
-5023,61,Male,Standard,12.43,36,16,47,60.6,2,3,0
-5024,47,Female,Basic,16.61,23,6,21,29.1,1,6,0
-5025,55,Male,Premium,30.5,66,11,3,20.7,0,6,0
-5026,19,Female,Premium,12.28,2,20,4,15.2,1,0,0
-5027,38,Female,Basic,35.54,65,7,36,89.9,0,5,0
-5028,50,Male,Basic,24.85,67,17,40,71.0,0,0,1
-5029,29,Male,Premium,24.42,52,7,48,93.7,0,1,1
-5030,39,Female,Standard,27.77,62,22,12,60.3,0,5,0
-5031,61,Female,Basic,34.74,23,15,33,47.3,0,2,0
-5032,42,Female,Basic,20.43,26,12,44,6.0,2,1,0
-5033,66,Male,Basic,30.34,68,10,21,67.2,1,4,0
-5034,44,Female,Standard,26.97,55,5,52,58.2,0,0,0
-5035,59,Female,Standard,18.01,6,5,58,99.0,2,3,1
-5036,45,Female,Basic,36.36,35,27,22,23.9,0,0,0
-5037,33,Male,Standard,33.92,22,12,50,53.1,3,3,0
-5038,32,Female,Standard,29.75,43,9,2,65.1,0,5,1
-5039,64,Female,Basic,35.52,15,20,41,64.5,0,4,1
-5040,68,Male,Basic,36.02,60,15,33,56.1,1,5,1
-5041,61,Female,Standard,31.25,12,9,31,77.7,1,4,0
-5042,69,Female,Premium,35.11,49,8,44,20.5,1,0,0
-5043,20,Male,Standard,30.92,42,10,50,72.6,3,3,0
-5044,54,Female,Standard,30.4,38,18,57,62.0,1,5,0
-5045,68,Male,Basic,28.56,45,26,48,89.6,1,4,0
-5046,24,Male,Standard,32.58,35,23,20,84.7,2,6,0
-5047,38,Female,Standard,14.76,30,13,45,31.5,1,1,1
-5048,26,Female,Basic,36.43,30,16,43,27.6,0,1,0
-5049,56,Female,Basic,36.16,6,15,20,98.2,2,5,0
-5050,35,Female,Basic,10.88,67,18,43,52.7,0,3,0
-5051,21,Male,Basic,34.77,7,27,10,90.6,1,6,0
-5052,42,Female,Basic,13.87,52,20,38,16.4,2,5,0
-5053,31,Male,Basic,20.05,14,5,3,64.3,1,0,0
-5054,67,Female,Basic,32.31,15,17,50,81.0,1,4,0
-5055,26,Female,Basic,14.82,21,27,0,94.7,1,0,1
-5056,43,Female,Premium,34.54,35,25,27,33.7,0,1,0
-5057,70,Male,Standard,34.96,66,25,23,72.5,2,4,1
-5058,19,Female,Standard,25.22,2,17,34,53.9,0,5,0
-5059,37,Female,Premium,10.19,35,6,12,6.1,0,0,0
-5060,45,Female,Standard,18.61,20,8,46,69.0,0,2,0
-5061,64,Female,Basic,28.51,10,10,33,69.0,0,3,0
-5062,24,Male,Standard,39.44,25,27,10,93.1,0,6,0
-5063,61,Female,Standard,28.95,66,9,35,49.7,1,6,0
-5064,25,Male,Standard,17.79,25,29,50,23.0,0,3,1
-5065,64,Male,Standard,29.02,54,7,16,4.5,0,2,1
-5066,52,Male,Basic,26.2,33,5,34,41.6,0,1,0
-5067,31,Male,Basic,33.4,36,8,59,30.2,0,4,1
-5068,34,Male,Basic,13.21,14,29,17,76.1,1,3,0
-5069,53,Male,Standard,32.83,65,24,39,35.4,0,2,1
-5070,67,Female,Standard,26.24,54,6,21,94.9,0,5,0
-5071,57,Male,Basic,38.89,52,9,56,96.2,0,6,0
-5072,21,Male,Premium,20.26,3,7,23,62.1,0,2,1
-5073,19,Male,Standard,28.98,41,13,57,92.9,0,1,0
-5074,23,Female,Basic,37.96,6,24,18,76.1,0,1,1
-5075,59,Female,Basic,13.08,25,10,36,54.7,1,0,0
-5076,21,Male,Basic,38.12,13,22,38,18.0,1,3,0
-5077,46,Female,Basic,30.64,8,10,20,45.9,0,0,0
-5078,35,Male,Basic,12.04,21,23,7,56.1,3,6,0
-5079,43,Male,Basic,19.03,68,16,27,86.4,0,2,0
-5080,61,Female,Basic,31.25,25,29,4,48.1,0,4,1
-5081,51,Male,Basic,12.02,68,15,16,89.8,3,4,0
-5082,27,Female,Premium,27.47,45,6,36,67.4,0,1,1
-5083,53,Female,Basic,20.38,60,19,35,13.7,2,4,1
-5084,31,Male,Standard,28.63,12,16,53,99.5,0,4,0
-5085,48,Male,Standard,11.37,32,16,18,52.7,0,6,1
-5086,65,Female,Premium,36.15,13,13,26,39.2,0,4,1
-5087,32,Male,Basic,39.2,31,25,52,65.9,1,2,1
-5088,25,Male,Basic,39.07,20,28,33,10.9,1,4,1
-5089,31,Male,Premium,32.49,18,6,10,63.7,1,5,1
-5090,40,Female,Premium,13.9,60,26,53,49.8,0,4,0
-5091,57,Female,Premium,32.75,63,7,44,40.7,0,4,0
-5092,38,Male,Basic,10.74,6,16,46,95.3,0,0,1
-5093,33,Female,Basic,10.66,32,20,11,52.3,0,2,0
-5094,62,Female,Standard,19.71,43,25,53,21.9,2,1,0
-5095,35,Female,Premium,24.66,2,28,20,45.9,0,0,0
-5096,64,Female,Standard,33.11,60,5,53,91.9,1,3,1
-5097,70,Female,Standard,30.5,23,25,10,17.6,1,2,0
-5098,41,Male,Basic,23.38,31,7,38,21.4,0,5,1
-5099,43,Male,Premium,18.21,5,24,27,1.3,1,2,0
-5100,42,Male,Basic,39.91,34,6,4,1.4,0,3,0
-5101,62,Female,Basic,22.79,10,13,16,82.9,0,3,0
-5102,58,Female,Standard,23.54,2,23,55,73.2,0,3,0
-5103,46,Male,Standard,14.91,11,19,19,35.5,0,6,0
-5104,32,Female,Basic,33.84,50,22,40,69.8,0,1,1
-5105,62,Male,Basic,30.81,31,15,45,39.5,0,4,1
-5106,18,Male,Standard,16.62,56,29,57,95.3,0,2,0
-5107,42,Male,Basic,12.47,9,27,11,96.7,0,6,0
-5108,24,Female,Standard,30.41,21,20,5,39.3,1,4,1
-5109,26,Female,Basic,29.64,28,26,16,85.4,1,4,1
-5110,41,Male,Standard,18.2,62,21,50,77.3,0,5,0
-5111,18,Male,Standard,38.53,7,9,18,31.0,0,3,0
-5112,61,Male,Basic,14.53,16,16,25,23.2,1,1,0
-5113,25,Male,Basic,22.97,4,15,47,45.8,0,5,1
-5114,41,Female,Basic,38.31,4,19,43,78.1,1,0,0
-5115,28,Female,Basic,22.59,40,7,43,96.0,0,6,0
-5116,68,Male,Premium,29.16,17,5,51,76.4,0,6,0
-5117,34,Male,Basic,21.93,52,24,31,85.5,0,1,1
-5118,25,Female,Premium,18.23,52,20,5,60.3,0,4,0
-5119,52,Female,Basic,39.52,36,6,54,83.5,1,6,0
-5120,52,Male,Standard,22.28,38,6,57,78.4,0,1,0
-5121,50,Male,Premium,36.82,50,7,35,37.7,1,6,0
-5122,22,Male,Standard,16.9,63,12,37,55.2,2,6,0
-5123,59,Female,Standard,16.39,63,28,10,80.5,0,3,1
-5124,56,Female,Standard,10.93,62,19,32,4.6,1,0,1
-5125,58,Female,Basic,29.55,7,11,23,80.8,0,3,1
-5126,45,Male,Premium,21.06,27,10,22,17.8,0,0,1
-5127,24,Male,Premium,35.93,14,13,14,51.5,1,6,0
-5128,26,Female,Premium,24.2,71,24,26,80.8,0,5,1
-5129,25,Female,Basic,39.05,5,5,10,25.4,0,4,0
-5130,29,Male,Standard,15.57,55,12,56,24.6,0,6,0
-5131,51,Female,Premium,36.06,2,27,50,40.3,0,0,1
-5132,50,Female,Basic,33.3,62,27,49,89.5,2,0,0
-5133,65,Male,Basic,33.13,21,7,16,0.0,2,0,0
-5134,40,Female,Standard,35.34,21,8,50,90.1,1,6,0
-5135,41,Male,Standard,32.83,10,29,52,15.4,1,1,0
-5136,54,Male,Premium,28.79,58,19,13,99.0,0,5,0
-5137,52,Male,Basic,13.94,39,10,26,95.5,0,1,1
-5138,61,Male,Premium,10.98,5,19,17,49.5,0,4,1
-5139,57,Male,Basic,37.63,65,25,27,51.3,0,6,0
-5140,39,Male,Basic,28.5,13,7,50,48.2,0,0,0
-5141,44,Male,Basic,33.9,53,29,46,63.5,3,5,0
-5142,52,Female,Premium,24.45,45,25,46,9.1,0,5,1
-5143,18,Male,Standard,13.52,32,25,3,3.3,0,2,0
-5144,52,Male,Standard,13.76,36,18,6,5.8,0,4,0
-5145,54,Female,Basic,30.57,60,24,44,44.4,1,5,0
-5146,64,Female,Premium,22.91,11,18,34,27.6,1,6,0
-5147,31,Female,Basic,16.02,63,8,47,62.2,0,0,0
-5148,20,Male,Premium,24.75,21,16,8,99.2,0,0,1
-5149,18,Female,Standard,11.93,52,21,7,38.6,1,5,0
-5150,22,Male,Basic,27.46,55,11,51,57.4,0,1,0
-5151,43,Male,Standard,18.07,26,13,44,41.6,0,4,0
-5152,31,Male,Basic,33.93,68,7,16,84.7,1,0,1
-5153,56,Male,Standard,19.31,34,17,16,90.2,1,5,0
-5154,44,Female,Standard,23.66,52,19,48,87.7,0,0,0
-5155,26,Female,Basic,10.35,52,22,32,97.4,1,5,0
-5156,32,Male,Premium,12.17,29,23,31,2.8,1,4,0
-5157,32,Male,Basic,21.77,38,5,7,84.0,0,5,1
-5158,43,Male,Standard,24.4,42,10,18,75.2,3,2,0
-5159,59,Female,Premium,28.0,21,27,37,22.9,1,5,1
-5160,30,Male,Standard,18.75,42,6,2,95.6,1,5,0
-5161,68,Male,Basic,30.85,13,28,58,14.8,1,6,1
-5162,49,Female,Premium,35.8,64,18,4,68.0,0,4,0
-5163,56,Female,Standard,33.4,17,10,12,22.5,0,6,1
-5164,66,Male,Basic,11.19,9,18,46,43.1,0,5,0
-5165,69,Female,Basic,24.42,41,8,45,71.9,0,4,0
-5166,49,Female,Premium,13.15,1,25,30,56.3,0,2,1
-5167,21,Male,Standard,17.26,2,12,54,42.8,2,4,0
-5168,47,Female,Standard,39.6,60,7,15,32.6,1,0,0
-5169,54,Male,Premium,14.27,48,23,49,84.0,1,6,0
-5170,40,Female,Premium,24.97,29,18,31,14.4,2,4,0
-5171,56,Male,Basic,28.54,10,24,21,43.0,1,2,0
-5172,62,Male,Basic,31.07,58,21,28,90.4,0,3,0
-5173,32,Male,Basic,26.79,60,29,21,84.6,0,5,0
-5174,60,Female,Standard,10.29,21,12,42,40.1,0,4,1
-5175,46,Male,Basic,19.79,28,28,2,76.3,1,5,0
-5176,53,Female,Standard,25.53,34,18,53,82.3,0,1,1
-5177,30,Male,Premium,12.64,8,10,9,88.9,1,0,1
-5178,49,Male,Premium,20.52,59,27,41,54.5,0,6,0
-5179,24,Female,Basic,11.0,72,26,20,20.4,1,0,0
-5180,68,Male,Premium,12.36,49,20,15,25.5,1,1,0
-5181,39,Male,Basic,21.91,17,29,11,29.6,1,1,0
-5182,45,Female,Premium,13.98,60,23,1,59.4,3,6,1
-5183,19,Male,Basic,27.03,45,18,40,3.3,1,4,0
-5184,59,Male,Basic,30.68,69,23,23,63.6,2,1,0
-5185,62,Male,Premium,34.02,32,7,34,36.4,2,3,0
-5186,70,Male,Basic,16.0,44,14,55,29.5,1,5,0
-5187,23,Female,Basic,15.02,65,23,29,87.9,1,5,0
-5188,45,Female,Standard,13.14,8,13,56,46.0,0,2,0
-5189,45,Male,Standard,29.09,72,24,29,9.5,0,1,1
-5190,61,Female,Standard,31.19,43,17,46,82.7,0,1,0
-5191,61,Male,Standard,10.95,1,11,34,4.8,0,3,0
-5192,37,Female,Standard,38.09,51,18,18,72.7,0,0,1
-5193,47,Male,Basic,11.56,24,13,49,77.4,3,0,0
-5194,28,Male,Basic,26.24,24,27,7,35.3,2,5,1
-5195,45,Male,Basic,31.27,17,29,25,82.5,1,5,1
-5196,42,Male,Premium,36.13,5,23,48,51.6,0,4,1
-5197,56,Male,Standard,31.42,20,19,39,46.3,0,6,1
-5198,50,Male,Standard,34.05,21,24,6,4.5,0,3,0
-5199,18,Female,Standard,20.18,58,18,29,29.0,0,6,1
-5200,44,Male,Premium,34.44,31,28,6,93.1,0,6,0
-5201,69,Female,Basic,12.4,11,10,2,39.2,0,2,1
-5202,30,Male,Standard,36.84,52,25,0,54.7,2,6,1
-5203,58,Female,Standard,26.43,15,8,35,53.2,1,2,1
-5204,20,Female,Standard,34.52,7,12,24,59.0,0,6,1
-5205,56,Female,Basic,23.57,28,21,36,6.1,0,3,0
-5206,23,Male,Premium,29.31,51,13,0,36.2,0,2,1
-5207,25,Male,Premium,25.79,58,5,14,72.3,0,0,0
-5208,44,Female,Standard,31.95,5,28,36,20.1,2,2,1
-5209,26,Male,Standard,12.45,5,24,12,20.4,0,2,0
-5210,54,Female,Premium,11.81,8,29,39,1.0,0,3,0
-5211,50,Male,Standard,17.41,64,18,7,43.7,0,3,0
-5212,68,Female,Basic,14.79,10,15,4,88.3,0,2,0
-5213,59,Female,Standard,36.15,38,25,59,5.2,1,1,1
-5214,61,Male,Standard,16.58,8,7,8,19.1,1,3,0
-5215,41,Female,Standard,39.28,25,13,0,31.0,1,4,0
-5216,32,Male,Standard,20.11,66,18,35,73.2,0,4,0
-5217,49,Female,Premium,15.46,50,13,34,64.1,0,0,1
-5218,49,Female,Premium,33.69,67,8,1,41.6,0,6,0
-5219,41,Male,Standard,29.76,49,8,39,75.9,2,2,0
-5220,58,Male,Basic,24.95,36,12,22,61.0,0,1,0
-5221,69,Male,Premium,26.66,68,6,8,89.6,0,0,0
-5222,66,Female,Premium,31.58,41,13,33,81.8,1,2,0
-5223,66,Male,Basic,16.85,62,18,45,25.3,1,3,0
-5224,69,Female,Premium,39.89,10,26,13,27.1,0,4,0
-5225,29,Female,Premium,39.24,21,13,3,12.5,0,5,1
-5226,56,Male,Standard,29.51,36,28,29,33.7,0,1,1
-5227,19,Male,Standard,15.99,12,27,30,100.0,2,5,0
-5228,20,Female,Basic,30.41,2,20,37,40.6,0,4,1
-5229,66,Female,Basic,12.17,13,21,10,22.0,2,6,0
-5230,54,Male,Basic,10.92,53,20,34,76.2,0,6,0
-5231,66,Male,Premium,17.73,32,16,7,54.2,2,5,0
-5232,34,Male,Basic,23.88,16,7,2,15.0,1,3,0
-5233,66,Male,Basic,36.05,32,15,13,38.1,0,2,0
-5234,19,Male,Basic,31.82,32,18,59,41.4,2,3,0
-5235,19,Female,Standard,32.28,11,22,12,75.4,0,5,0
-5236,45,Female,Premium,22.76,10,25,44,2.1,2,3,1
-5237,40,Female,Basic,20.38,15,25,31,26.9,1,4,0
-5238,54,Female,Basic,21.13,17,9,33,51.8,0,1,0
-5239,49,Male,Standard,39.63,40,20,44,26.9,1,3,0
-5240,50,Male,Standard,11.2,18,24,18,62.8,3,4,0
-5241,18,Male,Basic,36.01,55,9,58,48.2,0,1,0
-5242,36,Female,Standard,27.36,25,7,37,36.2,0,6,0
-5243,19,Female,Basic,23.16,59,16,15,94.9,1,2,1
-5244,70,Male,Basic,31.76,22,5,1,63.2,1,5,0
-5245,61,Male,Standard,24.6,30,25,39,13.0,0,6,0
-5246,43,Female,Standard,36.2,44,13,16,56.0,0,2,0
-5247,49,Female,Premium,37.02,32,13,54,78.1,0,6,0
-5248,23,Male,Basic,22.65,51,8,33,70.8,0,0,0
-5249,49,Male,Standard,18.3,46,7,41,17.2,0,6,0
-5250,21,Female,Standard,27.77,21,21,59,97.2,2,4,0
-5251,28,Male,Basic,37.37,32,6,15,44.9,0,1,0
-5252,34,Male,Standard,16.32,39,28,37,15.9,1,6,0
-5253,55,Male,Basic,28.69,12,5,59,18.0,0,3,0
-5254,41,Female,Premium,28.95,47,12,1,9.8,0,2,0
-5255,22,Female,Basic,31.99,18,17,1,80.4,0,6,0
-5256,69,Female,Standard,13.95,21,27,25,12.2,0,1,0
-5257,51,Female,Basic,31.47,13,19,12,12.5,1,4,0
-5258,23,Female,Premium,37.27,21,12,55,85.0,2,0,0
-5259,39,Female,Standard,15.39,8,16,46,34.5,1,2,0
-5260,28,Female,Standard,17.13,46,26,30,3.1,3,5,0
-5261,65,Male,Basic,39.14,7,16,59,5.2,2,1,0
-5262,33,Male,Standard,15.43,23,18,33,14.2,0,5,1
-5263,50,Male,Basic,35.63,22,19,38,21.3,1,1,0
-5264,26,Male,Premium,24.77,22,19,2,66.5,1,1,1
-5265,23,Male,Basic,17.42,29,13,7,15.7,0,4,0
-5266,33,Male,Basic,36.12,13,23,22,11.9,1,4,0
-5267,46,Male,Basic,23.36,2,24,13,76.5,0,4,0
-5268,20,Female,Standard,25.44,29,26,55,67.1,0,6,0
-5269,37,Female,Standard,20.78,52,12,54,43.5,1,3,0
-5270,53,Male,Basic,27.79,27,25,26,54.9,0,1,0
-5271,36,Male,Premium,14.91,50,23,53,31.2,0,2,0
-5272,43,Female,Standard,21.73,23,10,28,48.3,2,5,0
-5273,20,Male,Standard,39.08,44,24,38,50.7,1,4,1
-5274,36,Male,Standard,17.74,22,29,52,38.7,0,6,1
-5275,37,Female,Standard,29.7,43,23,38,90.7,1,4,0
-5276,49,Male,Standard,19.76,37,8,0,1.6,0,5,0
-5277,24,Female,Basic,33.2,61,27,16,78.2,0,5,0
-5278,69,Male,Basic,13.93,56,11,40,12.4,3,1,0
-5279,58,Female,Premium,39.09,3,8,29,79.8,1,4,0
-5280,50,Female,Premium,23.61,63,26,52,61.6,0,5,1
-5281,57,Female,Basic,17.08,19,16,12,84.3,1,3,0
-5282,56,Male,Basic,12.2,23,17,20,9.8,2,3,0
-5283,35,Female,Standard,15.09,29,7,18,55.9,0,4,0
-5284,57,Male,Standard,25.59,30,26,52,50.1,0,6,1
-5285,18,Male,Basic,20.11,39,16,18,70.6,0,5,0
-5286,28,Male,Basic,34.87,25,6,56,53.4,1,1,0
-5287,45,Male,Standard,22.93,8,28,24,54.1,1,1,1
-5288,42,Female,Standard,17.46,58,6,21,43.0,1,6,0
-5289,67,Female,Basic,28.51,16,27,30,30.9,2,1,1
-5290,40,Male,Basic,31.2,72,13,16,48.2,1,0,0
-5291,48,Male,Basic,15.01,1,5,54,11.8,0,4,1
-5292,47,Female,Standard,15.03,5,12,22,96.2,0,1,0
-5293,59,Male,Basic,11.1,3,27,31,71.4,0,3,0
-5294,52,Female,Basic,32.09,65,10,9,95.2,0,5,1
-5295,24,Male,Premium,29.91,4,10,9,22.7,1,2,0
-5296,33,Male,Basic,24.24,64,26,35,87.9,2,6,0
-5297,43,Female,Standard,35.33,10,29,7,80.9,0,2,0
-5298,65,Male,Basic,34.17,21,22,53,67.7,0,1,0
-5299,69,Female,Basic,27.56,46,21,51,62.5,1,2,0
-5300,66,Male,Basic,36.05,27,16,19,31.7,0,2,0
-5301,19,Male,Standard,16.18,66,10,31,81.6,0,0,0
-5302,18,Male,Premium,13.36,41,12,49,50.2,0,3,0
-5303,65,Female,Premium,18.09,13,23,13,7.1,0,6,0
-5304,29,Male,Basic,11.71,9,14,49,31.3,2,3,0
-5305,22,Male,Standard,25.94,36,5,27,93.5,0,0,1
-5306,54,Male,Basic,38.1,58,29,45,85.1,0,0,1
-5307,49,Male,Basic,11.18,54,17,51,98.2,0,2,1
-5308,26,Female,Premium,13.66,12,21,52,62.8,3,4,0
-5309,58,Female,Basic,23.57,14,7,23,24.8,0,5,0
-5310,52,Male,Basic,38.02,34,12,14,16.3,0,5,0
-5311,36,Female,Basic,19.48,53,18,21,18.7,0,2,0
-5312,65,Male,Basic,25.22,20,7,29,2.0,0,5,0
-5313,33,Male,Basic,11.25,16,20,3,39.1,0,0,0
-5314,20,Male,Standard,14.45,70,17,12,19.1,1,3,0
-5315,37,Female,Standard,39.6,56,24,58,41.2,0,5,1
-5316,41,Female,Premium,38.95,58,28,22,93.5,0,6,0
-5317,50,Female,Premium,10.15,4,21,7,43.1,1,2,0
-5318,41,Female,Basic,38.55,4,17,17,87.8,0,4,0
-5319,69,Female,Basic,29.17,20,10,11,60.6,0,2,0
-5320,28,Female,Basic,36.04,10,21,54,24.7,0,1,1
-5321,66,Female,Standard,23.64,24,18,30,35.6,3,2,0
-5322,25,Female,Basic,25.47,26,21,13,8.4,0,0,0
-5323,53,Female,Standard,24.67,37,12,33,33.3,2,3,0
-5324,55,Male,Standard,30.01,54,15,17,67.8,1,3,0
-5325,57,Female,Standard,14.19,21,24,55,7.2,0,6,0
-5326,37,Female,Standard,10.9,38,5,33,20.5,3,5,1
-5327,52,Female,Basic,19.24,46,11,10,38.1,0,0,1
-5328,65,Female,Premium,31.14,4,25,40,98.2,0,1,1
-5329,42,Female,Premium,16.06,60,25,11,78.5,1,0,0
-5330,52,Female,Basic,30.2,57,21,48,73.3,1,2,1
-5331,42,Female,Premium,39.1,45,14,14,11.6,1,0,0
-5332,46,Female,Standard,12.82,20,15,56,78.1,0,0,0
-5333,35,Female,Premium,30.18,17,26,30,78.5,0,6,0
-5334,63,Female,Premium,23.31,71,13,48,60.1,1,1,0
-5335,35,Female,Standard,36.04,4,13,57,99.0,0,2,0
-5336,19,Male,Basic,15.31,14,28,28,32.5,0,4,1
-5337,52,Male,Basic,30.78,3,9,25,94.1,0,6,0
-5338,33,Female,Standard,35.14,58,21,17,91.5,0,4,0
-5339,58,Female,Standard,38.34,55,13,31,1.1,2,6,0
-5340,53,Male,Basic,30.5,4,21,21,45.0,0,3,1
-5341,50,Female,Basic,24.92,24,28,37,97.7,3,6,1
-5342,21,Male,Premium,28.54,34,25,16,10.3,0,5,1
-5343,50,Male,Premium,36.07,30,23,22,54.8,1,0,0
-5344,31,Male,Standard,27.12,19,11,23,97.9,0,3,0
-5345,38,Male,Basic,10.91,31,27,49,55.5,0,1,0
-5346,65,Male,Basic,37.93,60,13,7,19.0,0,4,0
-5347,37,Female,Basic,30.69,60,11,40,58.2,0,6,0
-5348,25,Male,Premium,30.3,19,17,5,20.4,0,0,0
-5349,24,Female,Basic,16.47,49,15,4,52.0,3,1,0
-5350,20,Female,Standard,29.77,63,18,43,7.4,1,5,1
-5351,34,Male,Basic,21.82,22,23,56,60.5,0,1,0
-5352,50,Male,Standard,29.54,24,15,28,51.7,0,0,0
-5353,65,Female,Standard,13.2,30,17,27,74.0,0,5,0
-5354,29,Male,Premium,29.74,58,18,10,63.1,0,1,1
-5355,68,Male,Basic,39.98,31,17,56,55.0,1,5,1
-5356,39,Female,Basic,11.45,64,5,0,69.0,2,6,1
-5357,39,Female,Basic,39.32,19,12,42,14.4,0,6,1
-5358,63,Male,Premium,22.21,48,16,18,59.5,0,0,0
-5359,47,Female,Premium,36.12,45,23,8,17.2,0,0,0
-5360,55,Male,Standard,33.47,55,16,26,92.6,1,5,0
-5361,55,Male,Standard,27.01,55,12,33,6.8,0,2,0
-5362,62,Male,Standard,32.15,18,12,43,43.0,1,3,0
-5363,68,Female,Basic,36.36,63,25,3,69.6,1,1,0
-5364,25,Female,Premium,22.12,47,17,35,45.8,0,1,1
-5365,44,Female,Standard,19.81,57,16,17,9.2,1,2,1
-5366,44,Female,Basic,30.03,45,20,14,55.3,0,2,1
-5367,51,Female,Standard,34.24,33,5,50,64.2,1,2,1
-5368,38,Male,Basic,32.87,17,17,12,70.4,0,4,0
-5369,47,Male,Basic,33.93,70,11,18,37.3,0,4,0
-5370,50,Male,Standard,23.07,4,9,48,56.4,2,5,0
-5371,45,Male,Basic,34.54,20,12,5,45.1,2,4,0
-5372,64,Female,Standard,13.61,47,29,47,67.2,1,6,1
-5373,50,Male,Basic,26.33,15,18,55,58.4,0,6,0
-5374,22,Female,Basic,10.17,70,27,11,52.6,1,0,1
-5375,65,Male,Basic,19.74,47,17,50,25.0,0,5,0
-5376,36,Female,Basic,20.99,9,19,36,0.2,2,1,0
-5377,21,Female,Standard,21.89,16,27,16,17.4,0,3,0
-5378,52,Male,Basic,30.86,69,21,57,11.7,3,0,0
-5379,66,Male,Standard,21.66,61,19,22,44.9,2,1,0
-5380,34,Male,Standard,23.46,10,24,25,61.2,1,1,0
-5381,61,Male,Standard,17.13,50,22,28,21.3,0,5,1
-5382,45,Female,Premium,21.2,3,22,32,93.9,0,2,0
-5383,47,Male,Standard,16.82,70,6,59,0.7,2,2,0
-5384,46,Male,Basic,12.2,51,8,26,77.2,0,0,0
-5385,63,Female,Basic,28.1,19,5,24,62.5,2,2,0
-5386,70,Male,Basic,30.05,42,8,55,37.4,0,1,1
-5387,23,Male,Standard,28.58,35,22,54,5.0,0,2,0
-5388,52,Male,Basic,23.9,46,9,9,62.7,2,4,1
-5389,58,Male,Standard,21.39,26,23,46,38.6,1,2,0
-5390,54,Male,Standard,35.9,69,19,22,93.6,0,1,1
-5391,41,Female,Basic,25.57,64,12,20,54.2,0,5,0
-5392,46,Male,Premium,24.38,37,24,20,94.0,0,0,0
-5393,66,Male,Basic,10.77,49,21,42,22.0,1,3,0
-5394,63,Male,Basic,20.24,21,5,12,72.6,0,2,0
-5395,70,Male,Standard,21.41,64,16,36,61.7,2,6,0
-5396,48,Male,Standard,21.96,5,23,32,73.9,2,6,0
-5397,52,Female,Standard,27.41,70,19,23,21.5,0,1,0
-5398,50,Male,Standard,26.01,4,13,43,66.5,1,3,0
-5399,69,Female,Basic,28.24,39,11,10,49.8,0,3,0
-5400,38,Female,Premium,32.95,35,6,16,74.3,0,4,1
-5401,49,Male,Premium,34.39,1,13,3,32.7,3,3,0
-5402,40,Male,Standard,31.54,24,14,46,89.0,0,6,0
-5403,50,Male,Basic,38.67,57,6,24,8.4,0,5,0
-5404,20,Male,Standard,10.55,70,23,29,80.7,0,1,1
-5405,35,Female,Basic,15.87,41,15,8,86.1,0,1,0
-5406,42,Male,Basic,10.23,54,17,20,81.7,0,2,0
-5407,59,Male,Premium,29.42,46,14,19,51.3,1,2,1
-5408,48,Male,Basic,36.94,60,18,18,43.8,1,2,1
-5409,20,Male,Premium,17.3,60,22,18,99.6,1,6,0
-5410,57,Male,Standard,37.81,57,23,11,22.9,0,6,0
-5411,63,Male,Basic,11.81,31,26,36,54.7,0,6,1
-5412,41,Female,Standard,38.03,24,13,41,67.1,0,6,0
-5413,67,Female,Premium,20.55,36,29,16,70.1,0,6,0
-5414,49,Male,Standard,13.04,30,11,36,20.4,0,6,0
-5415,64,Male,Premium,24.58,24,7,53,65.4,0,5,1
-5416,39,Male,Standard,17.7,30,24,47,81.8,0,6,0
-5417,40,Female,Standard,18.55,7,10,38,5.0,0,3,1
-5418,19,Male,Premium,19.22,35,25,27,91.2,2,3,0
-5419,44,Female,Basic,34.09,55,6,40,3.0,2,4,0
-5420,59,Male,Standard,26.17,14,10,34,35.6,1,5,0
-5421,19,Male,Basic,19.34,10,7,46,1.6,2,2,0
-5422,43,Male,Premium,28.31,16,20,47,7.7,1,0,1
-5423,34,Male,Premium,31.48,54,12,17,91.1,0,6,1
-5424,57,Female,Basic,18.18,70,6,13,35.5,0,4,0
-5425,50,Female,Standard,22.41,44,21,34,42.5,1,0,0
-5426,26,Male,Premium,13.66,45,13,43,21.5,1,3,0
-5427,60,Male,Basic,15.43,56,16,40,59.7,1,4,0
-5428,65,Female,Standard,30.43,57,7,59,59.5,1,4,0
-5429,56,Female,Premium,15.44,21,15,6,37.2,0,1,0
-5430,46,Female,Basic,25.75,68,5,40,33.3,1,3,0
-5431,59,Female,Standard,31.27,50,27,12,88.5,2,3,1
-5432,43,Male,Basic,13.21,33,17,17,38.3,0,5,1
-5433,52,Female,Premium,27.02,7,19,36,49.4,1,4,0
-5434,67,Male,Premium,17.7,70,9,12,28.3,0,6,1
-5435,42,Female,Premium,38.89,15,25,35,78.7,1,3,0
-5436,41,Female,Standard,24.51,32,21,30,39.7,1,4,0
-5437,30,Female,Premium,34.18,20,29,1,51.4,0,5,0
-5438,24,Female,Premium,26.51,15,27,15,25.3,1,6,0
-5439,53,Female,Basic,11.3,48,28,8,98.8,0,5,0
-5440,62,Male,Premium,28.99,71,29,8,29.1,1,1,0
-5441,37,Male,Basic,38.54,21,10,37,77.1,0,6,1
-5442,18,Female,Standard,28.05,42,25,10,42.7,1,4,1
-5443,25,Female,Basic,34.58,26,26,53,20.6,0,3,0
-5444,63,Male,Basic,36.53,14,15,55,80.0,1,3,1
-5445,33,Female,Basic,16.84,57,22,21,33.4,0,4,0
-5446,31,Female,Standard,16.36,37,8,32,86.5,2,4,0
-5447,29,Male,Basic,28.33,58,7,35,91.5,2,4,0
-5448,68,Female,Standard,22.33,21,17,44,86.0,3,2,0
-5449,40,Female,Basic,35.2,69,27,22,3.5,1,6,0
-5450,32,Male,Basic,37.0,3,13,44,78.7,1,3,0
-5451,45,Male,Standard,20.6,37,25,44,41.1,0,6,0
-5452,51,Male,Premium,17.11,49,10,33,87.4,0,5,1
-5453,19,Female,Basic,33.42,19,16,8,63.8,0,3,0
-5454,49,Male,Standard,18.24,12,6,23,83.4,1,2,0
-5455,40,Male,Premium,34.68,61,7,7,49.9,2,4,0
-5456,39,Male,Standard,22.71,41,7,6,53.5,0,1,0
-5457,68,Male,Basic,30.03,33,16,35,14.4,2,4,0
-5458,42,Male,Basic,12.87,50,19,17,78.4,1,4,1
-5459,39,Male,Premium,28.72,68,13,2,41.9,1,2,0
-5460,39,Female,Basic,23.55,71,27,27,50.0,0,6,0
-5461,66,Female,Premium,27.6,33,12,5,78.5,0,3,0
-5462,69,Male,Standard,15.04,24,15,43,59.9,0,4,0
-5463,59,Male,Premium,32.11,61,20,43,20.1,1,3,0
-5464,23,Male,Premium,35.88,61,29,20,59.0,0,0,0
-5465,32,Female,Premium,16.5,28,26,27,40.8,0,5,1
-5466,60,Female,Basic,12.87,58,8,39,47.0,2,6,0
-5467,54,Female,Premium,10.71,43,5,53,2.8,1,3,0
-5468,50,Female,Standard,29.26,41,28,53,21.0,2,1,0
-5469,25,Female,Standard,28.21,39,11,0,28.1,0,5,0
-5470,70,Female,Standard,26.4,49,6,35,71.3,0,1,0
-5471,61,Female,Premium,16.96,17,28,20,1.1,1,4,1
-5472,61,Female,Premium,21.73,70,9,59,40.9,0,5,0
-5473,22,Female,Premium,27.83,70,11,42,92.4,0,3,0
-5474,56,Male,Standard,24.9,65,8,34,11.2,0,5,0
-5475,21,Male,Standard,39.63,5,9,12,51.6,0,4,0
-5476,23,Male,Standard,14.09,2,28,56,78.7,0,2,0
-5477,62,Male,Basic,30.85,22,5,48,94.3,0,6,0
-5478,49,Female,Basic,22.13,57,5,53,74.7,0,1,0
-5479,69,Female,Basic,22.85,66,19,53,72.1,0,4,0
-5480,47,Male,Basic,31.53,16,24,9,82.6,1,2,1
-5481,64,Female,Basic,30.77,51,23,52,44.6,0,5,0
-5482,52,Male,Basic,39.74,39,14,43,80.6,1,5,0
-5483,57,Female,Basic,13.85,40,22,46,0.8,0,4,0
-5484,69,Male,Basic,13.12,38,7,52,92.5,0,3,0
-5485,33,Female,Premium,31.73,60,15,9,44.3,1,5,0
-5486,30,Female,Standard,27.35,59,19,45,55.3,0,3,0
-5487,67,Male,Basic,18.22,10,15,12,25.5,0,3,0
-5488,59,Female,Standard,12.38,64,21,36,74.3,0,6,0
-5489,47,Male,Basic,12.57,63,21,37,7.7,2,3,0
-5490,36,Male,Premium,36.83,49,10,23,87.3,0,0,0
-5491,34,Male,Premium,15.76,64,9,1,82.8,0,6,1
-5492,36,Male,Basic,19.7,32,12,21,21.6,1,2,0
-5493,45,Female,Standard,16.8,7,6,16,80.9,0,2,0
-5494,43,Female,Premium,20.65,21,20,35,78.6,0,5,0
-5495,54,Female,Premium,12.08,20,24,13,63.2,0,5,0
-5496,43,Male,Standard,25.57,26,28,9,37.4,1,3,0
-5497,70,Female,Standard,12.03,68,16,34,27.1,0,6,0
-5498,40,Male,Basic,34.01,15,10,24,23.2,0,6,1
-5499,26,Female,Premium,17.01,14,5,2,31.9,0,0,0
-5500,29,Female,Basic,26.2,27,8,46,90.4,1,3,0
-5501,70,Female,Premium,36.4,40,21,37,7.8,0,0,0
-5502,18,Male,Standard,29.53,58,17,16,82.9,3,3,0
-5503,18,Female,Standard,25.99,28,22,11,34.9,0,1,0
-5504,64,Female,Standard,19.73,26,9,53,52.2,3,1,1
-5505,51,Male,Basic,19.99,63,28,51,79.4,2,4,0
-5506,49,Female,Basic,30.08,66,28,23,88.4,0,3,1
-5507,65,Male,Basic,39.82,25,7,28,34.5,0,6,1
-5508,42,Female,Basic,29.86,3,15,42,46.2,0,5,1
-5509,57,Male,Premium,26.73,72,17,24,41.5,0,2,0
-5510,62,Male,Basic,31.92,44,8,35,1.3,1,4,0
-5511,70,Female,Basic,23.96,42,18,57,29.6,0,5,0
-5512,18,Male,Premium,11.8,6,26,59,45.9,0,1,0
-5513,33,Male,Premium,26.87,39,15,25,41.1,0,3,0
-5514,56,Male,Premium,38.73,52,14,37,72.2,2,4,1
-5515,22,Male,Premium,15.26,23,23,0,38.5,0,3,0
-5516,39,Male,Basic,30.7,50,22,19,48.9,0,1,0
-5517,46,Male,Basic,16.03,43,10,54,43.0,0,4,0
-5518,20,Female,Premium,26.07,19,19,27,74.1,2,1,0
-5519,29,Male,Standard,12.9,69,25,15,86.3,1,0,0
-5520,43,Male,Basic,23.51,51,14,46,53.2,0,1,1
+customerID,gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Churn
+EX0001,Female,0,No,No,52,No,No phone service,Fiber optic,No,Yes,Yes,Yes,Yes,No,Month-to-month,Yes,Electronic check,82.7,4331.31,No
+EX0002,Male,0,Yes,Yes,9,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Credit card (automatic),38.52,395.06,Yes
+EX0003,Male,0,No,No,33,Yes,No,DSL,No,No,Yes,No,No,Yes,One year,No,Mailed check,50.18,1670.52,Yes
+EX0004,Male,1,Yes,No,57,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Electronic check,38.08,2191.98,Yes
+EX0005,Female,0,Yes,No,67,Yes,Yes,DSL,No,Yes,Yes,No,No,No,Two year,No,Bank transfer (automatic),65.69,4426.11,No
+EX0006,Female,0,No,No,40,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,29.26,1199.37,No
+EX0007,Female,0,No,Yes,35,Yes,No,DSL,No,No,No,No,No,Yes,Two year,No,Credit card (automatic),55.43,1927.85,No
+EX0008,Male,0,No,Yes,69,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Credit card (automatic),41.16,2827.5,No
+EX0009,Male,0,Yes,Yes,1,Yes,Yes,Fiber optic,No,Yes,No,No,No,Yes,Month-to-month,Yes,Mailed check,84.42,111.37,Yes
+EX0010,Female,0,Yes,No,36,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,102.33,3671.19,No
+EX0011,Female,1,Yes,No,11,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,No,Mailed check,76.65,869.13,No
+EX0012,Female,0,No,Yes,49,Yes,No,Fiber optic,No,Yes,Yes,No,No,No,Two year,No,Mailed check,77.49,3825.14,No
+EX0013,Male,0,No,Yes,59,Yes,No,Fiber optic,No,No,No,Yes,No,No,One year,No,Electronic check,68.15,4033.95,No
+EX0014,Male,0,No,No,32,No,No phone service,Fiber optic,Yes,Yes,No,Yes,Yes,Yes,Two year,No,Electronic check,84.18,2695.61,No
+EX0015,Male,0,Yes,Yes,29,Yes,No,Fiber optic,No,No,Yes,Yes,No,No,Month-to-month,Yes,Mailed check,76.04,2231.62,Yes
+EX0016,Male,0,Yes,No,67,Yes,No,Fiber optic,No,No,No,No,No,Yes,One year,No,Electronic check,75.77,5113.85,Yes
+EX0017,Female,0,Yes,No,40,No,No phone service,DSL,No,Yes,Yes,No,Yes,No,Month-to-month,Yes,Credit card (automatic),53.79,2182.46,Yes
+EX0018,Female,1,No,No,26,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,23.78,603.32,Yes
+EX0019,Male,0,No,No,55,Yes,No,Fiber optic,Yes,Yes,No,No,No,No,One year,Yes,Credit card (automatic),80.81,4454.35,Yes
+EX0020,Female,0,No,No,1,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Bank transfer (automatic),31.93,55.68,No
+EX0021,Female,0,No,Yes,57,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,32.48,1866.93,No
+EX0022,Male,0,No,No,2,Yes,No,Fiber optic,No,Yes,No,No,No,Yes,Month-to-month,Yes,Mailed check,69.31,142.76,No
+EX0023,Female,0,No,No,28,No,No phone service,Fiber optic,No,No,Yes,No,No,No,Month-to-month,Yes,Mailed check,65.37,1848.76,Yes
+EX0024,Female,0,No,Yes,59,Yes,No,DSL,Yes,No,No,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),61.1,3603.35,No
+EX0025,Male,0,No,No,17,No,No phone service,Fiber optic,No,No,No,Yes,Yes,No,Two year,Yes,Electronic check,73.24,1292.61,Yes
+EX0026,Female,0,Yes,No,37,Yes,Yes,Fiber optic,No,No,Yes,No,No,No,Month-to-month,Yes,Credit card (automatic),65.64,2467.53,Yes
+EX0027,Male,1,Yes,No,72,Yes,No,Fiber optic,Yes,No,No,No,No,Yes,Two year,Yes,Bank transfer (automatic),76.0,5501.12,Yes
+EX0028,Male,0,Yes,No,3,Yes,Yes,Fiber optic,No,No,No,No,Yes,No,One year,No,Electronic check,86.39,274.07,No
+EX0029,Female,0,No,No,51,Yes,No,DSL,No,Yes,No,Yes,No,No,Month-to-month,Yes,Mailed check,53.96,2786.16,No
+EX0030,Male,0,Yes,Yes,26,Yes,No,Fiber optic,No,No,No,Yes,Yes,Yes,Month-to-month,No,Credit card (automatic),75.4,1990.66,No
+EX0031,Female,0,Yes,No,9,Yes,Yes,Fiber optic,No,No,No,Yes,No,Yes,Two year,Yes,Credit card (automatic),99.85,935.76,No
+EX0032,Male,0,Yes,No,32,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),34.32,1090.92,No
+EX0033,Male,0,No,No,60,Yes,No,DSL,No,No,No,No,No,Yes,One year,No,Electronic check,53.7,3218.56,Yes
+EX0034,Female,0,No,No,46,Yes,Yes,DSL,Yes,Yes,No,Yes,No,No,Month-to-month,No,Credit card (automatic),64.44,2992.87,No
+EX0035,Male,0,No,Yes,42,Yes,No,DSL,Yes,Yes,Yes,No,Yes,No,Month-to-month,Yes,Credit card (automatic),70.07,2940.85,Yes
+EX0036,Female,0,No,No,58,Yes,No,DSL,No,Yes,Yes,Yes,Yes,No,Month-to-month,Yes,Credit card (automatic),59.97,3466.87,No
+EX0037,Male,0,Yes,No,13,Yes,No,DSL,No,Yes,Yes,No,No,Yes,Month-to-month,No,Credit card (automatic),66.44,876.56,Yes
+EX0038,Female,0,No,No,68,Yes,Yes,Fiber optic,Yes,No,Yes,Yes,No,No,Two year,Yes,Electronic check,88.95,6062.34,No
+EX0039,Female,0,Yes,No,15,Yes,No,Fiber optic,Yes,No,No,No,No,No,Month-to-month,No,Bank transfer (automatic),64.44,983.0,No
+EX0040,Female,0,No,No,49,Yes,Yes,Fiber optic,Yes,No,Yes,No,No,Yes,Month-to-month,No,Credit card (automatic),94.65,4638.38,No
+EX0041,Male,0,No,No,2,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),37.88,59.64,Yes
+EX0042,Female,0,Yes,Yes,40,Yes,No,Fiber optic,No,Yes,No,No,No,No,Month-to-month,No,Electronic check,59.26,2352.69,No
+EX0043,Female,0,No,Yes,41,Yes,Yes,DSL,No,Yes,No,Yes,Yes,Yes,Month-to-month,No,Bank transfer (automatic),74.58,3049.66,No
+EX0044,Female,0,Yes,No,69,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),22.72,1581.31,No
+EX0045,Male,0,No,No,51,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Electronic check,19.21,968.2,No
+EX0046,Male,0,No,No,35,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,34.9,1249.11,Yes
+EX0047,Female,0,No,No,31,Yes,Yes,DSL,No,No,No,No,Yes,Yes,One year,Yes,Bank transfer (automatic),69.75,2187.6,Yes
+EX0048,Male,1,No,No,6,No,No phone service,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,No,Mailed check,69.82,421.71,No
+EX0049,Female,0,Yes,No,43,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,No,Bank transfer (automatic),38.38,1644.25,Yes
+EX0050,Male,0,Yes,Yes,9,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,No,Electronic check,105.49,961.36,No
+EX0051,Female,0,No,No,45,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,37.34,1721.03,No
+EX0052,Female,0,No,Yes,64,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),47.17,2999.98,No
+EX0053,Male,0,Yes,No,8,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Mailed check,83.17,645.4,Yes
+EX0054,Female,0,No,No,27,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),37.47,1040.06,No
+EX0055,Female,0,Yes,Yes,15,Yes,No,DSL,No,No,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,55.96,867.63,No
+EX0056,Female,0,No,Yes,37,Yes,No,Fiber optic,No,No,Yes,No,No,Yes,Month-to-month,No,Mailed check,71.49,2631.9,Yes
+EX0057,Male,0,No,No,18,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,29.94,571.38,No
+EX0058,Female,1,Yes,No,10,Yes,Yes,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,One year,No,Electronic check,108.09,1099.48,No
+EX0059,Female,0,Yes,Yes,69,Yes,Yes,Fiber optic,No,Yes,No,Yes,No,No,One year,Yes,Mailed check,83.74,5802.11,No
+EX0060,Male,0,Yes,No,6,Yes,Yes,DSL,No,No,No,Yes,No,Yes,Month-to-month,Yes,Mailed check,55.7,377.9,No
+EX0061,Female,0,No,No,62,Yes,No,Fiber optic,No,No,Yes,No,No,No,One year,Yes,Credit card (automatic),81.16,5071.82,Yes
+EX0062,Male,0,Yes,Yes,47,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,No,Electronic check,81.16,3819.81,Yes
+EX0063,Female,0,Yes,Yes,68,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,No,Month-to-month,Yes,Bank transfer (automatic),85.22,5819.14,Yes
+EX0064,Female,0,No,Yes,24,Yes,No,Fiber optic,No,Yes,No,No,No,No,One year,Yes,Electronic check,61.65,1468.89,No
+EX0065,Female,0,Yes,No,16,Yes,No,DSL,No,No,Yes,No,No,Yes,Two year,Yes,Electronic check,56.87,900.55,No
+EX0066,Female,0,No,No,16,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,74.55,1219.94,Yes
+EX0067,Male,0,Yes,Yes,15,Yes,No,Fiber optic,No,Yes,Yes,Yes,No,No,One year,Yes,Credit card (automatic),90.0,1366.19,Yes
+EX0068,Male,0,No,Yes,71,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,34.63,2441.53,No
+EX0069,Female,0,No,No,41,Yes,Yes,DSL,Yes,Yes,No,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),66.31,2768.05,No
+EX0070,Female,0,Yes,No,36,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,37.72,1350.08,No
+EX0071,Male,0,Yes,Yes,58,Yes,No,Fiber optic,Yes,Yes,No,No,Yes,No,One year,Yes,Electronic check,79.74,4649.3,No
+EX0072,Male,0,No,Yes,44,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Electronic check,54.35,2416.94,No
+EX0073,Male,0,No,No,4,Yes,No,Fiber optic,No,No,Yes,No,No,No,One year,No,Bank transfer (automatic),60.1,270.59,No
+EX0074,Female,0,Yes,No,30,Yes,Yes,DSL,No,Yes,Yes,No,No,No,Two year,Yes,Credit card (automatic),59.48,1810.09,No
+EX0075,Female,0,Yes,No,57,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,34.8,1969.56,No
+EX0076,Female,0,Yes,Yes,54,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,No,Month-to-month,Yes,Bank transfer (automatic),102.3,5507.12,No
+EX0077,Female,0,Yes,No,9,Yes,Yes,Fiber optic,Yes,No,Yes,Yes,Yes,No,Month-to-month,Yes,Electronic check,80.3,741.9,Yes
+EX0078,Male,0,No,Yes,40,Yes,No,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,67.91,2722.26,Yes
+EX0079,Female,0,Yes,No,51,Yes,No,Fiber optic,No,Yes,No,No,No,Yes,One year,No,Credit card (automatic),72.13,3696.92,No
+EX0080,Male,1,No,No,42,Yes,No,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,91.51,3847.01,Yes
+EX0081,Female,0,Yes,No,6,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),35.15,209.09,No
+EX0082,Male,0,No,No,49,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),37.29,1836.14,No
+EX0083,Female,0,Yes,No,51,Yes,Yes,DSL,No,Yes,Yes,No,No,No,Month-to-month,No,Bank transfer (automatic),74.5,3835.39,No
+EX0084,Male,0,No,No,65,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,No,Two year,Yes,Electronic check,86.66,5676.84,Yes
+EX0085,Male,0,Yes,No,43,Yes,No,DSL,No,No,No,Yes,No,Yes,Month-to-month,No,Electronic check,61.79,2682.84,No
+EX0086,Female,0,No,No,24,Yes,No,DSL,Yes,Yes,No,No,Yes,No,One year,No,Credit card (automatic),60.79,1452.76,Yes
+EX0087,Male,0,No,No,7,Yes,Yes,Fiber optic,No,Yes,No,Yes,No,No,One year,Yes,Credit card (automatic),77.68,534.65,Yes
+EX0088,Male,0,Yes,No,33,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,Month-to-month,No,Bank transfer (automatic),71.91,2374.35,No
+EX0089,Male,0,No,No,16,Yes,Yes,Fiber optic,No,Yes,No,Yes,Yes,Yes,One year,Yes,Electronic check,98.64,1592.48,No
+EX0090,Female,0,No,No,64,Yes,No,Fiber optic,No,No,No,Yes,No,Yes,Two year,Yes,Electronic check,71.22,4577.7,Yes
+EX0091,Male,0,No,Yes,30,Yes,No,DSL,No,No,No,No,Yes,Yes,Month-to-month,No,Electronic check,55.5,1663.64,Yes
+EX0092,Female,0,Yes,No,49,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,No,Month-to-month,Yes,Credit card (automatic),70.86,3463.75,No
+EX0093,Male,0,Yes,No,45,Yes,Yes,DSL,Yes,No,No,No,No,Yes,One year,No,Mailed check,67.75,3057.68,No
+EX0094,Male,0,No,Yes,57,Yes,No,DSL,No,No,No,No,Yes,Yes,One year,No,Bank transfer (automatic),50.32,2857.49,No
+EX0095,Female,0,No,Yes,43,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,35.95,1587.53,No
+EX0096,Female,0,Yes,Yes,8,Yes,Yes,DSL,No,Yes,No,Yes,Yes,No,One year,No,Bank transfer (automatic),72.32,604.98,No
+EX0097,Male,0,No,Yes,12,Yes,No,Fiber optic,No,No,Yes,Yes,No,No,Month-to-month,No,Electronic check,91.71,1128.21,Yes
+EX0098,Male,1,No,No,62,Yes,No,Fiber optic,Yes,Yes,Yes,No,No,No,Two year,Yes,Mailed check,71.67,4485.64,No
+EX0099,Male,0,No,No,72,Yes,No,DSL,No,No,No,No,Yes,Yes,Month-to-month,No,Credit card (automatic),54.61,3978.18,No
+EX0100,Male,1,No,No,57,Yes,Yes,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),59.66,3429.49,No
+EX0101,Female,0,No,No,67,No,No phone service,DSL,No,No,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,63.61,4311.52,Yes
+EX0102,Female,0,Yes,No,29,No,No phone service,DSL,No,Yes,Yes,No,No,No,Month-to-month,Yes,Electronic check,49.26,1459.86,No
+EX0103,Male,0,Yes,No,13,Yes,No,Fiber optic,Yes,No,No,No,No,Yes,One year,No,Electronic check,73.16,931.52,Yes
+EX0104,Male,0,Yes,No,2,Yes,No,DSL,No,No,Yes,No,No,No,Month-to-month,No,Mailed check,51.63,151.58,Yes
+EX0105,Male,0,No,No,7,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Credit card (automatic),37.87,270.53,No
+EX0106,Female,0,Yes,Yes,53,Yes,Yes,Fiber optic,Yes,No,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),76.75,4105.69,No
+EX0107,Female,0,Yes,No,50,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,41.66,2102.54,No
+EX0108,Male,0,No,Yes,58,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Mailed check,32.39,1891.72,No
+EX0109,Female,0,No,No,45,Yes,No,DSL,No,Yes,No,No,No,No,Month-to-month,No,Electronic check,56.16,2509.26,Yes
+EX0110,Female,0,No,Yes,60,Yes,No,Fiber optic,No,No,Yes,Yes,No,No,Two year,Yes,Electronic check,86.55,5216.5,Yes
+EX0111,Female,0,No,No,30,Yes,No,DSL,No,No,Yes,Yes,No,No,Month-to-month,No,Electronic check,57.34,1717.47,Yes
+EX0112,Female,0,No,Yes,52,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),44.38,2308.95,No
+EX0113,Male,0,No,Yes,58,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),29.58,1750.98,No
+EX0114,Female,0,Yes,No,25,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,28.85,749.27,No
+EX0115,Male,0,No,No,38,No,No phone service,Fiber optic,No,Yes,No,No,Yes,Yes,One year,No,Bank transfer (automatic),77.93,2957.68,Yes
+EX0116,Female,1,Yes,No,34,No,No phone service,Fiber optic,No,No,No,No,No,No,One year,Yes,Bank transfer (automatic),43.55,1471.99,Yes
+EX0117,Female,0,Yes,No,26,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Two year,No,Electronic check,88.49,2350.7,No
+EX0118,Male,0,Yes,No,42,Yes,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,No,Mailed check,68.79,2900.93,No
+EX0119,Female,1,Yes,No,21,Yes,Yes,Fiber optic,Yes,No,No,No,Yes,No,One year,No,Mailed check,84.43,1764.91,No
+EX0120,Female,0,No,No,24,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,One year,No,Electronic check,80.24,1916.84,Yes
+EX0121,Female,0,No,Yes,13,Yes,No,DSL,No,Yes,No,No,Yes,No,One year,Yes,Mailed check,54.72,757.01,Yes
+EX0122,Female,0,Yes,No,17,Yes,No,DSL,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),65.58,1161.58,No
+EX0123,Female,0,Yes,No,34,Yes,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,65.57,2234.02,Yes
+EX0124,Female,1,No,No,18,Yes,Yes,Fiber optic,Yes,No,No,Yes,Yes,No,Two year,Yes,Mailed check,85.78,1533.75,No
+EX0125,Female,0,Yes,Yes,10,Yes,Yes,Fiber optic,Yes,Yes,No,No,No,Yes,Two year,No,Electronic check,80.19,824.43,Yes
+EX0126,Male,0,Yes,Yes,48,Yes,Yes,Fiber optic,No,No,Yes,Yes,No,Yes,Month-to-month,Yes,Electronic check,94.08,4552.67,Yes
+EX0127,Female,0,Yes,No,72,Yes,Yes,Fiber optic,No,Yes,No,Yes,No,No,Month-to-month,No,Bank transfer (automatic),79.99,5808.12,Yes
+EX0128,Male,0,Yes,No,36,Yes,No,DSL,Yes,Yes,No,Yes,No,No,Month-to-month,No,Bank transfer (automatic),64.82,2334.71,No
+EX0129,Female,0,No,Yes,1,Yes,Yes,Fiber optic,No,No,Yes,No,No,Yes,One year,No,Credit card (automatic),96.49,145.95,No
+EX0130,Female,0,No,No,47,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),29.29,1363.4,No
+EX0131,Female,0,Yes,No,20,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,31.4,676.91,Yes
+EX0132,Female,0,Yes,No,10,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),33.74,364.57,Yes
+EX0133,Male,0,Yes,No,26,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,19.99,552.26,Yes
+EX0134,Female,0,No,No,51,Yes,Yes,DSL,No,No,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),54.64,2787.85,No
+EX0135,Female,0,No,Yes,4,Yes,Yes,DSL,Yes,Yes,No,Yes,Yes,Yes,Month-to-month,No,Electronic check,84.87,322.4,No
+EX0136,Male,0,Yes,No,18,Yes,No,DSL,Yes,No,No,Yes,Yes,Yes,Month-to-month,No,Mailed check,77.6,1379.38,No
+EX0137,Female,0,No,No,38,Yes,Yes,Fiber optic,No,No,No,Yes,No,Yes,Month-to-month,Yes,Electronic check,87.26,3299.03,No
+EX0138,Male,0,No,Yes,3,Yes,No,Fiber optic,No,Yes,No,No,Yes,No,Month-to-month,No,Mailed check,87.63,282.0,Yes
+EX0139,Male,0,No,No,42,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,No,Month-to-month,No,Credit card (automatic),95.03,3987.15,Yes
+EX0140,Male,1,No,No,8,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Bank transfer (automatic),44.14,346.49,No
+EX0141,Male,0,No,No,3,Yes,No,DSL,No,No,Yes,No,Yes,No,One year,No,Electronic check,69.21,239.73,Yes
+EX0142,Male,0,No,No,52,Yes,No,DSL,No,No,Yes,Yes,No,No,One year,Yes,Bank transfer (automatic),50.73,2625.69,Yes
+EX0143,Male,0,Yes,No,65,No,No phone service,Fiber optic,No,No,Yes,No,No,No,Month-to-month,No,Bank transfer (automatic),52.05,3382.09,Yes
+EX0144,Male,0,Yes,No,22,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),32.34,711.47,No
+EX0145,Male,0,No,No,72,Yes,No,Fiber optic,Yes,Yes,No,Yes,No,Yes,Two year,No,Bank transfer (automatic),78.37,5648.67,Yes
+EX0146,Male,0,Yes,Yes,37,Yes,No,Fiber optic,No,Yes,Yes,No,No,No,Month-to-month,No,Credit card (automatic),74.3,2771.97,No
+EX0147,Male,0,Yes,No,18,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,28.46,521.5,No
+EX0148,Male,0,Yes,No,48,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,34.41,1642.87,No
+EX0149,Male,0,No,Yes,69,Yes,No,Fiber optic,No,No,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,97.53,6744.09,Yes
+EX0150,Female,0,Yes,Yes,26,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,No,Two year,Yes,Bank transfer (automatic),81.54,2112.3,No
+EX0151,Male,0,Yes,Yes,6,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,No,Electronic check,58.23,362.87,Yes
+EX0152,Male,0,No,No,38,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),27.22,1061.72,Yes
+EX0153,Female,0,No,No,21,Yes,No,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Credit card (automatic),84.7,1778.72,No
+EX0154,Male,0,No,No,65,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,No,No,One year,Yes,Bank transfer (automatic),81.37,5299.34,No
+EX0155,Female,0,Yes,Yes,68,Yes,No,Fiber optic,Yes,No,Yes,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),85.46,5850.66,No
+EX0156,Female,0,Yes,No,43,Yes,Yes,DSL,No,Yes,No,No,No,No,Two year,No,Mailed check,64.55,2756.41,Yes
+EX0157,Female,0,No,No,26,Yes,No,DSL,No,Yes,No,Yes,No,No,One year,Yes,Credit card (automatic),57.96,1535.41,Yes
+EX0158,Male,0,No,No,8,Yes,No,DSL,No,Yes,No,No,Yes,No,One year,Yes,Credit card (automatic),54.77,479.85,Yes
+EX0159,Female,1,Yes,Yes,70,Yes,No,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,49.6,3478.65,No
+EX0160,Male,0,No,Yes,24,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Bank transfer (automatic),33.98,857.65,No
+EX0161,Female,0,Yes,No,8,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),37.07,324.3,No
+EX0162,Female,1,Yes,No,54,Yes,No,DSL,No,No,Yes,No,No,No,Month-to-month,No,Mailed check,45.44,2458.74,Yes
+EX0163,Male,0,Yes,No,65,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,37.04,2407.61,No
+EX0164,Male,0,No,No,26,Yes,Yes,DSL,No,No,No,No,No,No,Month-to-month,No,Bank transfer (automatic),48.23,1257.65,Yes
+EX0165,Female,0,No,Yes,39,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,34.49,1378.61,No
+EX0166,Male,0,Yes,Yes,46,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,19.6,913.77,No
+EX0167,Male,0,No,Yes,10,Yes,Yes,DSL,No,Yes,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,73.84,754.31,Yes
+EX0168,Male,1,No,No,13,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,27.38,366.14,Yes
+EX0169,Female,0,No,Yes,21,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,No,Yes,Month-to-month,No,Electronic check,85.51,1833.8,Yes
+EX0170,Female,1,No,No,61,Yes,Yes,Fiber optic,Yes,No,No,Yes,Yes,No,Two year,Yes,Bank transfer (automatic),82.72,5035.48,No
+EX0171,Female,0,Yes,No,36,Yes,Yes,DSL,No,No,No,No,Yes,No,Month-to-month,No,Credit card (automatic),49.6,1832.58,No
+EX0172,Male,0,Yes,No,37,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,No,No,Month-to-month,Yes,Mailed check,95.55,3563.04,Yes
+EX0173,Female,0,No,No,31,Yes,No,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,60.25,1882.14,No
+EX0174,Female,0,Yes,Yes,10,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,32.95,352.31,No
+EX0175,Male,0,Yes,Yes,38,No,No phone service,DSL,No,No,No,No,No,Yes,Month-to-month,No,Electronic check,39.18,1492.35,Yes
+EX0176,Female,0,Yes,No,64,Yes,Yes,DSL,Yes,Yes,No,No,Yes,No,Month-to-month,Yes,Credit card (automatic),72.36,4674.14,Yes
+EX0177,Male,1,No,No,37,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,Yes,No,One year,Yes,Credit card (automatic),88.34,3248.93,No
+EX0178,Male,0,No,No,72,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,32.3,2340.92,No
+EX0179,Male,1,Yes,No,71,Yes,Yes,DSL,Yes,No,No,No,No,Yes,Two year,Yes,Credit card (automatic),58.13,4153.44,No
+EX0180,Male,0,Yes,Yes,36,Yes,No,DSL,Yes,No,Yes,No,No,Yes,One year,No,Bank transfer (automatic),58.69,2121.07,Yes
+EX0181,Female,0,Yes,No,66,Yes,Yes,DSL,No,No,No,No,Yes,Yes,One year,No,Mailed check,64.94,4327.92,No
+EX0182,Female,0,No,No,43,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),37.67,1627.45,Yes
+EX0183,Female,0,No,Yes,28,Yes,No,Fiber optic,No,Yes,No,No,Yes,Yes,Month-to-month,No,Mailed check,72.88,2054.03,Yes
+EX0184,Female,0,Yes,No,21,Yes,No,DSL,No,Yes,No,No,No,Yes,Month-to-month,Yes,Electronic check,64.09,1342.64,Yes
+EX0185,Male,0,No,No,5,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),22.12,147.95,No
+EX0186,Female,0,No,No,7,Yes,No,DSL,Yes,No,No,No,No,No,Month-to-month,Yes,Mailed check,50.81,338.68,Yes
+EX0187,Male,0,No,No,64,Yes,No,DSL,No,No,No,No,No,Yes,Month-to-month,Yes,Mailed check,56.62,3614.58,Yes
+EX0188,Male,0,Yes,No,19,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,37.37,694.56,Yes
+EX0189,Female,0,No,No,3,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Two year,Yes,Electronic check,92.92,294.66,Yes
+EX0190,Male,0,No,No,12,Yes,No,Fiber optic,No,No,No,No,No,No,One year,Yes,Mailed check,65.67,768.85,No
+EX0191,Male,0,No,No,58,Yes,No,Fiber optic,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Mailed check,86.34,4988.4,Yes
+EX0192,Female,0,No,Yes,37,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,No,No,Two year,Yes,Mailed check,95.34,3564.53,No
+EX0193,Male,1,Yes,No,6,Yes,Yes,DSL,Yes,No,Yes,No,Yes,No,Two year,No,Electronic check,79.7,512.18,Yes
+EX0194,Male,1,Yes,No,33,No,No phone service,DSL,No,Yes,No,No,Yes,No,One year,Yes,Credit card (automatic),48.86,1661.69,No
+EX0195,Male,0,Yes,No,55,Yes,Yes,DSL,No,No,No,No,No,No,One year,No,Credit card (automatic),55.23,3035.05,No
+EX0196,Male,0,Yes,No,20,Yes,Yes,DSL,No,No,Yes,Yes,Yes,No,Month-to-month,No,Credit card (automatic),71.65,1463.38,Yes
+EX0197,Female,1,No,No,26,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Electronic check,41.38,1068.19,Yes
+EX0198,Female,1,Yes,No,6,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,26.46,190.72,No
+EX0199,Female,1,No,No,70,Yes,Yes,DSL,No,No,No,No,Yes,Yes,One year,Yes,Bank transfer (automatic),61.42,4335.25,Yes
+EX0200,Female,1,Yes,Yes,26,No,No phone service,DSL,Yes,No,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),40.3,1059.26,Yes
+EX0201,Female,0,Yes,Yes,61,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Electronic check,29.2,1790.57,No
+EX0202,Female,0,Yes,No,45,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,27.6,1243.02,No
+EX0203,Male,0,No,No,69,Yes,Yes,Fiber optic,No,No,No,No,No,Yes,Two year,Yes,Bank transfer (automatic),89.43,6180.73,Yes
+EX0204,Male,0,No,No,19,Yes,Yes,DSL,Yes,No,Yes,No,No,Yes,Two year,No,Electronic check,69.17,1326.51,Yes
+EX0205,Female,0,Yes,Yes,24,Yes,Yes,Fiber optic,Yes,No,Yes,No,Yes,No,Month-to-month,Yes,Electronic check,79.05,1892.64,Yes
+EX0206,Male,0,No,Yes,9,Yes,No,DSL,Yes,No,Yes,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),58.05,528.91,No
+EX0207,Female,0,No,No,33,Yes,No,Fiber optic,Yes,Yes,No,Yes,Yes,No,Month-to-month,Yes,Bank transfer (automatic),82.12,2705.58,Yes
+EX0208,Female,0,Yes,No,16,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Mailed check,29.94,503.77,Yes
+EX0209,Female,0,No,No,66,Yes,No,DSL,Yes,Yes,No,Yes,No,Yes,Month-to-month,Yes,Mailed check,71.37,4695.96,No
+EX0210,Male,0,No,No,63,Yes,No,DSL,No,No,Yes,No,No,Yes,Month-to-month,No,Mailed check,54.83,3457.81,No
+EX0211,Female,0,Yes,Yes,55,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),25.5,1385.09,No
+EX0212,Male,0,Yes,Yes,43,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),82.07,3521.6,Yes
+EX0213,Male,0,No,No,54,No,No phone service,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,Yes,Electronic check,71.7,3853.0,No
+EX0214,Female,0,Yes,No,40,No,No phone service,DSL,No,No,No,No,Yes,Yes,Two year,No,Bank transfer (automatic),43.2,1739.87,Yes
+EX0215,Female,1,Yes,Yes,60,Yes,No,Fiber optic,Yes,No,Yes,No,Yes,Yes,Month-to-month,No,Bank transfer (automatic),97.83,5902.64,No
+EX0216,Male,0,Yes,No,21,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,No,Two year,No,Electronic check,86.15,1807.83,No
+EX0217,Female,0,No,Yes,65,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),41.08,2687.97,No
+EX0218,Male,0,No,No,17,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,34.08,613.71,No
+EX0219,Female,0,Yes,Yes,53,No,No phone service,DSL,Yes,Yes,No,No,No,Yes,Month-to-month,No,Electronic check,57.32,3019.56,No
+EX0220,Male,0,Yes,Yes,29,Yes,Yes,Fiber optic,No,No,No,Yes,Yes,No,One year,Yes,Mailed check,87.72,2527.67,No
+EX0221,Female,1,No,Yes,3,Yes,No,Fiber optic,Yes,No,Yes,Yes,No,No,Month-to-month,No,Mailed check,95.01,314.2,Yes
+EX0222,Male,1,No,Yes,37,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,32.16,1195.2,No
+EX0223,Male,0,Yes,No,70,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,27.77,1987.36,No
+EX0224,Male,0,Yes,Yes,44,Yes,Yes,Fiber optic,No,Yes,No,Yes,No,No,Month-to-month,No,Mailed check,77.86,3439.34,No
+EX0225,Male,0,No,No,54,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Two year,No,Bank transfer (automatic),79.33,4317.12,No
+EX0226,Female,0,No,No,1,Yes,No,DSL,Yes,Yes,No,No,Yes,No,Month-to-month,Yes,Mailed check,60.14,64.74,Yes
+EX0227,Male,1,No,Yes,42,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,63.48,2673.96,Yes
+EX0228,Male,0,No,No,7,Yes,No,DSL,No,No,No,No,No,No,One year,No,Electronic check,37.34,295.54,No
+EX0229,Female,0,Yes,Yes,51,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,No,Electronic check,72.5,3695.27,Yes
+EX0230,Female,0,No,No,5,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),19.28,76.92,No
+EX0231,Female,0,Yes,No,48,Yes,Yes,DSL,Yes,Yes,No,No,No,Yes,Month-to-month,Yes,Electronic check,68.59,3300.21,Yes
+EX0232,Male,0,No,Yes,4,Yes,No,Fiber optic,No,No,Yes,No,No,No,Month-to-month,No,Electronic check,62.61,278.69,Yes
+EX0233,Female,0,No,No,66,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Credit card (automatic),41.81,2795.2,No
+EX0234,Female,0,No,No,29,Yes,No,DSL,Yes,No,Yes,No,Yes,No,One year,No,Electronic check,60.88,1786.17,Yes
+EX0235,Female,0,No,No,15,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,No,Month-to-month,No,Electronic check,96.09,1482.1,Yes
+EX0236,Male,0,Yes,Yes,36,Yes,No,DSL,No,No,Yes,No,No,Yes,Month-to-month,No,Electronic check,56.62,2065.0,Yes
+EX0237,Female,0,Yes,Yes,42,Yes,No,Fiber optic,Yes,No,No,Yes,Yes,No,Month-to-month,No,Mailed check,84.13,3527.38,No
+EX0238,Male,0,No,No,63,Yes,No,Fiber optic,Yes,No,Yes,Yes,No,No,One year,No,Bank transfer (automatic),82.56,5248.73,No
+EX0239,Male,1,No,No,29,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,24.81,756.78,Yes
+EX0240,Male,1,No,No,45,Yes,No,Fiber optic,Yes,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,60.39,2726.72,No
+EX0241,Male,0,No,No,53,Yes,No,Fiber optic,No,No,Yes,Yes,No,No,One year,Yes,Bank transfer (automatic),89.85,4778.07,No
+EX0242,Female,0,No,No,41,No,No phone service,DSL,Yes,No,No,Yes,No,No,Two year,No,Bank transfer (automatic),52.46,2138.61,No
+EX0243,Male,0,No,Yes,68,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,No,One year,Yes,Mailed check,71.45,4886.07,No
+EX0244,Male,0,Yes,No,5,Yes,No,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,49.62,247.34,Yes
+EX0245,Female,0,No,Yes,72,Yes,No,Fiber optic,No,No,Yes,Yes,No,No,Two year,Yes,Bank transfer (automatic),83.97,6071.87,No
+EX0246,Male,0,Yes,No,17,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,18.14,312.64,Yes
+EX0247,Male,0,Yes,No,2,Yes,No,DSL,No,Yes,No,No,No,Yes,Two year,No,Mailed check,51.3,103.87,No
+EX0248,Male,0,Yes,No,56,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,20.88,1165.4,Yes
+EX0249,Female,0,No,No,5,Yes,No,Fiber optic,No,No,Yes,Yes,Yes,No,Two year,No,Electronic check,88.19,479.59,No
+EX0250,Female,0,No,Yes,5,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,Yes,One year,No,Bank transfer (automatic),83.36,441.93,Yes
+EX0251,Female,0,Yes,Yes,54,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,37.6,2032.73,No
+EX0252,Female,0,No,No,69,Yes,No,DSL,No,No,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,61.88,4289.55,Yes
+EX0253,Male,0,Yes,Yes,34,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,35.1,1208.15,No
+EX0254,Female,0,No,Yes,11,Yes,No,DSL,No,No,Yes,Yes,No,No,One year,Yes,Bank transfer (automatic),52.33,621.87,No
+EX0255,Female,1,Yes,No,57,Yes,Yes,Fiber optic,Yes,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,90.55,5158.59,No
+EX0256,Female,1,No,No,58,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),46.75,2738.84,Yes
+EX0257,Female,0,Yes,No,44,Yes,No,Fiber optic,No,No,No,Yes,Yes,No,Month-to-month,No,Credit card (automatic),74.07,3288.7,Yes
+EX0258,Male,0,Yes,No,53,Yes,No,Fiber optic,No,No,Yes,Yes,No,Yes,Month-to-month,Yes,Electronic check,83.41,4457.2,Yes
+EX0259,Male,1,No,No,26,Yes,No,DSL,No,No,Yes,Yes,No,No,One year,Yes,Credit card (automatic),56.27,1486.96,Yes
+EX0260,Female,1,No,Yes,55,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),33.89,1879.6,Yes
+EX0261,Female,1,Yes,No,15,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,42.58,645.86,No
+EX0262,Male,0,No,No,28,Yes,No,DSL,No,No,No,Yes,No,No,One year,Yes,Mailed check,56.99,1591.01,Yes
+EX0263,Male,0,No,No,67,Yes,Yes,Fiber optic,Yes,No,No,Yes,No,Yes,Two year,No,Credit card (automatic),90.11,6086.54,No
+EX0264,Male,0,No,No,28,Yes,Yes,DSL,No,No,No,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,73.39,2057.27,No
+EX0265,Female,1,Yes,Yes,25,Yes,No,Fiber optic,No,Yes,No,No,Yes,Yes,Two year,No,Electronic check,83.5,2067.71,No
+EX0266,Female,0,No,No,65,Yes,No,Fiber optic,Yes,No,Yes,No,Yes,No,One year,Yes,Electronic check,92.51,6054.23,No
+EX0267,Female,0,Yes,No,58,Yes,Yes,DSL,Yes,No,No,Yes,No,No,Two year,Yes,Mailed check,59.85,3456.78,No
+EX0268,Female,0,Yes,No,35,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,36.02,1289.17,No
+EX0269,Male,0,Yes,Yes,6,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,No,Month-to-month,Yes,Mailed check,72.48,472.02,No
+EX0270,Female,1,No,No,42,Yes,No,Fiber optic,No,Yes,No,No,No,No,One year,Yes,Mailed check,56.37,2397.91,Yes
+EX0271,Male,1,Yes,No,25,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,35.91,904.32,Yes
+EX0272,Female,0,No,No,61,Yes,No,DSL,No,Yes,No,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),55.48,3412.56,Yes
+EX0273,Male,0,No,Yes,47,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,28.94,1365.16,Yes
+EX0274,Female,1,No,No,11,Yes,Yes,Fiber optic,No,No,Yes,No,No,No,Month-to-month,No,Electronic check,85.21,955.31,Yes
+EX0275,Female,0,No,Yes,23,Yes,Yes,Fiber optic,No,No,No,No,No,Yes,Month-to-month,No,Credit card (automatic),94.85,2210.32,No
+EX0276,Male,0,Yes,Yes,62,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),33.76,2137.67,Yes
+EX0277,Female,1,Yes,No,57,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,No,Electronic check,96.05,5497.84,Yes
+EX0278,Male,1,No,No,56,No,No phone service,Fiber optic,No,No,Yes,No,Yes,Yes,One year,No,Mailed check,82.21,4599.74,No
+EX0279,Male,1,Yes,No,10,Yes,No,DSL,Yes,Yes,No,No,No,No,Month-to-month,No,Electronic check,64.26,646.93,Yes
+EX0280,Female,0,Yes,Yes,16,No,No phone service,Fiber optic,No,No,No,Yes,No,Yes,Month-to-month,No,Credit card (automatic),62.07,1002.01,No
+EX0281,Female,1,No,No,9,Yes,Yes,DSL,No,No,Yes,Yes,No,No,One year,Yes,Electronic check,63.17,610.87,Yes
+EX0282,Male,0,Yes,No,8,Yes,No,Fiber optic,Yes,Yes,No,Yes,Yes,No,One year,No,Mailed check,95.48,764.33,No
+EX0283,Female,0,No,No,65,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),30.71,2028.03,No
+EX0284,Female,0,Yes,No,25,Yes,No,Fiber optic,Yes,No,No,No,Yes,No,Month-to-month,Yes,Electronic check,66.69,1706.11,No
+EX0285,Male,1,Yes,Yes,57,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,20.03,1136.75,No
+EX0286,Male,1,No,No,60,Yes,No,DSL,No,No,Yes,Yes,Yes,Yes,One year,No,Bank transfer (automatic),67.01,4065.64,No
+EX0287,Male,0,Yes,No,68,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),37.2,2573.24,No
+EX0288,Male,1,Yes,No,32,Yes,Yes,DSL,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Mailed check,74.82,2390.02,No
+EX0289,Female,0,No,No,47,Yes,No,Fiber optic,Yes,Yes,No,Yes,Yes,No,Two year,Yes,Mailed check,100.78,4757.44,No
+EX0290,Female,1,Yes,Yes,58,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,41.01,2403.75,No
+EX0291,Female,0,No,Yes,58,Yes,No,Fiber optic,No,No,Yes,No,No,No,Two year,Yes,Mailed check,68.22,3993.09,No
+EX0292,Female,0,Yes,No,50,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,No,Month-to-month,Yes,Bank transfer (automatic),112.16,5615.16,Yes
+EX0293,Male,0,No,No,67,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,32.45,2163.81,Yes
+EX0294,Male,0,No,No,41,Yes,No,DSL,No,No,Yes,No,No,No,Two year,Yes,Bank transfer (automatic),54.29,2261.09,No
+EX0295,Male,0,Yes,No,48,Yes,Yes,Fiber optic,No,No,No,No,Yes,No,Two year,No,Electronic check,87.13,4187.44,Yes
+EX0296,Male,0,Yes,No,2,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Electronic check,79.79,197.07,Yes
+EX0297,Male,0,Yes,No,21,Yes,No,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,No,Credit card (automatic),84.69,1805.11,Yes
+EX0298,Female,0,No,Yes,8,Yes,Yes,Fiber optic,No,No,No,Yes,No,No,Month-to-month,No,Credit card (automatic),82.88,663.83,Yes
+EX0299,Male,0,Yes,No,26,Yes,No,Fiber optic,No,No,Yes,Yes,Yes,No,Month-to-month,No,Electronic check,80.06,2131.44,Yes
+EX0300,Male,0,Yes,Yes,37,No,No phone service,DSL,Yes,No,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,51.34,1898.35,Yes
+EX0301,Female,0,Yes,No,19,Yes,Yes,Fiber optic,Yes,No,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),95.04,1827.88,Yes
+EX0302,Female,1,Yes,No,27,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,No,One year,Yes,Mailed check,83.09,2275.1,No
+EX0303,Female,1,Yes,No,18,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Electronic check,32.5,608.63,No
+EX0304,Male,0,Yes,No,20,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,64.14,1276.84,No
+EX0305,Female,0,Yes,No,40,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),39.51,1593.71,No
+EX0306,Female,0,Yes,No,39,Yes,No,DSL,No,Yes,No,No,Yes,Yes,Two year,Yes,Bank transfer (automatic),66.82,2592.73,No
+EX0307,Male,0,No,No,33,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,No,No,Two year,No,Electronic check,88.68,2973.01,No
+EX0308,Female,0,Yes,No,13,Yes,No,DSL,No,No,No,No,No,Yes,Month-to-month,Yes,Mailed check,47.59,635.39,No
+EX0309,Female,0,No,No,26,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Electronic check,87.41,2278.89,No
+EX0310,Male,0,No,No,45,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,Two year,No,Credit card (automatic),71.84,3275.06,No
+EX0311,Female,0,Yes,Yes,55,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Mailed check,35.75,2000.06,No
+EX0312,Female,0,Yes,Yes,12,Yes,Yes,DSL,Yes,Yes,No,No,No,No,One year,Yes,Bank transfer (automatic),59.69,706.24,No
+EX0313,Female,0,No,No,44,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Electronic check,87.34,3859.56,Yes
+EX0314,Female,1,Yes,No,45,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),45.96,2105.42,Yes
+EX0315,Female,0,No,Yes,31,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,36.41,1121.36,Yes
+EX0316,Male,0,Yes,No,72,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),42.65,3058.49,No
+EX0317,Male,0,No,No,62,Yes,No,DSL,No,No,No,No,Yes,No,Month-to-month,Yes,Credit card (automatic),53.2,3286.86,No
+EX0318,Male,0,No,Yes,56,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,26.47,1484.81,Yes
+EX0319,Female,1,Yes,Yes,25,Yes,No,Fiber optic,No,Yes,Yes,Yes,Yes,No,Two year,Yes,Mailed check,88.29,2188.33,No
+EX0320,Female,0,No,Yes,20,No,No phone service,DSL,No,Yes,No,Yes,No,No,Month-to-month,Yes,Electronic check,47.11,941.71,Yes
+EX0321,Male,0,Yes,Yes,13,No,No phone service,Fiber optic,No,No,No,No,No,Yes,Two year,Yes,Mailed check,53.64,742.63,No
+EX0322,Male,0,Yes,No,71,Yes,Yes,DSL,No,Yes,No,No,Yes,No,Month-to-month,Yes,Mailed check,69.13,4941.58,No
+EX0323,Female,0,No,No,47,Yes,No,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,One year,Yes,Mailed check,98.19,4621.33,Yes
+EX0324,Female,0,No,No,18,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,36.53,677.28,No
+EX0325,Female,0,No,No,32,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,No,No,Two year,No,Mailed check,91.61,2913.18,No
+EX0326,Female,0,No,No,6,Yes,Yes,DSL,Yes,Yes,No,No,Yes,Yes,Two year,Yes,Mailed check,72.73,449.57,No
+EX0327,Female,0,Yes,No,17,Yes,No,Fiber optic,No,No,No,No,No,No,Two year,Yes,Bank transfer (automatic),69.2,1164.06,No
+EX0328,Female,0,No,No,49,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),28.74,1444.82,No
+EX0329,Female,0,Yes,No,66,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),80.35,5309.21,No
+EX0330,Female,0,Yes,No,9,Yes,Yes,DSL,Yes,No,No,No,No,Yes,Month-to-month,Yes,Mailed check,64.74,580.01,Yes
+EX0331,Female,0,No,No,6,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),29.94,222.27,No
+EX0332,Male,1,Yes,No,66,Yes,No,Fiber optic,No,Yes,No,Yes,Yes,Yes,One year,Yes,Electronic check,85.45,5631.18,Yes
+EX0333,Male,1,No,No,40,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),96.66,3851.94,Yes
+EX0334,Male,0,No,No,1,Yes,No,Fiber optic,Yes,No,Yes,No,No,Yes,Two year,Yes,Bank transfer (automatic),85.02,85.02,No
+EX0335,Female,1,Yes,Yes,55,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,One year,Yes,Electronic check,88.82,4893.74,Yes
+EX0336,Male,1,No,No,5,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),26.62,173.25,Yes
+EX0337,Male,0,No,No,15,Yes,Yes,DSL,No,No,Yes,No,Yes,No,Two year,Yes,Credit card (automatic),69.42,1025.05,No
+EX0338,Male,0,No,Yes,26,Yes,No,DSL,Yes,No,Yes,No,No,No,Month-to-month,Yes,Mailed check,48.49,1303.97,Yes
+EX0339,Female,0,No,No,34,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),31.86,1082.82,Yes
+EX0340,Male,0,Yes,No,30,Yes,No,DSL,No,Yes,No,Yes,No,Yes,Two year,No,Mailed check,59.99,1806.69,Yes
+EX0341,Female,1,No,No,15,Yes,No,DSL,Yes,Yes,No,No,Yes,Yes,Month-to-month,Yes,Mailed check,70.84,1079.85,Yes
+EX0342,Female,0,No,No,30,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,32.5,998.28,No
+EX0343,Female,0,No,Yes,33,Yes,Yes,Fiber optic,Yes,No,No,Yes,No,Yes,Month-to-month,No,Mailed check,93.79,3114.06,Yes
+EX0344,Male,1,No,No,62,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),23.77,1456.59,No
+EX0345,Female,0,Yes,Yes,5,Yes,Yes,DSL,No,No,Yes,No,No,Yes,Month-to-month,No,Mailed check,59.9,300.49,Yes
+EX0346,Male,0,Yes,No,23,Yes,No,Fiber optic,Yes,No,No,Yes,No,Yes,Month-to-month,No,Electronic check,83.48,1947.38,Yes
+EX0347,Male,0,No,No,7,Yes,No,DSL,Yes,No,Yes,No,Yes,Yes,Month-to-month,No,Bank transfer (automatic),64.48,494.84,Yes
+EX0348,Female,0,No,Yes,29,Yes,Yes,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,No,Credit card (automatic),104.2,3024.98,Yes
+EX0349,Female,1,No,No,7,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,105.44,723.24,Yes
+EX0350,Male,0,No,No,18,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,No,Yes,Two year,No,Credit card (automatic),88.74,1604.0,No
+EX0351,Male,0,No,No,42,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),33.51,1449.06,No
+EX0352,Female,0,Yes,No,26,Yes,No,Fiber optic,No,No,Yes,No,No,Yes,Two year,No,Mailed check,70.17,1817.52,No
+EX0353,Female,1,No,No,7,No,No phone service,Fiber optic,Yes,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,69.06,496.39,Yes
+EX0354,Male,1,No,No,50,Yes,No,Fiber optic,No,Yes,Yes,Yes,Yes,No,Month-to-month,Yes,Bank transfer (automatic),89.17,4446.58,Yes
+EX0355,Female,1,No,No,60,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,31.0,1907.9,No
+EX0356,Male,1,No,No,40,Yes,Yes,DSL,Yes,No,Yes,Yes,No,No,Two year,Yes,Credit card (automatic),68.62,2782.95,No
+EX0357,Female,0,Yes,No,13,Yes,Yes,Fiber optic,No,No,Yes,Yes,No,No,One year,Yes,Bank transfer (automatic),86.0,1154.53,Yes
+EX0358,Female,0,Yes,No,42,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Credit card (automatic),84.31,3576.2,Yes
+EX0359,Female,0,Yes,No,57,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Bank transfer (automatic),24.65,1429.71,No
+EX0360,Male,1,Yes,No,4,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,23.85,97.94,Yes
+EX0361,Female,0,No,No,62,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),44.71,2788.27,No
+EX0362,Male,0,No,No,36,Yes,No,DSL,No,Yes,No,Yes,No,No,One year,Yes,Electronic check,51.41,1896.71,No
+EX0363,Female,0,No,No,5,Yes,Yes,Fiber optic,Yes,No,No,Yes,No,No,Month-to-month,Yes,Mailed check,96.64,473.91,Yes
+EX0364,Male,0,No,No,70,Yes,No,DSL,No,Yes,No,No,Yes,Yes,Two year,Yes,Electronic check,62.5,4389.39,No
+EX0365,Male,0,No,No,60,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),30.69,1862.89,No
+EX0366,Male,0,No,No,63,Yes,Yes,DSL,No,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Mailed check,78.06,4923.8,No
+EX0367,Male,0,No,Yes,64,Yes,No,DSL,Yes,No,No,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),60.41,3863.98,No
+EX0368,Male,0,No,No,64,Yes,No,DSL,Yes,Yes,No,Yes,No,No,One year,Yes,Electronic check,66.92,4282.85,Yes
+EX0369,Female,1,No,No,5,Yes,Yes,Fiber optic,No,No,No,Yes,No,No,Month-to-month,No,Mailed check,76.68,377.34,Yes
+EX0370,Female,0,No,No,38,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,No,No,Month-to-month,No,Electronic check,89.78,3393.34,Yes
+EX0371,Male,1,Yes,No,49,Yes,Yes,DSL,No,Yes,Yes,No,No,No,Month-to-month,Yes,Mailed check,55.25,2713.99,Yes
+EX0372,Male,0,Yes,No,42,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),33.99,1439.35,No
+EX0373,Male,1,Yes,Yes,64,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,26.23,1697.19,No
+EX0374,Male,0,Yes,Yes,54,Yes,No,DSL,No,Yes,No,Yes,Yes,No,One year,Yes,Electronic check,57.17,3071.35,No
+EX0375,Male,0,No,Yes,62,Yes,Yes,Fiber optic,No,No,No,Yes,Yes,No,Month-to-month,Yes,Mailed check,82.67,5119.3,Yes
+EX0376,Male,1,No,No,43,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,25.97,1126.11,Yes
+EX0377,Male,0,Yes,No,36,Yes,Yes,Fiber optic,No,No,No,No,Yes,No,Two year,Yes,Mailed check,94.18,3374.25,No
+EX0378,Female,0,Yes,Yes,72,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),30.7,2221.57,No
+EX0379,Male,0,Yes,No,9,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Mailed check,23.64,197.97,No
+EX0380,Female,0,No,Yes,52,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Credit card (automatic),33.59,1759.96,No
+EX0381,Female,0,No,No,58,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Mailed check,50.4,2959.87,No
+EX0382,Male,0,Yes,Yes,14,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,64.47,921.15,Yes
+EX0383,Female,0,No,No,67,Yes,No,DSL,No,No,No,No,No,Yes,One year,Yes,Bank transfer (automatic),46.71,3114.52,No
+EX0384,Male,0,No,Yes,4,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,36.04,149.75,No
+EX0385,Male,1,Yes,No,58,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,No,Credit card (automatic),50.9,2995.29,No
+EX0386,Male,0,No,No,69,Yes,No,DSL,No,No,No,No,No,Yes,Month-to-month,No,Mailed check,58.61,4070.9,No
+EX0387,Male,1,No,Yes,20,No,No phone service,DSL,No,Yes,Yes,Yes,Yes,No,Two year,No,Bank transfer (automatic),62.93,1250.25,No
+EX0388,Female,0,Yes,Yes,10,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),43.71,438.58,No
+EX0389,Female,0,No,Yes,4,Yes,No,Fiber optic,Yes,No,No,No,No,Yes,Two year,Yes,Credit card (automatic),84.57,372.85,No
+EX0390,Female,0,Yes,Yes,46,Yes,No,Fiber optic,No,No,No,Yes,No,Yes,Two year,Yes,Mailed check,78.63,3659.84,No
+EX0391,Male,0,No,No,8,Yes,No,Fiber optic,No,No,Yes,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),75.12,619.74,No
+EX0392,Male,0,No,No,6,No,No phone service,DSL,No,Yes,Yes,No,Yes,No,One year,No,Credit card (automatic),50.52,308.21,No
+EX0393,Female,0,No,No,45,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Electronic check,33.44,1494.34,Yes
+EX0394,Female,1,No,Yes,49,Yes,No,Fiber optic,No,Yes,No,Yes,Yes,No,Month-to-month,No,Electronic check,87.2,4302.95,No
+EX0395,Male,0,No,No,10,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,One year,No,Credit card (automatic),99.88,1031.29,No
+EX0396,Male,1,Yes,No,56,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Electronic check,30.74,1743.44,No
+EX0397,Female,0,Yes,No,21,Yes,Yes,Fiber optic,No,No,Yes,No,No,Yes,Two year,No,Mailed check,71.0,1476.01,Yes
+EX0398,Female,0,Yes,No,31,Yes,No,DSL,No,Yes,No,Yes,Yes,No,Month-to-month,Yes,Bank transfer (automatic),66.32,2087.91,Yes
+EX0399,Female,1,Yes,No,32,Yes,No,Fiber optic,Yes,Yes,No,No,No,No,Two year,Yes,Bank transfer (automatic),74.59,2405.15,No
+EX0400,Male,0,Yes,No,11,Yes,No,Fiber optic,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),75.5,859.99,Yes
+EX0401,Male,0,No,No,33,Yes,No,Fiber optic,Yes,No,Yes,No,No,No,Two year,Yes,Electronic check,75.82,2513.9,No
+EX0402,Male,0,No,No,57,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,29.32,1679.0,Yes
+EX0403,Male,0,No,Yes,9,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,40.2,395.79,No
+EX0404,Female,0,Yes,No,41,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),37.12,1569.61,Yes
+EX0405,Female,0,No,Yes,26,Yes,Yes,DSL,Yes,Yes,Yes,No,Yes,No,Two year,Yes,Mailed check,82.96,2153.71,No
+EX0406,Male,0,Yes,Yes,52,Yes,No,DSL,Yes,No,Yes,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),73.54,3868.36,No
+EX0407,Female,0,Yes,No,26,Yes,Yes,DSL,Yes,No,Yes,No,Yes,Yes,One year,No,Bank transfer (automatic),88.56,2296.13,Yes
+EX0408,Male,0,Yes,No,36,No,No phone service,Fiber optic,Yes,No,No,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),61.73,2227.73,No
+EX0409,Male,0,Yes,No,30,Yes,No,Fiber optic,No,No,No,No,No,No,Two year,No,Electronic check,74.62,2232.79,No
+EX0410,Male,0,No,Yes,12,Yes,No,DSL,No,Yes,No,No,No,Yes,Month-to-month,No,Bank transfer (automatic),56.19,661.25,No
+EX0411,Female,0,No,No,34,Yes,No,Fiber optic,No,Yes,No,No,Yes,No,Month-to-month,No,Credit card (automatic),66.01,2234.66,Yes
+EX0412,Female,0,Yes,Yes,8,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),33.15,305.0,Yes
+EX0413,Male,0,Yes,No,46,Yes,Yes,DSL,No,Yes,Yes,No,No,Yes,Two year,Yes,Mailed check,67.28,3080.86,No
+EX0414,Male,0,No,No,15,Yes,No,DSL,Yes,No,No,Yes,Yes,No,Month-to-month,Yes,Credit card (automatic),64.02,957.7,No
+EX0415,Female,0,Yes,Yes,43,Yes,No,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,49.66,2148.49,No
+EX0416,Male,1,No,No,50,No,No phone service,Fiber optic,Yes,No,No,No,Yes,Yes,Month-to-month,No,Credit card (automatic),71.63,3623.05,No
+EX0417,Female,1,No,No,55,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,84.07,4630.62,Yes
+EX0418,Female,1,No,No,7,Yes,Yes,DSL,Yes,No,Yes,No,No,Yes,One year,Yes,Mailed check,69.55,479.6,No
+EX0419,Male,1,Yes,No,28,Yes,No,DSL,No,No,No,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,63.93,1835.19,No
+EX0420,Male,1,Yes,No,63,Yes,No,DSL,Yes,Yes,Yes,No,Yes,No,Month-to-month,Yes,Credit card (automatic),68.97,4386.98,Yes
+EX0421,Female,1,Yes,No,62,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),37.66,2347.33,No
+EX0422,Male,0,No,No,66,No,No phone service,DSL,No,No,No,Yes,Yes,No,One year,Yes,Bank transfer (automatic),51.88,3426.4,No
+EX0423,Female,0,Yes,No,31,Yes,No,DSL,Yes,No,No,No,No,Yes,Month-to-month,No,Electronic check,60.49,1904.16,No
+EX0424,Male,0,Yes,No,63,Yes,No,Fiber optic,Yes,No,No,No,Yes,No,Month-to-month,Yes,Electronic check,68.09,4319.88,No
+EX0425,Female,0,Yes,Yes,65,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,37.47,2461.9,No
+EX0426,Male,0,Yes,Yes,56,Yes,No,DSL,Yes,Yes,Yes,Yes,No,No,Two year,No,Credit card (automatic),67.51,3808.98,No
+EX0427,Female,0,Yes,No,41,Yes,No,DSL,No,Yes,Yes,No,No,Yes,Two year,No,Electronic check,53.15,2168.23,No
+EX0428,Male,0,Yes,No,46,No,No phone service,Fiber optic,No,No,Yes,Yes,Yes,Yes,Month-to-month,No,Mailed check,80.19,3681.95,Yes
+EX0429,Female,0,No,No,65,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,No,Credit card (automatic),50.36,3280.81,No
+EX0430,Female,0,Yes,Yes,69,Yes,Yes,Fiber optic,Yes,Yes,No,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),99.22,6879.84,Yes
+EX0431,Male,1,Yes,No,3,Yes,Yes,DSL,No,No,No,Yes,No,Yes,Month-to-month,Yes,Credit card (automatic),76.44,276.07,Yes
+EX0432,Female,1,Yes,Yes,42,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,33.93,1431.07,No
+EX0433,Female,0,No,No,2,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Electronic check,36.27,72.64,No
+EX0434,Male,0,Yes,Yes,62,No,No phone service,DSL,Yes,No,Yes,No,No,No,One year,Yes,Electronic check,46.83,2902.58,No
+EX0435,Male,1,No,No,14,Yes,No,Fiber optic,No,Yes,Yes,No,No,No,One year,No,Bank transfer (automatic),76.13,1056.86,No
+EX0436,Female,0,Yes,No,71,Yes,No,Fiber optic,No,Yes,No,No,No,Yes,Month-to-month,Yes,Mailed check,82.76,5876.9,No
+EX0437,Female,0,Yes,No,72,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,25.52,1861.09,No
+EX0438,Female,0,Yes,Yes,23,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,37.74,873.71,Yes
+EX0439,Male,0,No,Yes,58,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,No,Bank transfer (automatic),69.51,4072.64,Yes
+EX0440,Male,0,Yes,No,49,Yes,No,Fiber optic,No,No,Yes,Yes,No,No,Month-to-month,Yes,Credit card (automatic),80.05,3928.98,Yes
+EX0441,Male,1,Yes,No,20,Yes,Yes,DSL,No,No,No,No,No,Yes,Two year,Yes,Electronic check,57.36,1180.39,No
+EX0442,Female,0,Yes,No,69,Yes,No,Fiber optic,No,Yes,No,Yes,No,Yes,Two year,Yes,Bank transfer (automatic),81.66,5638.9,No
+EX0443,Female,0,No,No,46,Yes,No,DSL,Yes,Yes,No,No,No,Yes,Month-to-month,No,Mailed check,69.37,3176.47,Yes
+EX0444,Male,0,Yes,No,62,Yes,No,DSL,No,No,Yes,No,Yes,No,Month-to-month,Yes,Bank transfer (automatic),70.19,4383.88,No
+EX0445,Female,0,Yes,No,24,Yes,Yes,Fiber optic,Yes,No,No,Yes,No,No,Month-to-month,No,Electronic check,90.6,2157.63,Yes
+EX0446,Male,0,Yes,No,60,No,No phone service,Fiber optic,No,Yes,No,No,No,No,Month-to-month,No,Mailed check,54.96,3322.99,No
+EX0447,Female,0,No,No,46,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,23.94,1129.98,No
+EX0448,Male,0,No,Yes,24,Yes,No,Fiber optic,Yes,No,No,No,Yes,Yes,One year,No,Mailed check,67.7,1652.46,No
+EX0449,Female,0,Yes,No,36,No,No phone service,DSL,Yes,No,No,No,No,Yes,Month-to-month,No,Credit card (automatic),41.84,1527.33,No
+EX0450,Female,0,No,No,65,Yes,No,DSL,No,No,No,Yes,Yes,No,One year,No,Bank transfer (automatic),62.73,4125.18,No
+EX0451,Male,0,Yes,No,71,Yes,Yes,DSL,No,Yes,No,No,No,Yes,Month-to-month,Yes,Mailed check,63.16,4485.59,No
+EX0452,Female,0,Yes,No,70,Yes,Yes,Fiber optic,Yes,No,Yes,No,Yes,No,Month-to-month,Yes,Electronic check,95.84,6751.25,No
+EX0453,Female,0,No,No,17,Yes,No,DSL,No,No,No,No,No,No,Two year,Yes,Credit card (automatic),41.05,743.7,No
+EX0454,Male,1,Yes,Yes,18,Yes,Yes,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,110.73,2011.35,Yes
+EX0455,Male,0,No,No,22,Yes,No,Fiber optic,No,Yes,Yes,No,Yes,Yes,Two year,Yes,Mailed check,83.05,1876.43,No
+EX0456,Female,0,No,No,61,Yes,No,Fiber optic,No,No,No,No,Yes,No,Two year,Yes,Electronic check,71.21,4345.11,No
+EX0457,Female,0,No,Yes,64,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,No,Yes,Two year,Yes,Mailed check,91.23,5861.71,No
+EX0458,Male,0,Yes,No,52,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),44.37,2297.76,No
+EX0459,Male,0,Yes,Yes,12,Yes,No,DSL,Yes,Yes,No,No,No,No,One year,Yes,Credit card (automatic),52.68,672.2,Yes
+EX0460,Male,0,Yes,No,8,Yes,No,Fiber optic,No,Yes,No,No,Yes,Yes,Two year,No,Credit card (automatic),85.22,716.03,No
+EX0461,Female,0,No,No,17,Yes,No,Fiber optic,No,Yes,No,No,No,No,One year,No,Bank transfer (automatic),66.85,1171.25,Yes
+EX0462,Male,0,No,No,30,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,Yes,No,Two year,No,Electronic check,100.61,3060.77,Yes
+EX0463,Female,0,Yes,Yes,31,Yes,No,DSL,No,No,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,60.26,1889.83,Yes
+EX0464,Male,0,Yes,No,66,Yes,Yes,Fiber optic,Yes,No,Yes,No,No,No,Month-to-month,Yes,Bank transfer (automatic),81.03,5348.17,Yes
+EX0465,Female,0,Yes,No,19,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,No,One year,Yes,Bank transfer (automatic),74.78,1427.46,Yes
+EX0466,Male,0,Yes,No,25,Yes,Yes,DSL,Yes,Yes,No,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),59.38,1514.38,No
+EX0467,Male,1,Yes,No,60,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,31.43,1916.49,Yes
+EX0468,Female,0,Yes,No,53,Yes,No,Fiber optic,No,No,No,No,No,No,Two year,Yes,Credit card (automatic),63.96,3383.91,No
+EX0469,Male,0,Yes,No,25,Yes,Yes,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,63.87,1594.88,Yes
+EX0470,Male,0,No,No,55,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),28.16,1560.67,No
+EX0471,Male,1,Yes,No,36,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,28.55,1074.99,No
+EX0472,Female,0,No,Yes,10,Yes,No,Fiber optic,No,No,No,Yes,No,Yes,One year,Yes,Electronic check,80.61,853.84,Yes
+EX0473,Male,0,Yes,Yes,37,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,34.85,1287.89,Yes
+EX0474,Female,0,No,No,57,Yes,No,DSL,No,No,No,No,Yes,No,Month-to-month,Yes,Credit card (automatic),54.14,3107.04,Yes
+EX0475,Male,0,Yes,No,24,Yes,Yes,DSL,Yes,No,Yes,No,No,No,Month-to-month,No,Credit card (automatic),66.1,1631.61,No
+EX0476,Female,0,Yes,No,67,Yes,Yes,Fiber optic,No,No,Yes,Yes,No,No,Month-to-month,Yes,Mailed check,94.42,6327.19,Yes
+EX0477,Male,0,No,No,25,Yes,No,DSL,No,No,No,Yes,Yes,No,One year,Yes,Bank transfer (automatic),50.32,1296.65,No
+EX0478,Male,0,Yes,Yes,70,Yes,No,Fiber optic,Yes,No,Yes,No,No,No,Month-to-month,No,Electronic check,84.75,5938.47,No
+EX0479,Female,0,Yes,No,72,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,31.06,2234.58,Yes
+EX0480,Male,0,No,No,25,Yes,Yes,Fiber optic,Yes,No,No,Yes,No,No,Two year,Yes,Electronic check,73.21,1878.78,No
+EX0481,Male,0,Yes,No,71,Yes,No,DSL,Yes,No,Yes,No,No,No,Month-to-month,Yes,Credit card (automatic),66.67,4748.66,No
+EX0482,Male,0,Yes,No,60,Yes,No,DSL,Yes,No,Yes,Yes,No,Yes,Month-to-month,No,Mailed check,71.74,4306.1,No
+EX0483,Male,0,Yes,No,27,Yes,Yes,Fiber optic,Yes,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,96.59,2607.82,No
+EX0484,Male,0,Yes,No,72,Yes,No,Fiber optic,No,No,No,No,Yes,No,Two year,Yes,Mailed check,80.34,5798.89,No
+EX0485,Female,0,Yes,No,33,Yes,No,DSL,Yes,No,Yes,No,No,No,Two year,Yes,Mailed check,59.12,1964.66,No
+EX0486,Female,0,Yes,No,42,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,No,Mailed check,73.22,3067.47,Yes
+EX0487,Male,0,No,No,65,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),27.71,1792.49,No
+EX0488,Male,0,Yes,No,2,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,No,Electronic check,52.44,117.7,No
+EX0489,Female,0,Yes,Yes,4,Yes,No,DSL,No,Yes,No,No,Yes,No,One year,Yes,Electronic check,42.96,219.29,No
+EX0490,Female,0,Yes,No,3,Yes,Yes,Fiber optic,No,No,No,Yes,No,No,One year,No,Bank transfer (automatic),76.71,248.96,Yes
+EX0491,Male,0,No,No,28,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,45.24,1309.15,Yes
+EX0492,Female,1,Yes,No,49,Yes,No,Fiber optic,No,No,No,Yes,No,Yes,Month-to-month,No,Credit card (automatic),84.87,4190.27,Yes
+EX0493,Female,0,No,No,63,No,No phone service,DSL,No,No,No,Yes,Yes,No,Month-to-month,Yes,Credit card (automatic),52.23,3331.28,Yes
+EX0494,Female,0,No,No,19,Yes,No,DSL,Yes,Yes,No,No,No,No,Two year,No,Bank transfer (automatic),54.97,1061.91,No
+EX0495,Female,0,No,Yes,28,Yes,No,Fiber optic,Yes,No,No,No,Yes,Yes,Month-to-month,No,Bank transfer (automatic),84.15,2359.66,Yes
+EX0496,Female,1,No,Yes,35,Yes,No,Fiber optic,No,Yes,No,Yes,No,No,Month-to-month,Yes,Electronic check,73.73,2581.75,Yes
+EX0497,Female,0,No,No,70,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Credit card (automatic),93.58,6571.31,Yes
+EX0498,Male,0,No,No,38,Yes,No,Fiber optic,No,Yes,No,Yes,No,No,One year,No,Electronic check,92.12,3486.38,No
+EX0499,Female,0,Yes,No,61,Yes,No,Fiber optic,No,No,Yes,No,No,No,One year,No,Electronic check,68.24,4162.7,Yes
+EX0500,Male,1,No,No,13,Yes,Yes,DSL,No,No,No,No,No,Yes,Two year,Yes,Electronic check,57.69,784.86,No
+EX0501,Female,0,Yes,No,11,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,Two year,Yes,Credit card (automatic),83.42,951.31,Yes
+EX0502,Female,0,Yes,No,42,Yes,No,DSL,Yes,No,Yes,Yes,Yes,No,Month-to-month,Yes,Electronic check,63.18,2688.86,Yes
+EX0503,Male,0,Yes,Yes,23,Yes,No,Fiber optic,Yes,Yes,No,No,No,Yes,Two year,Yes,Electronic check,75.13,1710.6,No
+EX0504,Female,0,No,No,4,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Electronic check,21.28,88.89,No
+EX0505,Female,1,Yes,No,58,Yes,No,DSL,Yes,No,No,No,No,Yes,Two year,No,Electronic check,56.31,3257.99,No
+EX0506,Male,0,No,No,41,Yes,Yes,Fiber optic,No,Yes,No,No,No,Yes,Month-to-month,Yes,Credit card (automatic),88.51,3611.22,Yes
+EX0507,Male,0,No,No,19,Yes,No,DSL,No,Yes,Yes,Yes,No,Yes,One year,Yes,Bank transfer (automatic),65.16,1269.45,No
+EX0508,Male,0,Yes,No,10,Yes,Yes,DSL,No,No,Yes,No,Yes,No,One year,No,Credit card (automatic),62.77,655.84,Yes
+EX0509,Female,0,No,No,56,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,23.3,1300.53,No
+EX0510,Male,0,Yes,No,55,No,No phone service,DSL,No,No,No,No,No,Yes,Two year,Yes,Credit card (automatic),42.57,2379.59,No
+EX0511,Male,0,No,No,55,Yes,No,Fiber optic,No,No,Yes,Yes,Yes,Yes,Two year,No,Bank transfer (automatic),102.19,5609.74,No
+EX0512,Female,1,No,No,24,Yes,No,Fiber optic,No,Yes,Yes,Yes,No,No,Two year,No,Mailed check,85.39,2032.05,No
+EX0513,Male,0,Yes,No,66,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,No,One year,Yes,Electronic check,109.87,7258.72,Yes
+EX0514,Female,1,Yes,No,36,Yes,Yes,DSL,Yes,Yes,Yes,No,No,No,One year,Yes,Electronic check,75.6,2755.94,Yes
+EX0515,Male,0,Yes,No,51,Yes,Yes,DSL,No,No,No,Yes,No,Yes,Month-to-month,Yes,Electronic check,65.65,3330.32,Yes
+EX0516,Male,0,Yes,Yes,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),27.3,51.52,Yes
+EX0517,Female,0,No,Yes,41,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,No,Electronic check,59.31,2434.35,Yes
+EX0518,Male,0,Yes,Yes,66,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,29.86,2005.45,No
+EX0519,Male,0,Yes,Yes,47,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),39.46,1871.43,No
+EX0520,Male,0,Yes,No,8,Yes,No,Fiber optic,Yes,No,No,Yes,No,No,One year,Yes,Electronic check,90.47,740.66,Yes
+EX0521,Male,0,No,Yes,36,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Mailed check,35.58,1316.02,No
+EX0522,Male,0,Yes,Yes,25,Yes,Yes,DSL,Yes,Yes,Yes,No,Yes,No,Two year,No,Credit card (automatic),83.55,2130.17,No
+EX0523,Male,1,No,Yes,60,Yes,No,DSL,No,No,No,No,No,Yes,Two year,No,Electronic check,58.11,3500.42,No
+EX0524,Male,0,Yes,Yes,44,Yes,Yes,DSL,Yes,No,No,Yes,No,Yes,Month-to-month,No,Bank transfer (automatic),65.78,2922.46,No
+EX0525,Female,0,Yes,No,51,Yes,Yes,DSL,No,No,No,No,No,Yes,Two year,No,Credit card (automatic),69.0,3513.36,No
+EX0526,Female,1,No,Yes,2,No,No phone service,Fiber optic,Yes,No,Yes,Yes,No,No,Month-to-month,Yes,Electronic check,74.76,136.23,Yes
+EX0527,Female,0,Yes,No,50,Yes,No,DSL,Yes,Yes,No,Yes,No,Yes,Month-to-month,Yes,Credit card (automatic),69.84,3472.8,No
+EX0528,Female,0,Yes,No,9,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,No,Yes,Month-to-month,No,Credit card (automatic),92.16,818.62,Yes
+EX0529,Female,0,No,No,53,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,76.92,4066.52,Yes
+EX0530,Male,0,Yes,No,69,Yes,No,DSL,No,No,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),72.88,5024.2,No
+EX0531,Male,1,Yes,No,52,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,27.45,1434.68,Yes
+EX0532,Female,0,No,No,3,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Two year,Yes,Credit card (automatic),89.87,314.04,Yes
+EX0533,Male,0,Yes,No,30,Yes,No,DSL,Yes,No,Yes,Yes,Yes,No,Month-to-month,No,Credit card (automatic),60.69,1818.63,No
+EX0534,Female,0,Yes,No,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,30.48,64.88,Yes
+EX0535,Male,0,No,No,51,Yes,No,DSL,No,No,No,No,Yes,Yes,Two year,No,Bank transfer (automatic),58.3,2976.16,No
+EX0536,Female,0,No,No,70,Yes,Yes,Fiber optic,Yes,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,99.95,7007.43,No
+EX0537,Female,0,No,No,56,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,37.37,2133.93,No
+EX0538,Male,0,No,No,51,Yes,No,DSL,Yes,No,No,Yes,No,Yes,Month-to-month,Yes,Mailed check,65.5,3340.05,No
+EX0539,Female,1,Yes,Yes,56,Yes,Yes,DSL,Yes,Yes,No,No,No,No,One year,No,Credit card (automatic),69.91,3947.1,No
+EX0540,Female,0,Yes,Yes,4,No,No phone service,Fiber optic,No,No,No,Yes,No,No,One year,Yes,Mailed check,51.56,205.41,Yes
+EX0541,Male,1,No,Yes,19,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,44.75,841.59,No
+EX0542,Male,0,Yes,Yes,69,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,59.5,4130.76,Yes
+EX0543,Female,0,No,No,7,No,No phone service,DSL,Yes,Yes,Yes,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),58.64,454.6,No
